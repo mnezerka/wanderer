@@ -1,0 +1,12 @@
+name = "Wanderer"
+license = "MIT"
+licenselink = "https://github.com/mnezerka/wanderer/blob/master/LICENSE.md"
+description = "Hugo theme for wanderers (maps, gpx tracks, etc.)"
+homepage = "https://github.com/mnezerka/wanderer"
+tags = ["website", "starter", "responsive", "blog", "map", "gpx", "mapy.cz"]
+features = ["posts", "shortcodes", "pages"]
+min_version = "0.64.0"
+
+[author]
+  name = "Michal Nezerka"
+  homepage = "https://blue.pavoucek.cz/"
