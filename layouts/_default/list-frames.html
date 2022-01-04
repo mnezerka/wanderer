@@ -1,0 +1,51 @@
+{{ define "main" }}
+
+<article class="entry">
+
+    <header class="entry-header">
+        <h2 class="entry-title">{{ .Title }}</h2>
+    </header>
+
+    <div class="entry-content">
+        <p>{{ .Content}}</p>
+    </div>
+
+</article>
+
+{{ with .Pages }}
+
+    <div class="list frames">
+
+        {{ range . }}
+
+            <div class="list-item">
+
+                {{/* featured image */}}
+                {{ range .Resources.ByType "image"}}
+                    {{ if isset .Params "featured" }}
+                        <div class="featured-image">
+                            <a href="{{ .Permalink }}">
+                                <img src="{{ .Permalink }}" alt="{{ .Title}}" />
+                            </a>
+                        </div>
+                    {{ end }}
+                {{ end }}
+
+
+                <div class="item-text">
+                    <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+
+                    <p class="summary">{{ .Summary }}</p>
+
+                </div>
+
+
+            </div>
+
+        {{ end }}
+
+    </div>
+
+{{ end }}
+
+{{ end }}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ $.Site.LanguageCode | default "en" }}">
+  <head>
+    <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
+    {{ partial "head.html" . }}
+  </head>
+
+  <body>
+
+    <header class="site-header grid-container grid-parent">
+        <h1>{{ .Site.Title }}</h1>
+    </header>
+
+    {{ partial "navigation.html" . }}
+
+    {{ partial "breadcrumbs" . }}
+
+    <div class="site-content grid-container grid-parent">
+        <div class="content-area grid-parent mobile-grid-100 grid-75 tablet-grid-75">
+            <main class="site-main">
+                {{ block "main" . }}{{ end }}
+            </main>
+        </div>
+        <div class="widget-area grid-parent grid-25 tablet-grid-25">
+            <div class="sidebar">
+                {{ partial "categories.html" . }}
+
+                {{ partial "search_form.html" . }}
+
+                {{ partial "tag_cloud.html" . }}
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="copyright">© {{ now.Format "2006"}} {{ .Site.Params.Author }}</div>
+        <div class="powered-by">{{ .Site.Params.poweredBy | safeHTML }}</div>
+    </footer>
+
+    {{ partial "footer" . }}
+
+  </body>
+</html>

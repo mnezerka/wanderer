@@ -1,0 +1,9 @@
+<nav class="main-navigation">
+    <div class="navigation-inside grid-container grid-parent">
+        <ul>
+            {{ range .Site.Menus.main }}
+                <li><a href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
+</nav>

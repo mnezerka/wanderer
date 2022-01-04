@@ -1,0 +1,24 @@
+date:
+  other: >-
+    {{ .Date.Day }} {{ index $.Site.Data.months_cs (printf "%d" .Date.Month) }}, {{ .PublishDate.Year }}
+
+categories:
+  other: Rubriky
+
+tags:
+  other: Štítky
+
+tags_all:
+  other: Všechny štítky
+
+search:
+  other: Hledat
+
+read_more:
+  other: Číst dál
+
+paginator_next:
+  other: Další 
+
+paginator_prev:
+  other: Předchozí 

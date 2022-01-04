@@ -1,0 +1,6 @@
+<div class="item">
+
+	{{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02") }}
+	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+
+</div>

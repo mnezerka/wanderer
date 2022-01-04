@@ -1,0 +1,33 @@
+<style>
+    .svelte-gallery {
+        overflow: auto;
+    }
+</style>
+
+<div id="gallery-el" class="svelte-gallery"></div>
+
+<script type="text/javascript">
+
+    let images =[];
+
+    {{ with .Page.Resources.ByType "image" }}
+        {{ range sort . ".Params.Weight" }}
+            {{ .Params.Weight }}
+            {{ $resized := .Resize "x180 q80" }}
+                images.push({
+                    src: "{{ .Permalink }}",
+                    thumbnail: "{{ $resized.Permalink }}",
+                    thumbnail_width: {{ $resized.Width }},
+                    thumbnail_height: {{ $resized.Height }},
+                    title: "{{ .Title }}"
+                });
+        {{ end }}
+    {{ end }}
+
+    g = new Gallery({
+        target: document.getElementById("gallery-el"),
+        props: {
+            images
+        } 
+    })
+</script>

@@ -1,0 +1,43 @@
+{{ define "main" }}
+
+    <!-- based on https://techformist.com/simple-site-summary-hugo/-->
+
+    <article class="entry">
+        <header class="entry-header">
+            <h2 class="entry-title">{{ .Title }}</h2>
+        </header>
+
+        <div class="entry-content">
+
+            {{/*-- post count */}}
+            {{ $posts := (where $.Site.RegularPages "Section" "==" "posts") }}
+            {{ $postCount := len $posts }}
+            
+            {{/*-- page count */}}
+            {{ $pages := (where $.Site.RegularPages "Section" "==" "pages") }}
+            {{ $pageCount := len $pages }}
+
+            {{/*-- tag count */}}
+            {{ $tags := $.Site.Taxonomies.tags }}
+            {{ $tagsCount := len $tags}}
+             
+            <div style="overflow: auto;">
+              <table>
+                <thead>
+                  <tr>
+                    <td style="text-align:left;font-weight: bold;width: 10em;">Description</td>
+                    <td style="text-align:left;font-weight: bold;">Value</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Pages</td><td>{{ $pageCount }}</td></tr>
+                  <tr><td>Posts</td><td>{{ $postCount }}</td></tr>
+                  <tr><td>Tags</td><td>{{ $tagsCount }}</td></tr>
+                </tbody>
+              </table>
+
+              TODO: List tags that are not ignored and don't have assigned any location
+        </div>
+    </article>
+
+{{ end }}

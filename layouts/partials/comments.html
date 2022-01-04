@@ -1,0 +1,20 @@
+{{ $comments := . | unmarshal  }}
+
+{{ template "commentlevel" $comments }}
+          
+{{ define "commentlevel" }}
+    <ul>
+    {{ range . }}
+        <li>
+            <div class="header">
+                <span class="author">{{.author}}</span>
+                <span class="date">{{ dateFormat "2006/01/02" .date}}</span>
+            </div>
+            <div class="content"> {{ .content}}</div>
+            {{ if isset . "comments" }}
+                {{ template "commentlevel" .comments}}
+            {{ end }}
+        </li>
+    {{ end }}
+    </ul>
+{{ end }}

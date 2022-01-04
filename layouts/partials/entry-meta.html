@@ -1,0 +1,20 @@
+<div class="entry-meta">
+
+    {{ with .Params.categories }}
+        <div class="cats-links">
+            <i class="icon fas fa-folder"></i>
+            {{ range $i, $t := . -}}
+                {{- if $i -}}, {{ end -}}<a href="{{ "categories/" | absURL }}{{- $t | urlize }}">{{- $t -}}</a>
+            {{- end -}}
+        </div>
+    {{ end}}
+
+    {{ with .Params.tags }}
+        <div class="tags-links">
+            <i class="icon fas fa-tag"></i>
+            {{ range $i, $t := . -}}
+                {{- if $i -}}, {{ end -}}<a href="{{- "tags/" | absURL -}}{{- $t | urlize -}}">{{- $t -}}</a>
+            {{- end -}}
+        </div>
+    {{ end}}
+</div>

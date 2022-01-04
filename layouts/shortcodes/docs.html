@@ -1,0 +1,19 @@
+<!-- tips from https://www.regisphilibert.com/blog/2018/01/hugo-page-resources-and-how-to-use-them/ -->
+{{ with .Page.Resources.Match "docs/*" }}
+    <div class="list-documents">
+        {{ range . }}
+            <div class="list-item">
+                {{ $icon := "file" }}
+                {{ if (in .MediaType.Suffixes "pdf") }}
+                    {{ $icon = "file-pdf" }}
+                {{ else if (intersect .MediaType.Suffixes (slice "docx" "docm")) }}
+                    {{ $icon = "file" }}
+                {{ else }}
+                    {{ $icon = "file" }}
+                {{ end }}
+
+                <i class="fas fa-{{- $icon -}}"></i><a href="{{ .Permalink }}">{{ .Name }} {{ .MediaType.SubType }}</a> - {{ .Title }}
+            </div>
+        {{ end }}
+    </div>
+{{ end }}

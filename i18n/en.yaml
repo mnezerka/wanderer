@@ -1,0 +1,24 @@
+date:
+  other: >-
+    {{ .Date.Day }} {{ index $.Site.Data.months_en (printf "%d" .Date.Month) }}, {{ .PublishDate.Year }}
+
+categories:
+  other: Categories
+
+tags:
+  other: Tags 
+
+tags_all:
+  other: All tags
+
+search:
+  other: Search
+
+read_more:
+  other: Read more
+
+paginator_next:
+  other: Next
+
+paginator_prev:
+  other: Prev 

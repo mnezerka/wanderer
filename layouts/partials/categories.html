@@ -1,0 +1,8 @@
+<aside>
+    <h2>{{ T "categories" }}</h2>
+    <ul>
+        {{ range .Site.Taxonomies.categories}}
+            <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> ({{ .Count }})</li>
+        {{ end }}
+    </ul>
+</aside>

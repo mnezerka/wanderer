@@ -1,0 +1,18 @@
+<aside>
+    <h2>{{ T "search" }}</h2>
+
+    <form action="{{ "search" | absURL }}">
+        <input id="search-query" name="s"/>
+    </form>
+</aside>
+
+<script>
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+$("#search-query").val(getParameterByName("s"));
+
+</script>

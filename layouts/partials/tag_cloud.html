@@ -1,0 +1,50 @@
+<!-- based on https://www.henriksommerfeld.se/hugo-tag-could/ -->
+<!-- https://mertbakir.gitlab.io/hugo/tag-cloud-in-hugo/ -->
+<aside class="widget tag-cloud">
+    <h2>{{ T "tags" }}</h2>
+
+    {{ if gt (len .Site.Taxonomies.tags) 0 }}
+        {{- $fontUnit := "px" -}}
+        {{- $largestFontSize := 25 -}}
+        {{- $smallestFontSize := 10 -}}
+        {{- $fontSizeSpread := sub $largestFontSize $smallestFontSize -}}
+        <!--<div>Font size unit: {{ $fontUnit }}</div>
+        <div>Font min size: {{ $smallestFontSize }}</div>
+        <div>Font max size: {{ $largestFontSize }}</div>
+        <div>Font size spread: {{ $fontSizeSpread }}</div>-->
+
+        {{ $tags := first 50 $.Site.Taxonomies.tags.ByCount }} 
+
+        {{ $maxCount := (index $tags 0).Count }}
+        {{ $minCount := (index $tags.Reverse 0).Count }}
+
+        <!--<div>Max tag count: {{ $maxCount }}</div>
+        <div>Min tag count: {{ $minCount }}</div>-->
+
+        {{- $countSpread := sub $maxCount $minCount -}}
+        {{- if eq $countSpread 0 }}
+            {{- $countSpread = 1 -}}
+        {{ end }}
+        <!--<div>Tag count spread: {{ $countSpread }}</div>-->
+
+        {{ $fontStep := div $fontSizeSpread $countSpread }}
+
+        {{ range sort $tags "Name" }} 
+            {{ $tagCount := .Count }}
+
+            {{ $currentFontSize := (add $smallestFontSize (mul (sub $tagCount $minCount) $fontStep) ) }}
+            {{- $weight := 1 -}}
+            {{ if gt $maxCount 1 }}
+                {{ $weight = div (sub (math.Log $tagCount) (math.Log $minCount)) (sub (math.Log $maxCount) (math.Log $minCount)) }}
+            {{ end }}
+            {{ $currentFontSize := (add $smallestFontSize (mul (sub $largestFontSize $smallestFontSize) $weight )) }}
+
+            <!--Current font size: {{$currentFontSize}}-->
+            <a href="{{ "/tags/" | relURL }}{{ .Name | urlize }}" style="font-size:{{$currentFontSize}}{{$fontUnit}}">{{- .Page.Title -}}</a>
+        {{ end }}
+    {{ end }}
+
+    <div class="references">
+        <a href="{{ "/tags" | relURL }}">{{ T "tags_all" }}</a>
+    </div>
+</aside>

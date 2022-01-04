@@ -1,0 +1,28 @@
+title: "Little Prince"
+baseURL: https://example.com/
+languageCode: "en" 
+defaultContentLanguage: "en"
+
+enableMissingTranslationPlaceholders: true
+
+paginate: 3 
+
+theme: wanderer
+themesDir:  "../.."
+
+menu:
+  main:
+    - identifier: home
+      name: Home
+      url: "/"
+      weight: -1
+
+
+outputs:
+  home:
+    - html
+    - json
+
+params:
+  author: Michal Nezerka 
+  poweredBy: Powered by <a href='http://www.gohugo.io/'>Hugo</a>

@@ -1,0 +1,57 @@
+{{ $paginator := . }}
+{{ range $paginator.Pages }}
+    {{ $title := .Title }}
+    {{ $summary := .Summary }}
+    {{ $link := .RelPermalink }}
+    <article class="entry">
+        <header class="entry-header">
+            <h2 class="entry-title"><a href="{{ $link }}">{{ $title }}</a></h2>
+            <div class ="entry-date"><time datetime="{{ .Date }}">{{ i18n "date" . }}</time></div>
+        </header>
+
+        {{/* featured image */}}
+        {{ range .Page.Resources.ByType "image"}}
+            {{ if isset .Params "featured" }}
+                <div class="entry-featured-image">
+                    <a href="{{ $link }}">
+                        <img class="size-full" src="{{ .Permalink }}" alt="{{ .Title}}" />
+                    </a>
+                </div>
+            {{ end }}
+        {{ end }}
+
+        {{/* entry summary */}}
+        {{ if ne .Site.Params.hiddenPostSummaryInHomePage true }}
+            <div class="entry-content">{{ $summary | plainify | htmlUnescape }}</div>
+        {{ end }}
+
+        <p class="entry-read-more"><a href="{{ .Permalink }}">{{ T "read_more" }} ...</a></p>
+
+        {{ partial "entry-meta" .}}
+
+    </article>
+{{ end }}
+
+{{ if or ($paginator.HasPrev) ($paginator.HasNext) }}
+    <nav class="pagination">
+        {{ if $paginator.HasPrev }}
+            <span class="prev">
+                <a href="{{ $paginator.Prev.URL }}"><span class="arrow">←</span> {{ T "paginator_prev" }}</a>
+            </span>
+        {{ end }}
+
+        {{ if gt $paginator.PageNumber 1 }}<a href="{{- $paginator.First.URL -}}">1</a>{{ end }}
+
+        <span class="current">
+            {{ $paginator.PageNumber }}
+        </span>
+
+        {{ if lt $paginator.PageNumber $paginator.TotalPages }}<a href="{{- $paginator.Last.URL -}}">{{ $paginator.TotalPages }}</a>{{ end }}
+    
+        {{ if $paginator.HasNext }}
+            <span class="next">
+                <a href="{{ $paginator.Next.URL}}">{{ T "paginator_next" }}<span class="arrow">→</span></a>
+            </span>
+        {{ end }}
+    </nav>
+{{ end }}
