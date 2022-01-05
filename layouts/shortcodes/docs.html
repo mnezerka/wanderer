@@ -12,7 +12,7 @@
                     {{ $icon = "file" }}
                 {{ end }}
 
-                <i class="fas fa-{{- $icon -}}"></i><a href="{{ .Permalink }}">{{ .Name }} {{ .MediaType.SubType }}</a> - {{ .Title }}
+                <i class="fas fa-{{- $icon -}}"></i><a href="{{ .Permalink }}">{{ .Name }}</a> - {{ .Title }}
             </div>
         {{ end }}
     </div>
