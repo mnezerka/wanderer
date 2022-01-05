@@ -1,0 +1,108 @@
+<!doctype html><html lang=en>
+<head>
+<title>Galleries | Wanderer Demo Stie</title>
+<meta charset=utf-8>
+<title>Galleries | Wanderer Demo Stie</title>
+<meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<meta name=description content="If there are some images stored as resources for given page, theme will render interactive image gallery at the bottom of the page. This example also demonstrate how to use resources metadata to describe and order images.">
+<link rel=stylesheet href=https://example.com/css/unsemantic-grid-responsive.css>
+<link rel=stylesheet href=https://example.com/css/global.css>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js></script>
+<script src=https://example.com/js/search.js></script>
+<link rel=stylesheet href=https://unpkg.com/leaflet@1.7.1/dist/leaflet.css integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin>
+<script src=https://unpkg.com/leaflet@1.7.1/dist/leaflet.js integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.min.js></script>
+<script src=https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js></script>
+<link href=https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css rel=stylesheet>
+<link rel=stylesheet href=https://example.com/css/maps.css>
+<script src=https://example.com/js/maps.js></script>
+<link rel=stylesheet href=https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css>
+<script src=https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js></script>
+<script src=https://kit.fontawesome.com/2b8c919a81.js crossorigin=anonymous></script>
+<link rel=stylesheet href=https://example.com/svelte-grid-gallery/svelte-grid-gallery.css>
+<script src=https://example.com/svelte-grid-gallery/svelte-grid-gallery.js></script>
+</head>
+<body>
+<header class="site-header grid-container grid-parent">
+<h1>Wanderer Demo Stie</h1>
+</header>
+<nav class=main-navigation>
+<div class="navigation-inside grid-container grid-parent">
+<ul>
+<li><a href=/ title>Home</a></li>
+<li><a href=/pages/about/ title=About>About</a></li>
+<li><a href=/pages/features/ title=Features>Features</a></li>
+</ul>
+</div>
+</nav>
+<div class="grid-container grid-parent">
+<div class=site-breadcrumbs>
+<a href=/pages/>Pages</a>
+>
+<a href=/pages/features/>Features</a>
+>
+Galleries
+</div>
+</div>
+<div class="site-content grid-container grid-parent">
+<div class="content-area grid-parent mobile-grid-100 grid-75 tablet-grid-75">
+<main class=site-main>
+<article class=entry>
+<header class=entry-header>
+<h2 class=entry-title>Galleries</h2>
+</header>
+<div class=entry-content>
+<p>If there are some images stored as resources for given page, theme will render
+interactive image gallery at the bottom of the page. This example also
+demonstrate how to use resources metadata to describe and order images.</p>
+</div>
+<div class=entry-gallery>
+<style>.svelte-gallery{overflow:auto}</style>
+<div id=gallery-el class=svelte-gallery></div>
+<script type=text/javascript>let images=[];null,images.push({src:"https://example.com/pages/features/galleries/images/dsc00346_sharp.jpg",thumbnail:"https://example.com/pages/features/galleries/images/dsc00346_sharp_huf1ed8243f109b67b6fa87ddbe28983b3_714189_0x180_resize_q80_box.jpg",thumbnail_width:270,thumbnail_height:180,title:"images/dsc00346_sharp.jpg"}),null,images.push({src:"https://example.com/pages/features/galleries/images/dsc00348_sharp.jpg",thumbnail:"https://example.com/pages/features/galleries/images/dsc00348_sharp_huddc7b53c0a614f82134125415e285909_699824_0x180_resize_q80_box.jpg",thumbnail_width:270,thumbnail_height:180,title:"images/dsc00348_sharp.jpg"}),null,images.push({src:"https://example.com/pages/features/galleries/images/dsc00311_sharp.jpg",thumbnail:"https://example.com/pages/features/galleries/images/dsc00311_sharp_hud7561e6e29f93e10b1aeceaf61c50023_549662_0x180_resize_q80_box.jpg",thumbnail_width:270,thumbnail_height:180,title:"images/dsc00311_sharp.jpg"}),null,images.push({src:"https://example.com/pages/features/galleries/images/dsc00312_sharp.jpg",thumbnail:"https://example.com/pages/features/galleries/images/dsc00312_sharp_hua7150361e4e4e0f25f6e7e4f5ed2088e_602309_0x180_resize_q80_box.jpg",thumbnail_width:270,thumbnail_height:180,title:"images/dsc00312_sharp.jpg"}),null,images.push({src:"https://example.com/pages/features/galleries/images/dsc00319_sharp.jpg",thumbnail:"https://example.com/pages/features/galleries/images/dsc00319_sharp_hu06bf6c2a3b4671c16dcfde1388b483b7_849491_0x180_resize_q80_box.jpg",thumbnail_width:120,thumbnail_height:180,title:"images/dsc00319_sharp.jpg"}),null,images.push({src:"https://example.com/pages/features/galleries/images/dsc00335_sharp.jpg",thumbnail:"https://example.com/pages/features/galleries/images/dsc00335_sharp_huc42e93ff5c88814fde64e7ac9f5c7492_538487_0x180_resize_q80_box.jpg",thumbnail_width:270,thumbnail_height:180,title:"images/dsc00335_sharp.jpg"}),null,images.push({src:"https://example.com/pages/features/galleries/images/dsc00395_sharp.jpg",thumbnail:"https://example.com/pages/features/galleries/images/dsc00395_sharp_hu8d63c2a877fef266572398dd3a88c36d_481115_0x180_resize_q80_box.jpg",thumbnail_width:270,thumbnail_height:180,title:"images/dsc00395_sharp.jpg"}),1,images.push({src:"https://example.com/pages/features/galleries/images/dsc00308_sharp.jpg",thumbnail:"https://example.com/pages/features/galleries/images/dsc00308_sharp_hu45823a63fd45872a2472c34f4b6fd64a_183471_0x180_resize_q80_box.jpg",thumbnail_width:270,thumbnail_height:180,title:"Evening fire"}),2,images.push({src:"https://example.com/pages/features/galleries/images/dsc00309_sharp.jpg",thumbnail:"https://example.com/pages/features/galleries/images/dsc00309_sharp_hub54767a72dc39b7d989b6915a928e227_533849_0x180_resize_q80_box.jpg",thumbnail_width:270,thumbnail_height:180,title:"Place called Paprsek"}),g=new Gallery({target:document.getElementById("gallery-el"),props:{images}})</script>
+</div>
+<div class=entry-meta>
+<div class=cats-links>
+<i class="icon fas fa-folder"></i>
+<a href=https://example.com/categories/features>Features</a></div>
+</div>
+</article>
+</main>
+</div>
+<div class="widget-area grid-parent grid-25 tablet-grid-25">
+<div class=sidebar>
+<aside>
+<h2>Categories</h2>
+<ul>
+<li><a href=https://example.com/categories/books/>Books</a> (1)</li>
+<li><a href=https://example.com/categories/features/>Features</a> (4)</li>
+</ul>
+</aside>
+<aside>
+<h2>Search</h2>
+<form action=https://example.com/search>
+<input id=search-query name=s>
+</form>
+</aside>
+<script>function getParameterByName(a){a=a.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");var c=new RegExp("[\\?&]"+a+"=([^&#]*)"),b=c.exec(location.search);return b==null?"":decodeURIComponent(b[1].replace(/\+/g," "))}$("#search-query").val(getParameterByName("s"))</script>
+<aside class="widget tag-cloud">
+<h2>Tags</h2>
+<a href=/tags/elephant style=font-size:25px>Elephant</a>
+<a href=/tags/little-prince style=font-size:25px>Little Prince</a>
+<div class=references>
+<a href=/tags>All tags</a>
+</div>
+</aside>
+</div>
+</div>
+</div>
+<footer class=site-footer>
+<div class=copyright>© 2022 Michal Nezerka</div>
+<div class=powered-by>Powered by <a href=http://www.gohugo.io/>Hugo</a></div>
+</footer>
+</body>
+</html>

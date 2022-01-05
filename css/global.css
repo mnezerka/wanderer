@@ -1,0 +1,339 @@
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, iframe, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+body {
+    display: block;
+    flex-direction: column;
+    background-color: #efefef;
+    color: #3a3a3a;
+    line-height: 1.5;
+}
+
+body, button, input, select, textarea {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 17px;
+}
+
+body .grid-container {
+    max-width: 1100px;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 30px;
+}
+
+a, a:visited {
+    color: #069;
+    text-decoration: none;
+}
+
+.entry-content a {
+    text-decoration: underline;
+}
+
+.site-header {
+    background-color: #ffffff;
+    color: #2b2b2b;
+    width: 1100px;
+}
+
+.site-header h1 {
+    font-size: 37px;
+    padding: 40px;
+    margin: 0;
+}
+
+.main-navigation {
+    z-index: 100;
+    padding: 0;
+    clear: both;
+    display: block;
+    background-color: #3f3f3f;
+}
+
+.main-navigation {
+    position: relative;
+}
+
+.main-navigation li a {
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 60px;
+    color: white;
+}
+
+.main-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+.main-navigation li {
+    float: left;
+    list-style-type: none;
+}
+
+.site-main {
+    margin-top: 10px;    
+    margin-right: 20px;
+    margin-bottom: 20px;    
+}
+
+.sidebar {
+    margin-top: 10px;    
+}
+
+.sidebar aside {
+    background-color: #ffffff;
+    padding: 30px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.sidebar aside h2 {
+    color: #000000;
+    font-size: 18px;
+    margin-bottom: 11px;
+    line-height: 1.5;
+    font-weight: 400;
+    text-transform: none;
+}
+
+/* sidebar categories */
+.sidebar aside ul li {
+    list-style-type: none;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.tag-cloud .references {
+    margin-top: 20px;
+}
+
+/**************************************** entry */
+
+.entry {
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+.entry-header,
+.entry-content,
+.entry-read-more,
+.entry-gallery,
+.entry-meta,
+.entry-map,
+.entry-comments {
+  padding-top: 25px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 0px;
+}
+
+ .entry-featured-image {
+  padding-top: 25px;
+  padding-bottom: 0px;
+}
+
+.entry-header h2 {
+    padding: 0;
+    margin: 0;
+}
+
+.entry-date {
+    color: #595959;
+    font-size: 85%;
+    margin-top: 0.5em;
+    line-height: 1.5;
+}
+
+img.size-full {
+    text-align: center;
+    max-width: 100%;
+    height: auto;
+}
+
+.entry-meta {
+    color: #595959;
+    font-size: 85%;
+    margin-top: 0.5em;
+    line-height: 1.5;
+}
+
+.entry-meta a {
+    color: #595959;
+}
+
+.entry-meta .icon {
+    margin-right: 5px;
+}
+
+.cat-links, .tags-links {
+    margin-top: 3px;
+}
+
+/**************************************** pagination */
+
+.pagination {
+    padding: 30px;
+    background-color: #ffffff;
+}
+
+/**************************************** footer */
+
+.site-footer {
+    padding: 20px;
+    color: #ffffff;
+    background-color: #222222;
+    padding: 20px 40px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.site-footer .powered-by {
+    font-size: 13px
+}
+
+.site-footer a {
+    color: #aaaaaa;
+}
+
+/**************************************** breadcrumbs */
+
+.site-breadcrumbs {
+  padding-top: 4px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 0px;
+}
+
+/**************************************** comments */
+
+.entry-comments ul {
+    margin-left: 20px;
+}
+
+.entry-comments li {
+    margin-top: 20px;
+}
+
+.entry-comments .author {
+    font-weight: bold;
+}
+
+.entry-comments .date {
+    font-size: small;
+}
+
+/**************************************** list - frames */
+
+.list.frames {
+
+}
+
+.list.frames .list-item {
+    margin-bottom: 30px;
+    clear: both;
+    background-color: #ffffff;
+    overflow: auto;
+}
+
+.list.frames .list-item img {
+    width: 300px;
+    padding-right: 30px;
+    padding-bottom : 10px;
+    float: left;
+}
+
+.list.frames .list-item .item-text {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.list.frames .list-item .item-text h4 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+/**************************************** list - gallery */
+
+.list-gallery {
+    overflow: auto;
+    margin-top: 30px;
+}
+
+.list-gallery .list-item {
+    margin-bottom: 30px;
+    margin-right: 10px;
+
+    background-color: #ffffff;
+    overflow: auto;
+    width: 230px;
+    float: left;
+}
+
+.list-gallery .item-text {
+    text-align: center;
+}
+
+.list-gallery .item-text a {
+    text-decoration: none;
+    font-size: 13px;
+}
+
+
+/**************************************** list-documents */
+
+.list-documents {
+
+}
+
+.list-documents .list-item  {
+    margin-bottom: 5px;
+}
+
+.list-documents .fas {
+    margin-right: 10px;
+}
+
+/**************************************** figure */
+figure img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.entry-content figure img {
+    max-width: 95%;
+}
+
+figure figcaption {
+    text-align: center;
+}
+
+figure figcaption h4 {
+    font-size: 13px;
+    font-weight: normal;
+}
