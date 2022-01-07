@@ -45,9 +45,30 @@ a, a:visited {
     text-decoration: none;
 }
 
+/**************** entry content *****************/
+
 .entry-content a {
     text-decoration: underline;
 }
+
+.entry-content h1 {
+    margin-top: 15px;
+    margin-bottom: 13px;
+}
+
+.entry-content h2 {
+    margin-top: 10px;
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+.entry-content h3 {
+    margin-top: 8px;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+/************************************************/
 
 .site-header {
     background-color: #ffffff;
