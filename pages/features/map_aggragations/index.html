@@ -1,12 +1,10 @@
 <!doctype html><html lang=en>
 <head>
-<title>About | Wanderer Demo Stie</title>
+<title>Map - Aggregation | Wanderer Demo Stie</title>
 <meta charset=utf-8>
-<title>About | Wanderer Demo Stie</title>
+<title>Map - Aggregation | Wanderer Demo Stie</title>
 <meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
-<meta name=description content="The Little Prince (French: Le Petit Prince) is a novella by French aristocrat, writer, and military aviator Antoine de Saint-Exupéry.
-It was first published in English and French in the US by Reynal & Hitchcock in April 1943, and posthumously in France following the liberation of France as Saint-Exupéry&rsquo;s works had been banned by the Vichy Regime.
-The story follows a young prince who visits various planets in space, including Earth, and addresses themes of loneliness, friendship, love, and loss.">
+<meta name=description content>
 <link rel=stylesheet href=https://mnezerka.github.io/wanderer/css/unsemantic-grid-responsive.css>
 <link rel=stylesheet href=https://mnezerka.github.io/wanderer/css/global.css>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css>
@@ -45,7 +43,9 @@ The story follows a young prince who visits various planets in space, including 
 <div class=site-breadcrumbs>
 <a href=/wanderer/pages/>Pages</a>
 >
-About
+<a href=/wanderer/pages/features/>Features</a>
+>
+Map - Aggregation
 </div>
 </div>
 <div class="site-content grid-container grid-parent">
@@ -53,29 +53,12 @@ About
 <main class=site-main>
 <article class=entry>
 <header class=entry-header>
-<h2 class=entry-title>About</h2>
+<h2 class=entry-title>Map - Aggregation</h2>
 </header>
 <div class=entry-content>
-<p>The Little Prince (French: Le Petit Prince) is a novella by French aristocrat,
-writer, and military aviator Antoine de Saint-Exupéry.</p>
-<p>It was first published in English and French in the US by Reynal & Hitchcock in
-April 1943, and posthumously in France following the liberation of France as
-Saint-Exupéry&rsquo;s works had been banned by the Vichy Regime.</p>
-<p>The story follows a young prince who visits various planets in space, including
-Earth, and addresses themes of loneliness, friendship, love, and loss. Despite
-its style as a children&rsquo;s book, The Little Prince makes observations about life,
-adults and human nature.</p>
-<p>Source: wikipedia</p>
+<div id=map class=map>
+<script>var map,markers,marker;const center=[49.2202194,16.5558572];map=L.map("map",{fullscreenControl:!0}).setView(center,12),L.tileLayer('https://mapserver.mapy.cz/turist-m/{z}-{x}-{y}',{attribution:mapyCzAttr,minZoom:2,maxZoom:20,maxNativeZoom:18,id:'mapycz',tileSize:256}).addTo(map),markers=L.markerClusterGroup(),marker=L.marker([51.5073219,.1276475]),marker.bindPopup('<div class="bsmap-popup-content"><a href="https://mnezerka.github.io/wanderer/tags/england/" title="England">England (1)</a></div>'),markers.addLayer(marker),marker=L.marker([47.0069631,null]),marker.bindPopup('<div class="bsmap-popup-content"><a href="https://mnezerka.github.io/wanderer/tags/france/" title="France">France (1)</a></div>'),markers.addLayer(marker),map.addLayer(markers),map.fitBounds(markers.getBounds())</script>
 </div>
-<div class=entry-gallery>
-<style>.svelte-gallery{overflow:auto}</style>
-<div id=gallery-el class=svelte-gallery></div>
-<script type=text/javascript>let images=[];g=new Gallery({target:document.getElementById("gallery-el"),props:{images}})</script>
-</div>
-<div class=entry-meta>
-<div class=tags-links>
-<i class="icon fas fa-tag"></i>
-<a href=https://mnezerka.github.io/wanderer/tags/england>England</a>, <a href=https://mnezerka.github.io/wanderer/tags/france>France</a></div>
 </div>
 </article>
 </main>

@@ -54,7 +54,7 @@ Tags map
 </header>
 <div class=entry-content>
 <div id=map class=map>
-<script>var map,markers,marker;const center=[49.2202194,16.5558572];map=L.map("map",{fullscreenControl:!0}).setView(center,12),L.tileLayer('https://mapserver.mapy.cz/turist-m/{z}-{x}-{y}',{attribution:mapyCzAttr,minZoom:2,maxZoom:20,maxNativeZoom:18,id:'mapycz',tileSize:256}).addTo(map),markers=L.markerClusterGroup(),map.addLayer(markers),map.fitBounds(markers.getBounds())</script>
+<script>var map,markers,marker;const center=[49.2202194,16.5558572];map=L.map("map",{fullscreenControl:!0}).setView(center,12),L.tileLayer('https://mapserver.mapy.cz/turist-m/{z}-{x}-{y}',{attribution:mapyCzAttr,minZoom:2,maxZoom:20,maxNativeZoom:18,id:'mapycz',tileSize:256}).addTo(map),markers=L.markerClusterGroup(),marker=L.marker([51.5073219,.1276475]),marker.bindPopup('<div class="bsmap-popup-content"><a href="https://mnezerka.github.io/wanderer/tags/england/" title="England">England (1)</a></div>'),markers.addLayer(marker),marker=L.marker([47.0069631,null]),marker.bindPopup('<div class="bsmap-popup-content"><a href="https://mnezerka.github.io/wanderer/tags/france/" title="France">France (1)</a></div>'),markers.addLayer(marker),map.addLayer(markers),map.fitBounds(markers.getBounds())</script>
 </div>
 </div>
 </article>
@@ -79,6 +79,8 @@ Tags map
 <aside class="widget tag-cloud">
 <h2>Tags</h2>
 <a href=/wanderer/tags/elephant style=font-size:25px>Elephant</a>
+<a href=/wanderer/tags/england style=font-size:25px>England</a>
+<a href=/wanderer/tags/france style=font-size:25px>France</a>
 <a href=/wanderer/tags/little-prince style=font-size:25px>Little Prince</a>
 <div class=references>
 <a href=/wanderer/tags>All tags</a>
