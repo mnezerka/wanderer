@@ -20,23 +20,59 @@
             {{/*-- tag count */}}
             {{ $tags := $.Site.Taxonomies.tags }}
             {{ $tagsCount := len $tags}}
+
+            {{/*-- tags without location */}}
+            {{ $tagsWithoutLocation := slice }}
+            {{/* loop through all tags */}}
+            {{ range $tagKey, $tagValue := $.Site.Taxonomies.tags }}
+
+                {{/* look for tag in list of ignored  */}}
+                {{ $isIgnored := false }}
+                {{ range $.Site.Data.tag_locations.ignored }}
+                    {{ if (eq $tagValue.Page.Title .)}}
+                        {{ $isIgnored = true}}
+                    {{ end }}
+                {{ end }}
+
+                {{ if not $isIgnored }}
+                    {{/* look for coordinates - loop through all tag locations */}}
+                    {{ $isLocated := false }}
+                    {{ range $locTagKey, $locTagValue := $.Site.Data.tag_locations.located }}
+                        {{ if (eq $locTagKey $tagValue.Page.Title )}}
+                            {{ $isLocated = true}}
+                        {{ end }}
+                    {{ end }}
+                    {{ if not $isLocated }}
+                        {{ $tagsWithoutLocation = $tagsWithoutLocation | append $tagValue.Page }}
+                    {{ end }}
+                {{ end }}
+
+            {{ end }}
+
+            {{ $tags := $.Site.Taxonomies.tags }}
              
             <div style="overflow: auto;">
-              <table>
-                <thead>
-                  <tr>
-                    <td style="text-align:left;font-weight: bold;width: 10em;">Description</td>
-                    <td style="text-align:left;font-weight: bold;">Value</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td>Pages</td><td>{{ $pageCount }}</td></tr>
-                  <tr><td>Posts</td><td>{{ $postCount }}</td></tr>
-                  <tr><td>Tags</td><td>{{ $tagsCount }}</td></tr>
-                </tbody>
+                <table>
+                    <thead>
+                        <tr>
+                            <td style="text-align:left;font-weight: bold;width: 10em;">Description</td>
+                            <td style="text-align:left;font-weight: bold;">Value</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Pages</td><td>{{ $pageCount }}</td></tr>
+                        <tr><td>Posts</td><td>{{ $postCount }}</td></tr>
+                        <tr><td>Tags</td><td>{{ $tagsCount }}</td></tr>
+                        <tr>
+                            <td>Tags without location: </td>
+                            <td>
+                                {{ range $tagsWithoutLocation }}
+                                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                                {{ end }}
+                            </td>
+                        </tr>
+                    </tbody>
               </table>
-
-              TODO: List tags that are not ignored and don't have assigned any location
         </div>
     </article>
 

@@ -1,5 +1,5 @@
 ---
-title: Maps
+title: Map - Single post
 categories:
 - Features
 ---

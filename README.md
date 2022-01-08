@@ -45,8 +45,8 @@ to `en`):
 ```yaml
 baseURL: https://your-domain.net/
 title: Title of your website
-languageCode: cs 
-defaultContentLanguage: cs 
+languageCode: cs
+defaultContentLanguage: cs
 
 paginate: 10
 

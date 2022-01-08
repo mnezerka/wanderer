@@ -2,6 +2,9 @@
 title: About
 menu:
 - main
+tags:
+- England
+- France
 ---
 
 The Little Prince (French: Le Petit Prince)  is a novella by French aristocrat,
