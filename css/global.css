@@ -168,6 +168,20 @@ pre {
     margin-top: 20px;
 }
 
+/* sidebar page navigation */
+
+#TableOfContents ul li {
+    padding-bottom: 0px;
+}
+
+#TableOfContents ul ul {
+    padding-left: 20px;
+}
+
+#TableOfContents li a {
+    padding-bottom: 10px;
+}
+
 /**************************************** entry */
 
 .entry {
