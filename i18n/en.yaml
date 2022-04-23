@@ -17,6 +17,9 @@ search:
 read_more:
   other: Read more
 
+on_page:
+  other: What's on this page
+
 paginator_next:
   other: Next
 

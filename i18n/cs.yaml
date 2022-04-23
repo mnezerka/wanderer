@@ -17,6 +17,9 @@ search:
 read_more:
   other: Číst dál
 
+on_page:
+  other: Co je na stránce
+
 paginator_next:
   other: Další 
 

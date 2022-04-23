@@ -1,0 +1,9 @@
+
+{{ if in .TableOfContents "ul" }}
+
+<aside>
+    <h2>{{ T "on_page" }}</h2>
+    {{ .TableOfContents }}
+</aside>
+
+{{ end }}
