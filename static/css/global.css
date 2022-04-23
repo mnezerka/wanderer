@@ -45,6 +45,21 @@ a, a:visited {
     text-decoration: none;
 }
 
+/**************** scrollable pre *****************/
+
+pre, code {
+    overflow: auto;
+}
+
+pre {
+    background-color: #eee;
+}
+
+pre {
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
 /**************** entry content *****************/
 
 .entry-content a {
@@ -66,6 +81,10 @@ a, a:visited {
     margin-top: 8px;
     margin-bottom: 5px;
     font-weight: normal;
+}
+
+.entry-content img {
+    max-width: 100%;
 }
 
 /************************************************/

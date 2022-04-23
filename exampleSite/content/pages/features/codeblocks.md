@@ -17,6 +17,12 @@ without setting any type
 echo "This is bash command"
 ```
 
+And this one has long lines
+```bash
+echo "This is a very long bash command that cannot fit into content area of the generated website, so it needs a scrollbar"
+```
+
+
 ## This is javascript
 
 ```javascript
