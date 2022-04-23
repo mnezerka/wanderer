@@ -1,112 +1,18 @@
-<!doctype html><html lang=en>
-<head>
-<title>Tags | Wanderer Demo Stie</title>
-<meta charset=utf-8>
-<title>Tags | Wanderer Demo Stie</title>
-<meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
-<meta name=description content>
-<link rel=stylesheet href=https://mnezerka.github.io/wanderer/css/unsemantic-grid-responsive.css>
-<link rel=stylesheet href=https://mnezerka.github.io/wanderer/css/global.css>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css>
-<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js></script>
+<!doctype html><html lang=en><head><title>Tags | Wanderer Demo Stie</title><meta charset=utf-8><title>Tags | Wanderer Demo Stie</title><meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1"><meta name=description content><link rel=stylesheet href=https://mnezerka.github.io/wanderer/css/unsemantic-grid-responsive.css><link rel=stylesheet href=https://mnezerka.github.io/wanderer/css/global.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js></script>
 <script src=https://mnezerka.github.io/wanderer/js/search.js></script>
-<link rel=stylesheet href=https://unpkg.com/leaflet@1.7.1/dist/leaflet.css integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin>
-<script src=https://unpkg.com/leaflet@1.7.1/dist/leaflet.js integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin></script>
+<link rel=stylesheet href=https://unpkg.com/leaflet@1.7.1/dist/leaflet.css integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin><script src=https://unpkg.com/leaflet@1.7.1/dist/leaflet.js integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.min.js></script>
 <script src=https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js></script>
-<link href=https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css rel=stylesheet>
-<link rel=stylesheet href=https://mnezerka.github.io/wanderer/css/maps.css>
-<script src=https://mnezerka.github.io/wanderer/js/maps.js></script>
-<link rel=stylesheet href=https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css>
-<script src=https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js></script>
+<link href=https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css rel=stylesheet><link rel=stylesheet href=https://mnezerka.github.io/wanderer/css/maps.css><script src=https://mnezerka.github.io/wanderer/js/maps.js></script>
+<link rel=stylesheet href=https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css><script src=https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js></script>
 <script src=https://kit.fontawesome.com/2b8c919a81.js crossorigin=anonymous></script>
-<link rel=stylesheet href=https://mnezerka.github.io/wanderer/svelte-grid-gallery/svelte-grid-gallery.css>
-<script src=https://mnezerka.github.io/wanderer/svelte-grid-gallery/svelte-grid-gallery.js></script>
-</head>
-<body>
-<header class="site-header grid-container grid-parent">
-<h1>Wanderer Demo Stie</h1>
-</header>
-<nav class=main-navigation>
-<div class="navigation-inside grid-container grid-parent">
-<ul>
-<li><a href=/wanderer/ title>Home</a></li>
-<li><a href=/wanderer/pages/about/ title=About>About</a></li>
-<li><a href=/wanderer/pages/features/ title=Features>Features</a></li>
-</ul>
-</div>
-</nav>
-<div class="grid-container grid-parent">
-<div class=site-breadcrumbs>
-Tags
-</div>
-</div>
-<div class="site-content grid-container grid-parent">
-<div class="content-area grid-parent mobile-grid-100 grid-75 tablet-grid-75">
-<main class=site-main>
-<article class=entry>
-<header class=entry-header>
-<h2 class=entry-title>Tags</a></h2>
-</header>
-<div class=entry-content>
-<span class=tag>
-<a href=/wanderer/tags/elephant>
-Elephant <sup>(1)</sup>
-</a>
-</span>
-<span class=tag>
-<a href=/wanderer/tags/england>
-England <sup>(1)</sup>
-</a>
-</span>
-<span class=tag>
-<a href=/wanderer/tags/france>
-France <sup>(1)</sup>
-</a>
-</span>
-<span class=tag>
-<a href=/wanderer/tags/little-prince>
-Little Prince <sup>(1)</sup>
-</a>
-</span>
-</div>
-</main>
-</div>
-<div class="widget-area grid-parent grid-25 tablet-grid-25">
-<div class=sidebar>
-<aside>
-<h2>Categories</h2>
-<ul>
-<li><a href=https://mnezerka.github.io/wanderer/categories/books/>Books</a> (1)</li>
-<li><a href=https://mnezerka.github.io/wanderer/categories/features/>Features</a> (4)</li>
-</ul>
-</aside>
-<aside>
-<h2>Search</h2>
-<form action=https://mnezerka.github.io/wanderer/search>
-<input id=search-query name=s>
-</form>
-</aside>
-<script>function getParameterByName(a){a=a.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");var c=new RegExp("[\\?&]"+a+"=([^&#]*)"),b=c.exec(location.search);return b==null?"":decodeURIComponent(b[1].replace(/\+/g," "))}$("#search-query").val(getParameterByName("s"))</script>
-<aside class="widget tag-cloud">
-<h2>Tags</h2>
-<a href=/wanderer/tags/elephant style=font-size:25px>Elephant</a>
+<link rel=stylesheet href=https://mnezerka.github.io/wanderer/svelte-grid-gallery/svelte-grid-gallery.css><script src=https://mnezerka.github.io/wanderer/svelte-grid-gallery/svelte-grid-gallery.js></script></head><body><header class="site-header grid-container grid-parent"><h1>Wanderer Demo Stie</h1></header><nav class=main-navigation><div class="navigation-inside grid-container grid-parent"><ul><li><a href=/wanderer/ title>Home</a></li><li><a href=/wanderer/pages/about/ title=About>About</a></li><li><a href=/wanderer/pages/features/ title=Features>Features</a></li></ul></div></nav><div class="grid-container grid-parent"><div class=site-breadcrumbs>Tags</div></div><div class="site-content grid-container grid-parent"><div class="content-area grid-parent mobile-grid-100 grid-75 tablet-grid-75"><main class=site-main><article class=entry><header class=entry-header><h2 class=entry-title>Tags</a></h2></header><div class=entry-content><span class=tag><a href=/wanderer/tags/elephant>Elephant <sup>(1)</sup></a></span>
+<span class=tag><a href=/wanderer/tags/england>England <sup>(1)</sup></a></span>
+<span class=tag><a href=/wanderer/tags/france>France <sup>(1)</sup></a></span>
+<span class=tag><a href=/wanderer/tags/little-prince>Little Prince <sup>(1)</sup></a></span></div></main></div><div class="widget-area grid-parent grid-25 tablet-grid-25"><div class=sidebar><aside><h2>Categories</h2><ul><li><a href=https://mnezerka.github.io/wanderer/categories/books/>Books</a> (1)</li><li><a href=https://mnezerka.github.io/wanderer/categories/features/>Features</a> (5)</li></ul></aside><aside><h2>Search</h2><form action=https://mnezerka.github.io/wanderer/search><input id=search-query name=s></form></aside><script>function getParameterByName(e){e=e.replace(/[[]/,"\\[").replace(/[\]]/,"\\]");var n=new RegExp("[\\?&]"+e+"=([^&#]*)"),t=n.exec(location.search);return t==null?"":decodeURIComponent(t[1].replace(/\+/g," "))}$("#search-query").val(getParameterByName("s"))</script><aside class="widget tag-cloud"><h2>Tags</h2><a href=/wanderer/tags/elephant style=font-size:25px>Elephant</a>
 <a href=/wanderer/tags/england style=font-size:25px>England</a>
 <a href=/wanderer/tags/france style=font-size:25px>France</a>
-<a href=/wanderer/tags/little-prince style=font-size:25px>Little Prince</a>
-<div class=references>
-<a href=/wanderer/tags>All tags</a>
-</div>
-</aside>
-</div>
-</div>
-</div>
-<footer class=site-footer>
-<div class=copyright>© 2022 Michal Nezerka</div>
-<div class=powered-by>Powered by <a href=http://www.gohugo.io/>Hugo</a></div>
-</footer>
-</body>
-</html>
+<a href=/wanderer/tags/little-prince style=font-size:25px>Little Prince</a><div class=references><a href=/wanderer/tags>All tags</a></div></aside></div></div></div><footer class=site-footer><div class=copyright>© 2022 Michal Nezerka</div><div class=powered-by>Powered by <a href=http://www.gohugo.io/>Hugo</a></div></footer></body></html>
