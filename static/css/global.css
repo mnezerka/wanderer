@@ -4,14 +4,14 @@ html, body {
     margin: 0;
 }
 
-a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, iframe, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
+a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, iframe, ins, kbd, label, legend,  object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, var {
     border: 0;
     margin: 0;
     padding: 0;
 }
 
 ul {
-    list-style: none;
+    padding-left: 20px
 }
 
 p {
@@ -157,7 +157,11 @@ pre {
     text-transform: none;
 }
 
-/* sidebar categories */
+.sidebar aside ul {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
 .sidebar aside ul li {
     list-style-type: none;
     position: relative;

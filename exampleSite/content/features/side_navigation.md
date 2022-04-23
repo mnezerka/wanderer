@@ -1,5 +1,7 @@
 ---
 title: Side Navigation
+categories:
+- Features
 ---
 
 ## First Chapter
