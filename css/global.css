@@ -395,3 +395,9 @@ figure figcaption h4 {
     font-size: 13px;
     font-weight: normal;
 }
+
+/**************************************** maps */
+
+.map-popup-content a {
+    text-decoration: none;
+}
