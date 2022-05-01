@@ -30,6 +30,7 @@
                     // add markers
                     var markers = L.markerClusterGroup();
                     var marker
+                    var markerContent = '';
 
                     {{/* loop through all tags */}}
                     {{ range $tagKey, $tagValue := $.Site.Taxonomies.tags }}
@@ -39,7 +40,29 @@
                             {{/* if coordinates for tag were found, add marker */}}
                             {{ if (eq $tagValue.Page.Title $locTagKey )}}
                                 marker = L.marker([{{- $locTagValue.lat -}}, {{- $locTagValue.lng -}} ]);
-                                marker.bindPopup('<div class="bsmap-popup-content"><a href="{{ $tagValue.Page.Permalink }}" title="{{ $tagValue.Page.Title }}">{{ $tagValue.Page.Title }} ({{ $tagValue.Count }})</a></div>');
+
+                                markerContent = '<div class="map-popup-content">'
+                                markerContent += '<b><a href="{{ $tagValue.Page.Permalink }}" title="{{ $tagValue.Page.Title }}">{{ $tagValue.Page.Title | upper }} ({{ $tagValue.Count }})</a></b>';
+                                markerContent += '<br/>';
+
+                                {{ $pageCounter := 0 }}
+                                {{ $markerNextRendered := false }}
+
+                                {{ range $tagPage := $tagValue.Pages }}
+                                    {{ if (lt $pageCounter 15 )}}
+                                    markerContent += '<br><a href="{{.Permalink }}"" title="{{ .Title }}">{{ .Title }}</a>'
+                                    {{ else }}
+                                        {{ if (not $markerNextRendered) }}
+                                            markerContent += '<br>...'
+                                            {{ $markerNextRendered = true }}
+                                        {{ end }}
+                                    {{ end }}
+                                    {{ $pageCounter = add $pageCounter 1 }}
+                                {{ end }}
+
+                                markerContent += '</div>';
+
+                                marker.bindPopup(markerContent);
                                 markers.addLayer(marker)
                             {{ end }}
                         {{ end }}

@@ -1,5 +1,8 @@
 ---
 title: "Chapter IV"
+tags:
+- Little Prince
+- England
 ---
 
 I had thus learned a second fact of great importance: this was that the planet

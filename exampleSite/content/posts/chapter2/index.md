@@ -1,5 +1,8 @@
 ---
 title: "Chapter II"
+tags:
+- Little Prince
+- England
 ----
 
 So I lived my life alone, without anyone that I could really talk to, until I

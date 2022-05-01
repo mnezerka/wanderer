@@ -7,6 +7,7 @@ categories:
 tags:
 - Little Prince
 - Elephant
+- England
 resources:
 - src: "images/slon-big.jpg"
   params:

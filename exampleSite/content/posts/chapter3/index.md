@@ -1,5 +1,8 @@
 ---
 title: "Chapter III"
+tags:
+- Little Prince
+- England
 ----
 
 It took me a long time to learn where he came from. The little prince, who asked
