@@ -7,6 +7,8 @@
 </aside>
 
 <script>
+// if there is a search parameter in URL query, set value
+// of search field
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
