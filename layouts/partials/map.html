@@ -26,6 +26,7 @@
     legend.addTo(map);
 
     // tile layer - mapy.cz tourist map
+    /*
     L.tileLayer('https://mapserver.mapy.cz/turist-m/{z}-{x}-{y}', {
         attribution: mapyCzAttr,
         minZoom: 2,
@@ -34,13 +35,20 @@
         id: 'mapycz',
         tileSize: 256
     }).addTo(map);
+    */
+
+        // add the OpenStreetMap tiles
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+      }).addTo(map);
 
     // configuration of track markers - we need to set
     // path to icons since all files live in plugin dir (and url)
     const marker_options = {
-        startIconUrl: {{ "/images/pin-icon-start.png" | absURL }},
-        endIconUrl:  {{ "/images/pin-icon-end.png" | absURL }},
-        shadowUrl:   {{ "/images/pin-shadow.png" | absURL }} 
+        startIconUrl: {{ "images/pin-icon-start.png" | absURL }},
+        endIconUrl:  {{ "images/pin-icon-end.png" | absURL }},
+        shadowUrl:   {{ "images/pin-shadow.png" | absURL }} 
     }
 
     legendDiv.innerHTML = "";
