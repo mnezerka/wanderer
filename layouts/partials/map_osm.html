@@ -1,0 +1,99 @@
+
+<div id="map" class="map"></div>
+
+<script>
+
+    var gpx_list = []
+    {{ range . }}
+            gpx_list.push({{ .Permalink }})
+    {{ end }}
+
+    // home
+    const center = [49.2202194, 16.5558572]
+
+    var bounds = null
+
+    // leaflet map instance
+    var map = L.map("map", { fullscreenControl: true }).setView(center, 12);
+
+    // legend control + div for rendering content
+    var legendDiv = L.DomUtil.create('div', 'info legend');
+    var legend = L.control({position: 'bottomleft'});
+    legendDiv.InnerHTML = "Loading..."
+    legend.onAdd = function (map) {
+        return legendDiv;
+    };
+    legend.addTo(map);
+
+    // tile layer - mapy.cz tourist map
+    /*
+    L.tileLayer('https://mapserver.mapy.cz/turist-m/{z}-{x}-{y}', {
+        attribution: mapyCzAttr,
+        minZoom: 2,
+        maxZoom: 20,
+        maxNativeZoom: 18,
+        id: 'mapycz',
+        tileSize: 256
+    }).addTo(map);
+    */
+
+        // add the OpenStreetMap tiles
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+      }).addTo(map);
+
+    // configuration of track markers - we need to set
+    // path to icons since all files live in plugin dir (and url)
+    const marker_options = {
+        startIconUrl: {{ "images/pin-icon-start.png" | absURL }},
+        endIconUrl:  {{ "images/pin-icon-end.png" | absURL }},
+        shadowUrl:   {{ "images/pin-shadow.png" | absURL }} 
+    }
+
+    legendDiv.innerHTML = "";
+
+    // render individual tracks
+    // loop through all gpx tracks
+    for (var i = 0; i < gpx_list.length; i++) {
+
+        // get different color for each track - modulo is used since color list has fixed length
+        let color = trackColors[i % trackColors.length];
+
+        var polyline_options = {
+            color: color,
+            opacity: 1,
+            weight: 3,
+            lineCap: 'round'
+        }
+
+        // add new GPX layer
+        gpx = new L.GPX(gpx_list[i], {async: true, marker_options, polyline_options}).on('loaded', function(e) {
+
+            // extend global bounds
+            if (bounds) {
+                bounds.extend(e.target.getBounds());
+            } else {
+                bounds = e.target.getBounds();
+            }
+
+            // resize map to fit all currently rendered tracks
+            map.fitBounds(bounds);
+
+            // store some of track attributes (mainly for rendering of legend)
+            track = {
+                name: e.target.get_name(),
+                distance: e.target.get_distance(),
+                elevation_gain: e.target.get_elevation_gain(),
+                moving_time_str: e.target.get_duration_string_iso(e.target.get_moving_time()),
+                moving_time: e.target.get_moving_time(),
+                color,
+                url: e.target._gpx // warning: this is private attribute, isn't part of public api
+            };
+
+            legendDiv.innerHTML += formatTrackLegend(track)
+
+        }).addTo(map);
+    }
+
+</script>

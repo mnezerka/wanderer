@@ -21,6 +21,7 @@
     margin-right: 6px;
     opacity: 0.7;
 }
+
 .info {
     padding: 6px 8px;
     font: 12px/14px Arial, Helvetica, sans-serif;
@@ -37,4 +38,55 @@
 .track-legend {
     white-space: nowrap;
     overflow: hidden;
+}
+
+/************ integration of mapy.cz ***************/
+
+#toggle-fullscreen {
+    background-color: #fff;
+    border-radius: 2px;
+    border: none;
+    box-shadow: 0 0 2px 0;
+    color: #6b7580;
+    cursor: pointer;
+    display: inline-block;
+    font-family: mapy;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+    margin: 0;
+    min-height: 27px;
+    outline: 0;
+    padding: 0;
+    position: absolute;
+    right: 80px;
+    top: 10px;
+    text-align: center;
+    vertical-align: top;
+    width: 27px;
+    z-index: 10;
+}
+
+/* move scale to the left bottom corner */
+.smap .scale {
+    bottom: 20px;
+    left: 10px;
+}
+
+.legend-row {
+    font-size: 13px;
+    margin-top: 5px;
+    line-height: 18px;
+}
+
+.legend-row span, .legend-row  a {
+    margin-right: 10px;
+}
+
+.legend-row .legend-color {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    opacity: 0.7;
 }
