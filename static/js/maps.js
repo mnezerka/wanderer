@@ -120,14 +120,14 @@ function mczAddLegend(elLegend, gpx) {
 }
 
 function mczCreateMap(mapWrapId, gpx_list, options) {
-    
+
     // get map wrapper element
     var elMapWrap = document.getElementById(mapWrapId);
     if (!elMapWrap) {
         console.error('Cannot find map wrap element with id:', mapWrapId)
         return;
     }
-    
+
     // mapy.cz map element
     var elMap = document.createElement('div');
     elMap.id = 'map';
@@ -169,8 +169,8 @@ function mczCreateMap(mapWrapId, gpx_list, options) {
 
     map.addControl(layerSwitch);
     map.addControl(new SMap.Control.Sync()); // force map to react on resize of containing element (div)
-    map.addControl(new SMap.Control.Scale()); 
-    map.addControl(new SMap.Control.Zoom()); 
+    map.addControl(new SMap.Control.Scale());
+    map.addControl(new SMap.Control.Zoom());
     map.addControl(new SMap.Control.Mouse(SMap.MOUSE_PAN | SMap.MOUSE_WHEEL | SMap.MOUSE_ZOOM)); // control map with mouse
 
     // add layer for all markers
@@ -199,8 +199,8 @@ function mczCreateMap(mapWrapId, gpx_list, options) {
     // render individual tracks
     // loop through all gpx tracks
     for (var i = 0; i < gpx_list.length; i++) {
-        
-       
+
+
         // register method to be able to pair it with object (that )
         gpx_list[i].response = function(xmlDoc) {
 
@@ -210,15 +210,15 @@ function mczCreateMap(mapWrapId, gpx_list, options) {
             //
             // get different color for each track - modulo is used since color list has fixed length
             this.color = trackColors[renderIx % trackColors.length];
-            
+
             // find track name
             this.name = getGpxName(xmlDoc);
 
-            
+
             // convert points from XML to mapy.cz.api format to be able to calculate center and zoom of all gpx tracks
             var points = xmlDoc.getElementsByTagName('trkpt');
             var mp_prev = null;
-             
+
             for (var i = 0; i < points.length; i++) {
                 var mp = SMap.Coords.fromWGS84(points[i].getAttribute('lon'), points[i].getAttribute('lat'));
                 gpx_points.push(mp);
@@ -229,11 +229,11 @@ function mczCreateMap(mapWrapId, gpx_list, options) {
                 } else if (i == points.length - 1) {
                     this.mp_last= mp.clone();
                 }
-                
+
                 if (mp_prev) {
                     this.distance += mp.distance(mp_prev);
                 }
-                    
+
                 mp_prev = mp;
             }
 
@@ -248,7 +248,14 @@ function mczCreateMap(mapWrapId, gpx_list, options) {
                 layerMarkers.addMarker(marker);
             }
 
-            var gpx = new SMap.Layer.GPX(xmlDoc, null, {colors: [this.color]});
+            var gpx = new SMap.Layer.GPX(
+                xmlDoc,
+                null, // id of the layer
+                {
+                    colors: [this.color],
+                    maxPoints: 5000
+                }
+            );
             map.addLayer(gpx);
             gpx.enable();
             renderIx++;
@@ -259,16 +266,16 @@ function mczCreateMap(mapWrapId, gpx_list, options) {
 
             mczAddLegend(elMapLegend, this);
         }
-        
+
         // the only way in mapy.cz api is async request
         var xhr = new JAK.Request(JAK.Request.XML);
 
         xhr.setCallback(gpx_list[i], "response");
         xhr.send(gpx_list[i].url);
-       
+
         // index of rendered gpx file (needed due to async call, cannot use loop index "i")
         var renderIx = 0;
-        
+
         // list of points from all gpx tracks
         var gpx_points = [];
     }
