@@ -119,7 +119,7 @@ function mczAddLegend(elLegend, gpx) {
     elLegend.appendChild(elRow) ;
 }
 
-function mczCreateMap(mapWrapId, gpx_list, options) {
+function mczCreateMap(mapWrapId) {
 
     // get map wrapper element
     var elMapWrap = document.getElementById(mapWrapId);
@@ -139,11 +139,6 @@ function mczCreateMap(mapWrapId, gpx_list, options) {
     elFullScreen.id = 'toggle-fullscreen' ;
     elFullScreen.innerHTML = '&#x26F6;';
     elMap.appendChild(elFullScreen) ;
-
-    // map legend (e.g. list of rendered gpx tracks)
-    var elMapLegend = document.createElement('div');
-    elMapLegend.className = 'map-legend';
-    elMapWrap.appendChild(elMapLegend);
 
     // new map with center in Prague
     var center = SMap.Coords.fromWGS84(14.41, 50.08);
@@ -173,16 +168,29 @@ function mczCreateMap(mapWrapId, gpx_list, options) {
     map.addControl(new SMap.Control.Zoom());
     map.addControl(new SMap.Control.Mouse(SMap.MOUSE_PAN | SMap.MOUSE_WHEEL | SMap.MOUSE_ZOOM)); // control map with mouse
 
-    // add layer for all markers
-    var layerMarkers = new SMap.Layer.Marker();
-    map.addLayer(layerMarkers);
-    layerMarkers.enable();
-
     // even handler of full screen button
     JAK.gel("toggle-fullscreen").addEventListener("click", function() {
         JAK.gel("map").requestFullscreen();
         map.syncPort();
     });
+
+    return map;
+}
+
+function mczCreateTracksMap(mapWrapId, gpx_list, options) {
+
+    var map = mczCreateMap(mapWrapId);
+    
+       // get map wrapper element
+    var elMapWrap = document.getElementById(mapWrapId);
+    var elMapLegend = document.createElement('div');
+    elMapLegend.className = 'map-legend';
+    elMapWrap.appendChild(elMapLegend);
+
+    // add layer for all markers
+    var layerMarkers = new SMap.Layer.Marker();
+    map.addLayer(layerMarkers);
+    layerMarkers.enable();
 
     // start marker attributes (e.g. own icon)
     const options_start = {
