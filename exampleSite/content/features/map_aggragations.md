@@ -1,6 +1,6 @@
 ---
 title: Map - Aggregation
-layout: tags-map
+layout: tags-map-mapy-cz
 categories:
 - Features
 ---

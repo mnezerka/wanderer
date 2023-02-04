@@ -1,0 +1,77 @@
+{{ define "main" }}
+
+<article class="entry">
+    <header class="entry-header">
+        <h2 class="entry-title">{{ .Title }}</h2>
+    </header>
+
+    <div class="entry-content">
+        
+        <div id="map-wrap"></div>
+
+        <script type="text/javascript">
+
+            var map = mczCreateMap('map-wrap');
+            var points = [];
+            
+            // add layer for all markers
+            var layerMarkers = new SMap.Layer.Marker();
+            map.addLayer(layerMarkers);
+            layerMarkers.enable();
+
+            {{/* loop through all tags */}}
+            {{ range $tagKey, $tagValue := $.Site.Taxonomies.tags }}
+
+                {{/* look for coordinates - loop through all tag locations */}}
+                {{ range $locTagKey, $locTagValue := $.Site.Data.tag_locations.located }}
+
+                    {{/* if coordinates for tag were found, add marker */}}
+                    {{ if (eq $tagValue.Page.Title $locTagKey )}}
+            
+                        var coord = SMap.Coords.fromWGS84({{- $locTagValue.lng -}}, {{- $locTagValue.lat -}});
+                        points.push(coord);
+            
+                        var cardHeader = "<div style='text-align: center'><strong>" + '<a href="{{ $tagValue.Page.Permalink }}" title="{{ $tagValue.Page.Title }}">{{ $tagValue.Page.Title | upper }} ({{ $tagValue.Count }})</a></strong></div>';
+            
+                        var cardContent = '<div>'
+
+                        {{ $pageCounter := 0 }}
+                        {{ $markerNextRendered := false }}
+
+                        {{ range $tagPage := $tagValue.Pages }}
+                            {{ if (lt $pageCounter 15 )}}
+                                cardContent += '<br><a href="{{.Permalink }}"" title="{{ .Title }}">{{ .Title }}</a>'
+                            {{ else }}
+                                {{ if (not $markerNextRendered) }}
+                                    cardContent += '<br>...'
+                                    {{ $markerNextRendered = true }}
+                                {{ end }}
+                            {{ end }}
+                            {{ $pageCounter = add $pageCounter 1 }}
+                        {{ end }}
+
+                        var card = new SMap.Card();
+                        card.getHeader().innerHTML = cardHeader;
+                        card.getBody().innerHTML = cardContent;
+  
+                        var options = {
+                            title: "{{ $tagValue.Page.Title }}",
+                        }
+
+                        var marker = new SMap.Marker(coord, "tagMarker-{{- $tagKey -}}" , options);
+                        marker.decorate(SMap.Marker.Feature.Card, card);
+
+                        layerMarkers.addMarker(marker);
+
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+
+            var centerZoom = map.computeCenterZoom(points); // compute new center and zoom to see all markers
+            map.setCenterZoom(centerZoom[0], centerZoom[1]);
+
+        </script>
+    </div>
+</article>
+
+{{ end }}
