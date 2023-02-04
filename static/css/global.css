@@ -133,7 +133,7 @@ pre {
 
 .site-main {
     margin-top: 10px;    
-    margin-right: 20px;
+/*    margin-right: 20px;*/
     margin-bottom: 20px;    
 }
 
@@ -280,7 +280,7 @@ img.size-full {
 
 .site-breadcrumbs {
   padding-top: 4px;
-  padding-left: 30px;
+  padding-left: 20px;
   padding-right: 30px;
   padding-bottom: 0px;
 }
@@ -400,4 +400,14 @@ figure figcaption h4 {
 
 .map-popup-content a {
     text-decoration: none;
+}
+
+/**************************************** fix unsemantic */
+
+/* this fix removes side padding on mobile phone views */
+@media (max-width: 768px) {
+    .grid-container, .mobile-grid-100 {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
 }
