@@ -5,7 +5,13 @@
 const mapyCzAttr = '&copy; <a href="https://www.seznam.cz/" target="_blank">Seznam.cz, a.s</a>, ';
 
 // colors that are picked for individual tracks
-const trackColors = ['red', 'violet', 'green', 'blue', 'orange']
+const trackColors = [
+    '#ff0000',
+    '#ff00ff',
+    '#008000',
+    '#0000ff',
+    '#00ffff'
+]
 
 // format elevation - round number and add units
 function formatElevation(el) {
@@ -93,6 +99,7 @@ function getGpxName(xmlDoc) {
 }
 
 function mczAddLegend(elLegend, gpx) {
+
     // full screen button
     var elRow = document.createElement('div');
     elRow.className = 'legend-row';
@@ -104,13 +111,25 @@ function mczAddLegend(elLegend, gpx) {
     elRow.appendChild(elColor);
 
     var elName = document.createElement('span');
-    elName.textContent = gpx.name; 
+    elName.innerHTML= '<strong>' + gpx.name + '</strong>'; 
     elRow.appendChild(elName);
 
     var elDistance = document.createElement('span');
     elDistance.textContent = formatDistance(gpx.distance); 
     elRow.appendChild(elDistance);
-     
+    
+    if (gpx.asc) {
+        var elAsc= document.createElement('span');
+        elAsc.innerHTML = '&uarr;' + formatElevation(gpx.asc);
+        elRow.appendChild(elAsc);
+    }
+
+    if (gpx.desc) {
+        var elDesc = document.createElement('span');
+        elDesc.innerHTML = '&darr;' + formatElevation(Math.abs(gpx.desc));
+        elRow.appendChild(elDesc);
+    }
+       
     var elLink = document.createElement('a');
     elLink.textContent = 'GPX'; 
     elLink.setAttribute('href', gpx.url)
@@ -208,20 +227,22 @@ function mczCreateTracksMap(mapWrapId, gpx_list, options) {
     // loop through all gpx tracks
     for (var i = 0; i < gpx_list.length; i++) {
 
-
-        // register method to be able to pair it with object (that )
+        // register method to be able to pair it with object
         gpx_list[i].response = function(xmlDoc) {
 
             this.mp_first = null;
             this.mp_last = null;
             this.distance = 0;
+            this.asc = 0;
+            this.desc = 0;
+            
+            this.points = [];
             //
             // get different color for each track - modulo is used since color list has fixed length
             this.color = trackColors[renderIx % trackColors.length];
 
             // find track name
             this.name = getGpxName(xmlDoc);
-
 
             // convert points from XML to mapy.cz.api format to be able to calculate center and zoom of all gpx tracks
             var points = xmlDoc.getElementsByTagName('trkpt');
@@ -230,6 +251,26 @@ function mczCreateTracksMap(mapWrapId, gpx_list, options) {
             for (var i = 0; i < points.length; i++) {
                 var mp = SMap.Coords.fromWGS84(points[i].getAttribute('lon'), points[i].getAttribute('lat'));
                 gpx_points.push(mp);
+                
+                // craete new point dict + calculate distance from beginning of track
+                var np = gpxPoint2Dict(points[i]);
+                if (i == 0) {
+                    np.distance = 0;
+                } else {
+                    np.distance =  this.points[i-1].distance + getDistance(np, this.points[i-1]);
+
+                    // update track elevation info
+                    if (this.points[i-1].ele && np.ele) {
+                        const eleDiff = np.ele - this.points[i-1].ele;
+                        if (eleDiff > 0) {
+                            this.asc += eleDiff;
+                        } else {
+                            this.desc += eleDiff;
+                        }
+                    }
+                }
+
+                this.points.push(np);
 
                 // remember first and last point
                 if (i == 0) {
@@ -238,13 +279,14 @@ function mczCreateTracksMap(mapWrapId, gpx_list, options) {
                     this.mp_last= mp.clone();
                 }
 
-                if (mp_prev) {
-                    this.distance += mp.distance(mp_prev);
-                }
-
                 mp_prev = mp;
             }
-
+            
+            // last point holds distance of the whole track
+            if (this.points.length > 0) {
+                this.distance = this.points[this.points.length-1].distance;
+            }
+            
             // get first point of gps track
             if (this.mp_first)  {
                 var marker = new SMap.Marker(this.mp_first, "start" + renderIx, options_start);
@@ -273,6 +315,8 @@ function mczCreateTracksMap(mapWrapId, gpx_list, options) {
             map.setCenterZoom(new_center_all[0], new_center_all[1]);
 
             mczAddLegend(elMapLegend, this);
+            
+            mczAddElevationProfile(elMapLegend, this);
         }
 
         // the only way in mapy.cz api is async request
@@ -287,4 +331,163 @@ function mczCreateTracksMap(mapWrapId, gpx_list, options) {
         // list of points from all gpx tracks
         var gpx_points = [];
     }
+}
+
+function mczAddElevationProfile(el, gpx) {
+
+    // check if some points were passed
+    if (gpx.points.length === 0) {
+        return;
+    }
+
+    // check if elevatinos are available
+    if (gpx.points[0].ele === undefined) {
+        return;
+    }
+
+    const points = optimizePoints(gpx.points);
+
+    var elProfile = document.createElement('div');
+    elProfile.className = 'track-el-profile';
+    el.appendChild(elProfile);
+
+    var elCanvas = document.createElement('canvas');
+    elCanvas.id = 'track-el-profile-chart';
+    elProfile.appendChild(elCanvas);
+    
+    Chart.register( Chart.LineElement, Chart.LineController, Chart.Legend, Chart.Tooltip, Chart.LinearScale, Chart.PointElement, Chart.Filler, Chart.Title);
+
+    const ctx = elCanvas;
+    const chartData = {
+        labels: points.map(p => p.distance / 1000),
+        datasets: [{
+            data: points.map(p => p.ele),
+            fill: true,
+            borderColor: gpx.color,
+            backgroundColor: gpx.color + '33', // add opacity
+            tension: 0.1,
+            pointRadius: 0,
+            spanGaps: true
+        }]
+    };
+
+    const config = {
+        type: 'line',
+        data: chartData,
+        plugins: [{
+        beforeInit: (chart, args, options) => {
+            const maxHeight = Math.max(...chart.data.datasets[0].data);
+            chart.options.scales.x.min = Math.min(...chart.data.labels);
+            chart.options.scales.x.max = Math.max(...chart.data.labels);
+            chart.options.scales.y.max = maxHeight + Math.round(maxHeight * 0.2);
+            chart.options.scales.y1.max = maxHeight + Math.round(maxHeight * 0.2);
+        }
+        }],
+        options: {
+            animation: false,
+            maintainAspectRatio: false,
+            interaction: { intersect: false, mode: 'index' },
+            tooltip: { position: 'nearest' },
+            scales: {
+                x: { type: 'linear' },
+                y: { type: 'linear', beginAtZero: true },
+                y1: { type: 'linear', display: true, position: 'right', beginAtZero: true, grid: { drawOnChartArea: false }},
+            },
+            plugins: {
+                title: { align: "end", display: true, text: "Distance (km) / Elevation (m)" },
+                legend: { display: false },
+                tooltip: {
+                    displayColors: false,
+                    callbacks: {
+                        title: (tooltipItems) => {
+                            return "Distance: " + tooltipItems[0].label + 'm'
+                        },
+                        label: (tooltipItem) => {
+                            return "Elevation: " + tooltipItem.raw + 'm'
+                        },
+                    }
+                }
+            }
+        }
+    };
+
+    const chart = new Chart(ctx, config);
+}
+
+
+function gpxPoint2Dict(p) {
+    var r = {
+        'lon': parseFloat(p.getAttribute('lon')),
+        'lat': parseFloat(p.getAttribute('lat'))
+    }
+    
+    const eleEls = p.getElementsByTagName('ele');
+    if (eleEls.length > 0) {
+        r.ele = parseFloat(eleEls[0].textContent);
+    }
+
+    const timeEls = p.getElementsByTagName('time');
+    if (timeEls.length > 0) {
+        r.time = timeEls[0].textContent;
+    }
+
+    return r;
+}
+
+function optimizePoints(points) {
+     // optimize array size to avoid performance problems
+    const optimized = [];
+    const minDist = 50; // ~5m
+    const minHeight = 20; // ~10m
+
+    for (var i = 0; i < points.length; i++) {
+        
+        if (i == 0) {
+            points[i].distance = 0;
+            optimized.push(points[i]);
+            continue;
+        }
+
+        const p = points[i]
+        const lop = optimized[optimized.length - 1];  // last optimized point
+        const d = getDistance(p, lop);
+        
+        // compute and set distance from the beginning of track
+        //points[i].distance = lop.distance + d;
+
+        // compute height difference from last optimized point
+        if  (p.ele && lop.ele) {
+            if (Math.abs(p.ele - lop.ele) > minHeight) {
+                optimized.push(points[i]);
+                continue;
+            }
+        }
+
+        // compute distance from last optimized point
+        if (d > minDist) {
+            optimized.push(points[i]);
+            continue;
+        }
+    };
+
+    return optimized
+ }
+
+// get distance between two points in meters
+ function getDistance(p1, p2) {
+    var R = 6371 * 1000; // Radius of the earth in m
+    var dLat = deg2rad(p2.lat - p1.lat);  // deg2rad below
+    var dLon = deg2rad(p2.lon - p1.lon); 
+    var a = 
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(deg2rad(p1.lat)) * Math.cos(deg2rad(p2.lat)) * 
+      Math.sin(dLon/2) * Math.sin(dLon/2)
+      ; 
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    var d = R * c; // Distance in km
+    return d;
+}
+  
+function deg2rad(deg) {
+    return deg * (Math.PI/180)
 }
