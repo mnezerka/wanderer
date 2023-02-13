@@ -6,14 +6,14 @@
     </header>
 
     <div class="entry-content">
-        
+
         <div id="map-wrap"></div>
 
         <script type="text/javascript">
 
             var map = mczCreateMap('map-wrap');
             var points = [];
-            
+
             // add layer for all markers
             var layerMarkers = new SMap.Layer.Marker();
             map.addLayer(layerMarkers);
@@ -27,12 +27,12 @@
 
                     {{/* if coordinates for tag were found, add marker */}}
                     {{ if (eq $tagValue.Page.Title $locTagKey )}}
-            
+
                         var coord = SMap.Coords.fromWGS84({{- $locTagValue.lng -}}, {{- $locTagValue.lat -}});
                         points.push(coord);
-            
+
                         var cardHeader = "<div style='text-align: center'><strong>" + '<a href="{{ $tagValue.Page.Permalink }}" title="{{ $tagValue.Page.Title }}">{{ $tagValue.Page.Title | upper }} ({{ $tagValue.Count }})</a></strong></div>';
-            
+
                         var cardContent = '<div>'
 
                         {{ $pageCounter := 0 }}
@@ -53,7 +53,7 @@
                         var card = new SMap.Card();
                         card.getHeader().innerHTML = cardHeader;
                         card.getBody().innerHTML = cardContent;
-  
+
                         var options = {
                             title: "{{ $tagValue.Page.Title }}",
                         }

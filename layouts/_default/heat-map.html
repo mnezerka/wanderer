@@ -1,0 +1,64 @@
+{{ define "main" }}
+
+<article class="entry">
+    <header class="entry-header">
+        <h2 class="entry-title">{{ .Title }}</h2>
+    </header>
+
+    <div class="entry-content">
+
+        <div id="map-wrap"></div>
+
+        <script type="text/javascript">
+
+            var map = mczCreateMap('map-wrap');
+
+            var layer = new SMap.Layer.Geometry();
+            map.addLayer(layer);
+            layer.enable();
+
+            function response(xmlDoc) {
+
+                var gpx_points = xmlDoc.getElementsByTagName('trkpt');
+                var points_line = [];
+
+                for (var i = 0; i < gpx_points.length; i++) {
+                    var mp = SMap.Coords.fromWGS84(gpx_points[i].getAttribute('lon'), gpx_points[i].getAttribute('lat'));
+                    points_all.push(mp);
+                    points_line.push(mp);
+                }
+
+                var options1 = {
+                    color: "#f00",
+                    width: 3,
+                    outlineWidth: 0
+                };
+
+                var polyline = new SMap.Geometry(SMap.GEOMETRY_POLYLINE, null, points_line, options1);
+                layer.addGeometry(polyline);
+
+                // compute and set new center and zoom, the goal is to see all tracks
+                var new_center_all = map.computeCenterZoom(points_all, true);
+                map.setCenterZoom(new_center_all[0], new_center_all[1]);
+            }
+
+            // list of points from all gpx tracks
+            var points_all = [];
+
+            {{- range .Site.RegularPages -}}
+                {{- with .Resources.Match "gpx/*.gpx" -}}
+                    {{- range . -}}
+                            // the only way in mapy.cz api is async request
+                            var xhr = new JAK.Request(JAK.Request.XML);
+
+                            xhr.setCallback(this, "response");
+                            xhr.send({{- .Permalink -}});
+                    {{- end -}}
+                {{- end -}}
+            {{- end -}}
+
+        </script>
+    </div>
+</article>
+
+{{ end }}
