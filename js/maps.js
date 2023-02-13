@@ -55,7 +55,7 @@ function formatTrackLegend(track) {
         legend_line += track.moving_time_str
     }
 
-    // track gpx link 
+    // track gpx link
     if (track.url) {
         legend_line += ',&nbsp;'
         var filename = track.url.replace(/^.*[\\\/]/, '')
@@ -83,7 +83,7 @@ function getGpxName(xmlDoc) {
             name = nameEls[0].textContent;
         }
     }
-    
+
     // try tracks
     if (!name) {
         var trkEls = xmlDoc.getElementsByTagName('trk');
@@ -103,7 +103,7 @@ function mczAddLegend(elLegend, gpx) {
     // full screen button
     var elRow = document.createElement('div');
     elRow.className = 'legend-row';
-    
+
     var elColor = document.createElement('span');
     elColor.innerHTML= '&nbsp;';
     elColor.className = 'legend-color';
@@ -117,7 +117,7 @@ function mczAddLegend(elLegend, gpx) {
     var elDistance = document.createElement('span');
     elDistance.textContent = formatDistance(gpx.distance); 
     elRow.appendChild(elDistance);
-    
+
     if (gpx.asc) {
         var elAsc= document.createElement('span');
         elAsc.innerHTML = '&uarr;' + formatElevation(gpx.asc);
@@ -129,7 +129,7 @@ function mczAddLegend(elLegend, gpx) {
         elDesc.innerHTML = '&darr;' + formatElevation(Math.abs(gpx.desc));
         elRow.appendChild(elDesc);
     }
-       
+
     var elLink = document.createElement('a');
     elLink.textContent = 'GPX'; 
     elLink.setAttribute('href', gpx.url)
@@ -199,8 +199,8 @@ function mczCreateMap(mapWrapId) {
 function mczCreateTracksMap(mapWrapId, gpx_list, options) {
 
     var map = mczCreateMap(mapWrapId);
-    
-       // get map wrapper element
+
+    // get map wrapper element
     var elMapWrap = document.getElementById(mapWrapId);
     var elMapLegend = document.createElement('div');
     elMapLegend.className = 'map-legend';
@@ -235,7 +235,7 @@ function mczCreateTracksMap(mapWrapId, gpx_list, options) {
             this.distance = 0;
             this.asc = 0;
             this.desc = 0;
-            
+
             this.points = [];
             //
             // get different color for each track - modulo is used since color list has fixed length
@@ -251,7 +251,7 @@ function mczCreateTracksMap(mapWrapId, gpx_list, options) {
             for (var i = 0; i < points.length; i++) {
                 var mp = SMap.Coords.fromWGS84(points[i].getAttribute('lon'), points[i].getAttribute('lat'));
                 gpx_points.push(mp);
-                
+
                 // craete new point dict + calculate distance from beginning of track
                 var np = gpxPoint2Dict(points[i]);
                 if (i == 0) {
@@ -281,12 +281,12 @@ function mczCreateTracksMap(mapWrapId, gpx_list, options) {
 
                 mp_prev = mp;
             }
-            
+
             // last point holds distance of the whole track
             if (this.points.length > 0) {
                 this.distance = this.points[this.points.length-1].distance;
             }
-            
+
             // get first point of gps track
             if (this.mp_first)  {
                 var marker = new SMap.Marker(this.mp_first, "start" + renderIx, options_start);
@@ -315,7 +315,7 @@ function mczCreateTracksMap(mapWrapId, gpx_list, options) {
             map.setCenterZoom(new_center_all[0], new_center_all[1]);
 
             mczAddLegend(elMapLegend, this);
-            
+
             mczAddElevationProfile(elMapLegend, this);
         }
 
