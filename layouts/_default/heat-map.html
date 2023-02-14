@@ -11,7 +11,7 @@
 
         <script type="text/javascript">
 
-            var options1 = {
+            var options_line = {
                 color: "#f00",
                 width: 3,
                 outlineWidth: 0
@@ -23,31 +23,35 @@
             map.addLayer(layer);
             layer.enable();
 
-            // list of points from all gpx tracks
-            var points_all = [];
+            function response(json) {
 
-            {{- range .Site.Data.heat_map.tracks.tracks -}}
+                // list of points from all gpx tracks
+                var points_all = [];
 
-                // list of points from one track
-                var points_line = [];
+                for (var i = 0; i < json.tracks.length; i++) {
 
-                {{- range .points -}}
+                    var points_line = [];
 
-                    var mp = SMap.Coords.fromWGS84({{- .lng -}}, {{- .lat -}});
+                    for (var j = 0; j < json.tracks[i].points.length; j++) {
+                        var mp = SMap.Coords.fromWGS84(
+                            json.tracks[i].points[j].lng,
+                            json.tracks[i].points[j].lat);
+                        points_all.push(mp);
+                        points_line.push(mp);
+                    }
 
-                    points_all.push(mp);
-                    points_line.push(mp);
-
-                {{- end -}}
-
-                var polyline = new SMap.Geometry(SMap.GEOMETRY_POLYLINE, null, points_line, options1);
-                layer.addGeometry(polyline);
+                    var polyline = new SMap.Geometry(SMap.GEOMETRY_POLYLINE, null, points_line, options_line);
+                    layer.addGeometry(polyline);
 
                     // compute and set new center and zoom, the goal is to see all tracks
-                var new_center_all = map.computeCenterZoom(points_all, true);
-                map.setCenterZoom(new_center_all[0], new_center_all[1]);
+                    var new_center_all = map.computeCenterZoom(points_all, true);
+                    map.setCenterZoom(new_center_all[0], new_center_all[1]);
+                }
+            }
 
-            {{- end -}}
+            fetch("{{ "tracks.json" | absURL }}")
+                .then((response) => response.json())
+                .then((json) => response(json));
 
         </script>
     </div>
