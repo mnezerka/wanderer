@@ -189,7 +189,12 @@ function mczCreateMap(mapWrapId) {
 
     // even handler of full screen button
     JAK.gel("toggle-fullscreen").addEventListener("click", function() {
-        JAK.gel("map").requestFullscreen();
+        var el =  JAK.gel("map");
+        if (!document.fullscreenElement)  {
+            el.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        } 
         map.syncPort();
     });
 

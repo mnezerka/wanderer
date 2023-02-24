@@ -54,7 +54,7 @@
     font-size: 17px;
     font-style: normal;
     font-weight: 400;
-    line-height: 26px;
+    line-height: 25px;
     margin: 0;
     min-height: 27px;
     outline: 0;
@@ -66,6 +66,7 @@
     vertical-align: top;
     width: 27px;
     z-index: 10;
+    text-decoration: none;
 }
 
 /* move scale to the left bottom corner */
@@ -93,4 +94,20 @@
 
 .card {
     font-size: 13px;
+}
+
+#map-wrap {
+    position: relative;
+}
+
+#map-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f4f4f4;
+    z-index: 10;
+    font-size: 20pt;
+    padding: 5px 20px 5px 20px;
+    border-radius: 10px;
 }
