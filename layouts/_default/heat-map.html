@@ -7,7 +7,9 @@
 
     <div class="entry-content">
 
-        <div id="map-wrap"></div>
+        <div id="map-wrap">
+            <div id="map-loading">Loading tracks ...</div>
+        </div>
 
         <script type="text/javascript">
 
@@ -24,6 +26,10 @@
             layer.enable();
 
             function response(json) {
+
+                // get map wrapper element
+                var elMapLoading = document.getElementById("map-loading");
+                elMapLoading.innerHTML = "Rendering tracks ..."
 
                 // list of points from all gpx tracks
                 var points_all = [];
@@ -47,6 +53,8 @@
                     var new_center_all = map.computeCenterZoom(points_all, true);
                     map.setCenterZoom(new_center_all[0], new_center_all[1]);
                 }
+
+                elMapLoading.style = "display: none";
             }
 
             fetch("{{ "tracks.json" | absURL }}")
