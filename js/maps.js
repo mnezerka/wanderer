@@ -384,8 +384,10 @@ function mczAddElevationProfile(el, gpx) {
             const maxHeight = Math.max(...chart.data.datasets[0].data);
             chart.options.scales.x.min = Math.min(...chart.data.labels);
             chart.options.scales.x.max = Math.max(...chart.data.labels);
-            chart.options.scales.y.max = maxHeight + Math.round(maxHeight * 0.2);
-            chart.options.scales.y1.max = maxHeight + Math.round(maxHeight * 0.2);
+            //chart.options.scales.y.max = maxHeight + Math.round(maxHeight * 0.05);
+            //chart.options.scales.y1.max = maxHeight + Math.round(maxHeight * 0.05);
+            chart.options.scales.y.max = maxHeight + 50;
+            chart.options.scales.y1.max = maxHeight + 50;
         }
         }],
         options: {
@@ -395,7 +397,7 @@ function mczAddElevationProfile(el, gpx) {
             tooltip: { position: 'nearest' },
             scales: {
                 x: { type: 'linear' },
-                y: { type: 'linear', beginAtZero: true },
+                y: { type: 'linear', beginAtZero: false },
                 y1: { type: 'linear', display: true, position: 'right', beginAtZero: true, grid: { drawOnChartArea: false }},
             },
             plugins: {
