@@ -11,6 +11,8 @@
         <h1>{{ .Site.Title }}</h1>
     </header>
 
+    {{ partial "google-analytics.html" . }}
+
     {{ partial "navigation.html" . }}
 
     {{ partial "breadcrumbs" . }}
