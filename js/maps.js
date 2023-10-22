@@ -10,7 +10,7 @@ const trackColors = [
     '#ff00ff',
     '#008000',
     '#0000ff',
-    '#00ffff'
+    '#00ffff',
     '#ff8000',
     '#0080ff',
     '#ff0080',
