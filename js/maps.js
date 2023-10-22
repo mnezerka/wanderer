@@ -11,6 +11,11 @@ const trackColors = [
     '#008000',
     '#0000ff',
     '#00ffff'
+    '#ff8000',
+    '#0080ff',
+    '#ff0080',
+    '#008000',
+    '#000080'
 ]
 
 // format elevation - round number and add units
