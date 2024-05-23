@@ -66,6 +66,26 @@ theme: github.com/mnezerka/wanderer
 
 ## Features
 
+### List of media items
+
+This is how to configure your website to produce list of media items attached
+to individual pages. The list would be available as `https://yourdomain/mediaindex.json`:
+
+```yaml
+outputFormats:
+  MediaIndex:
+    baseName: mediaindex
+    isPlainText: true
+    mediaType: application/json
+    notAlternative: true
+
+outputs:
+  home:
+    - html
+    - json
+    - MediaIndex
+```
+
 ### Add items to the menu
 
 TOOD:
@@ -78,7 +98,7 @@ TODO:
 
 TODO:
 
-### Galleries 
+### Galleries
 
 TODO:
 

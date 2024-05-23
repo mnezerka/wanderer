@@ -1,0 +1,14 @@
+{{- $pages := slice -}}
+{{- range $page := .Site.RegularPages -}}
+    {{- $gpxfiles := slice -}}
+    {{- with $page.Resources.Match "gpx/*.gpx" -}}
+        {{- range . -}}
+            {{- $gpxfiles = $gpxfiles | append (dict "url" .Permalink) -}}
+        {{- end -}}
+    {{- end -}}
+    {{- if gt (len ($gpxfiles)) 0 -}}
+        {{- $pages = $pages | append (dict "title" $page.Title "url" $page.Permalink "tracks" $gpxfiles) -}}
+    {{- end -}}
+
+{{- end -}}
+{{- $pages | jsonify  (dict "prefix" " " "indent" "  ") -}}

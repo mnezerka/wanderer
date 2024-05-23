@@ -17,11 +17,18 @@ menu:
       url: "/"
       weight: -1
 
+outputFormats:
+  MediaIndex:
+    baseName: mediaindex
+    isPlainText: true
+    mediaType: application/json
+    notAlternative: true
 
 outputs:
   home:
     - html
     - json
+    - MediaIndex
 
 params:
   author: Michal Nezerka
