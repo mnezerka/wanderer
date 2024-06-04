@@ -40,11 +40,11 @@
             {{ $currentFontSize := (add $smallestFontSize (mul (sub $largestFontSize $smallestFontSize) $weight )) }}
 
             <!--Current font size: {{$currentFontSize}}-->
-            <a href="{{ "/tags/" | relURL }}{{ .Name | urlize }}" style="font-size:{{$currentFontSize}}{{$fontUnit}}">{{- .Page.Title -}}</a>
+            <a href="{{ absURL "tags/"}}{{ .Name | urlize }}" style="font-size:{{$currentFontSize}}{{$fontUnit}}">{{- .Page.Title -}}</a>
         {{ end }}
     {{ end }}
 
     <div class="references">
-        <a href="{{ "/tags" | relURL }}">{{ T "tags_all" }}</a>
+        <a href="{{ absURL "tags" }}">{{ T "tags_all" }}</a>
     </div>
 </aside>
