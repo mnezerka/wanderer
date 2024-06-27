@@ -12,50 +12,54 @@
             <script>
                 var options = {
                     mapy_cz_api_key: "{{ site.Params.MapyCzApiKey }}"
-                }
+                };
 
                 var map = leafletCreateMap('map-wrap', options);
 
                 // add markers
                 var markers = L.markerClusterGroup();
-                var marker
+                var marker;
+                var markerLatLng;
                 var markerContent = '';
 
                 {{/* loop through all tags */}}
-                {{ range $tagKey, $tagValue := $.Site.Taxonomies.tags }}
+                {{- range $tagKey, $tagValue := $.Site.Taxonomies.tags -}}
 
-                    {{/* look for coordinates - loop through all tag locations */}}
-                    {{ range $locTagKey, $locTagValue := $.Site.Data.tag_locations.located }}
-                        {{/* if coordinates for tag were found, add marker */}}
-                        {{ if (eq $tagValue.Page.Title $locTagKey )}}
-                            marker = L.marker([{{- $locTagValue.lat -}}, {{- $locTagValue.lng -}} ]);
+                    {{- /* look for coordinates - loop through all tag locations */ -}}
+                    {{- range $locTagKey, $locTagValue := $.Site.Data.tag_locations.located -}}
 
-                            markerContent = '<div class="map-popup-content">'
-                            markerContent += '<b><a href="{{ $tagValue.Page.Permalink }}" title="{{ $tagValue.Page.Title }}">{{ $tagValue.Page.Title | upper }} ({{ $tagValue.Count }})</a></b>';
-                            markerContent += '<br/>';
+                        {{- /* if coordinates for tag were found, add marker */ -}}
+                        {{- if (eq $tagValue.Page.Title $locTagKey ) -}}
 
-                            {{ $pageCounter := 0 }}
-                            {{ $markerNextRendered := false }}
-
-                            {{ range $tagPage := $tagValue.Pages }}
-                                {{ if (lt $pageCounter 15 )}}
-                                markerContent += '<br><a href="{{.Permalink }}"" title="{{ .Title }}">{{ .Title }}</a>'
-                                {{ else }}
-                                    {{ if (not $markerNextRendered) }}
-                                        markerContent += '<br>...'
-                                        {{ $markerNextRendered = true }}
-                                    {{ end }}
+                            {{- if (not (isset $locTagValue "lat")) | or (not (isset $locTagValue "lng" )) }}
+                                console.warn('Invalid location for tag {{ $locTagKey }} ({{ $locTagValue }})');
+                            {{ else }}
+                                markerLatLng = [{{- $locTagValue.lat -}}, {{- $locTagValue.lng -}}]
+                                marker = L.marker(markerLatLng);
+                                markerContent = '<div class="map-popup-content">';
+                                markerContent += '<b><a href="{{ $tagValue.Page.Permalink }}" title="{{ $tagValue.Page.Title }}">{{ $tagValue.Page.Title | upper }} ({{ $tagValue.Count }})</a></b>';
+                                markerContent += '<br/>';
+                                {{- $pageCounter := 0 -}}
+                                {{- $markerNextRendered := false -}}
+                                {{- range $tagPage := $tagValue.Pages -}}
+                                    {{- if (lt $pageCounter 15 ) -}}
+                                    markerContent += '<br><a href="{{.Permalink }}"" title="{{ .Title }}">{{ .Title }}</a>';
+                                    {{- else -}}
+                                        {{- if (not $markerNextRendered) -}}
+                                            markerContent += '<br>...';
+                                            {{- $markerNextRendered = true -}}
+                                        {{- end -}}
+                                    {{- end -}}
+                                    {{- $pageCounter = add $pageCounter 1 -}}
+                                {{- end -}}
+                                markerContent += '</div>';
+                                marker.bindPopup(markerContent);
+                                markers.addLayer(marker);
                                 {{ end }}
-                                {{ $pageCounter = add $pageCounter 1 }}
-                            {{ end }}
 
-                            markerContent += '</div>';
-
-                            marker.bindPopup(markerContent);
-                            markers.addLayer(marker)
-                        {{ end }}
-                    {{ end }}
-                {{ end }}
+                        {{- end -}}
+                    {{- end -}}
+                {{- end -}}
 
                 map.addLayer(markers);
                 map.fitBounds(markers.getBounds());
