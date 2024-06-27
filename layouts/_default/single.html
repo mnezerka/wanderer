@@ -27,7 +27,7 @@
 
         {{ with .Resources.Match "gpx/*.gpx" }}
             <div class="entry-map">
-                {{ partial "map" . }}
+                {{ partial "map_leaflet" . }}
             </div>
         {{ end }}
 

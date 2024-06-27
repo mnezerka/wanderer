@@ -35,3 +35,4 @@ outputs:
 params:
   author: Michal Nezerka
   poweredBy: Powered by <a href='http://www.gohugo.io/'>Hugo</a>
+  mapyCzApiKey: "XuWC4G9t0QFM3t-Ra5iKyxc54dal-3wsHFNTGsI04Ew"

@@ -1,0 +1,20 @@
+
+<div id="map-wrap"></div>
+
+<script>
+
+    var gpx_list = []
+    {{ range . }}
+            gpx_list.push({{ .Permalink }})
+    {{ end }}
+
+    var options = {
+        icon_start_url: {{ "images/pin-icon-start.png" | absURL }}, // size of the icon is 33x45
+        icon_end_url: {{ "images/pin-icon-end.png" | absURL }}, // size of the icon is 33x45
+        icon_shadow_url: {{ "images/pin-shadow.png" | absURL }},
+        mapy_cz_api_key: "{{ site.Params.MapyCzApiKey }}"
+    }
+
+    leafletCreateTracksMap('map-wrap', gpx_list, options);
+
+</script>

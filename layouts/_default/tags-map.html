@@ -7,71 +7,59 @@
 
         <div class="entry-content">
 
-            <div id="map" class="map" />
+            <div id="map-wrap"></div>
 
-                <script>
-           
-                    // home
-                    const center = [49.2202194, 16.5558572]
-                    
-                    // leaflet map instance
-                    var map = L.map("map", { fullscreenControl: true }).setView(center, 12);
-                    
-                    // tile layer - mapy.cz tourist map
-                    L.tileLayer('https://mapserver.mapy.cz/turist-m/{z}-{x}-{y}', {
-                        attribution: mapyCzAttr,
-                        minZoom: 2,
-                        maxZoom: 20,
-                        maxNativeZoom: 18,
-                        id: 'mapycz',
-                        tileSize: 256
-                    }).addTo(map);
+            <script>
+                var options = {
+                    mapy_cz_api_key: "{{ site.Params.MapyCzApiKey }}"
+                }
 
-                    // add markers
-                    var markers = L.markerClusterGroup();
-                    var marker
-                    var markerContent = '';
+                var map = leafletCreateMap('map-wrap', options);
 
-                    {{/* loop through all tags */}}
-                    {{ range $tagKey, $tagValue := $.Site.Taxonomies.tags }}
+                // add markers
+                var markers = L.markerClusterGroup();
+                var marker
+                var markerContent = '';
 
-                        {{/* look for coordinates - loop through all tag locations */}}
-                        {{ range $locTagKey, $locTagValue := $.Site.Data.tag_locations.located }}
-                            {{/* if coordinates for tag were found, add marker */}}
-                            {{ if (eq $tagValue.Page.Title $locTagKey )}}
-                                marker = L.marker([{{- $locTagValue.lat -}}, {{- $locTagValue.lng -}} ]);
+                {{/* loop through all tags */}}
+                {{ range $tagKey, $tagValue := $.Site.Taxonomies.tags }}
 
-                                markerContent = '<div class="map-popup-content">'
-                                markerContent += '<b><a href="{{ $tagValue.Page.Permalink }}" title="{{ $tagValue.Page.Title }}">{{ $tagValue.Page.Title | upper }} ({{ $tagValue.Count }})</a></b>';
-                                markerContent += '<br/>';
+                    {{/* look for coordinates - loop through all tag locations */}}
+                    {{ range $locTagKey, $locTagValue := $.Site.Data.tag_locations.located }}
+                        {{/* if coordinates for tag were found, add marker */}}
+                        {{ if (eq $tagValue.Page.Title $locTagKey )}}
+                            marker = L.marker([{{- $locTagValue.lat -}}, {{- $locTagValue.lng -}} ]);
 
-                                {{ $pageCounter := 0 }}
-                                {{ $markerNextRendered := false }}
+                            markerContent = '<div class="map-popup-content">'
+                            markerContent += '<b><a href="{{ $tagValue.Page.Permalink }}" title="{{ $tagValue.Page.Title }}">{{ $tagValue.Page.Title | upper }} ({{ $tagValue.Count }})</a></b>';
+                            markerContent += '<br/>';
 
-                                {{ range $tagPage := $tagValue.Pages }}
-                                    {{ if (lt $pageCounter 15 )}}
-                                    markerContent += '<br><a href="{{.Permalink }}"" title="{{ .Title }}">{{ .Title }}</a>'
-                                    {{ else }}
-                                        {{ if (not $markerNextRendered) }}
-                                            markerContent += '<br>...'
-                                            {{ $markerNextRendered = true }}
-                                        {{ end }}
+                            {{ $pageCounter := 0 }}
+                            {{ $markerNextRendered := false }}
+
+                            {{ range $tagPage := $tagValue.Pages }}
+                                {{ if (lt $pageCounter 15 )}}
+                                markerContent += '<br><a href="{{.Permalink }}"" title="{{ .Title }}">{{ .Title }}</a>'
+                                {{ else }}
+                                    {{ if (not $markerNextRendered) }}
+                                        markerContent += '<br>...'
+                                        {{ $markerNextRendered = true }}
                                     {{ end }}
-                                    {{ $pageCounter = add $pageCounter 1 }}
                                 {{ end }}
-
-                                markerContent += '</div>';
-
-                                marker.bindPopup(markerContent);
-                                markers.addLayer(marker)
+                                {{ $pageCounter = add $pageCounter 1 }}
                             {{ end }}
+
+                            markerContent += '</div>';
+
+                            marker.bindPopup(markerContent);
+                            markers.addLayer(marker)
                         {{ end }}
                     {{ end }}
+                {{ end }}
 
-                    map.addLayer(markers);
-                    map.fitBounds(markers.getBounds());
-                </script>
-            </div>
+                map.addLayer(markers);
+                map.fitBounds(markers.getBounds());
+            </script>
         </div>
     </article>
 

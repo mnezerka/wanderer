@@ -1,6 +1,6 @@
     <meta charset="utf-8">
     <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1 " />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
     <link rel="stylesheet" href="{{ "css/unsemantic-grid-responsive.css" | absURL }}">
     <link rel="stylesheet" href="{{ "css/global.css" | absURL }}">
@@ -18,8 +18,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
     <!-- Leaflet plugin for renderig gpx tracks-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
 
     <!--  leaflet full screen control - https://github.com/brunob/leaflet.fullscreen -->
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
@@ -27,6 +26,7 @@
 
     <link rel="stylesheet" href="{{ "css/maps.css" | absURL }}">
     <script src="{{ "js/maps.js" | absURL }}"></script>
+    <script src="{{ "js/maps-leaflet.js" | absURL }}"></script>
 
     <!-- leaflet marker clusterer - https://github.com/Leaflet/Leaflet.markercluster -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"/>
@@ -36,9 +36,6 @@
 
     <link rel="stylesheet" href="{{ "svelte-grid-gallery/svelte-grid-gallery.css" | absURL }}" />
     <script src="{{ "svelte-grid-gallery/svelte-grid-gallery.js" | absURL }}"></script>
-    
+
     <!-- chart.js is used for drawing elevation profiles -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-    
-    <script src="https://api.mapy.cz/loader.js"></script>
-	<script>Loader.load()</script>

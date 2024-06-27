@@ -19,13 +19,13 @@
                 outlineWidth: 0
             };
 
-            var map = mczCreateMap('map-wrap');
+            var options = {
+                mapy_cz_api_key: "{{ site.Params.MapyCzApiKey }}"
+            }
 
-            var layer = new SMap.Layer.Geometry();
-            map.addLayer(layer);
-            layer.enable();
+            var map = leafletCreateMap('map-wrap', options);
 
-            function response(json) {
+            function tracks_response(json) {
 
                 // get map wrapper element
                 var elMapLoading = document.getElementById("map-loading");
@@ -36,30 +36,22 @@
 
                 for (var i = 0; i < json.tracks.length; i++) {
 
-                    var points_line = [];
+                    var points_line = json.tracks[i].points.map(function(p) { return [p.lat, p.lng] } )
 
-                    for (var j = 0; j < json.tracks[i].points.length; j++) {
-                        var mp = SMap.Coords.fromWGS84(
-                            json.tracks[i].points[j].lng,
-                            json.tracks[i].points[j].lat);
-                        points_all.push(mp);
-                        points_line.push(mp);
-                    }
-
-                    var polyline = new SMap.Geometry(SMap.GEOMETRY_POLYLINE, null, points_line, options_line);
-                    layer.addGeometry(polyline);
-
-                    // compute and set new center and zoom, the goal is to see all tracks
-                    var new_center_all = map.computeCenterZoom(points_all, true);
-                    map.setCenterZoom(new_center_all[0], new_center_all[1]);
+                    points_all.push(points_line)
                 }
+
+                var polyline = L.polyline(points_all, options_line).addTo(map);
+
+                // zoom the map to the polyline
+                map.fitBounds(polyline.getBounds());
 
                 elMapLoading.style = "display: none";
             }
 
             fetch("{{ "tracks.json" | absURL }}")
                 .then((response) => response.json())
-                .then((json) => response(json));
+                .then((json) => tracks_response(json));
 
         </script>
     </div>
