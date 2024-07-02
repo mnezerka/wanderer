@@ -54,6 +54,8 @@ function leafletCreateMap(mapWrapId, options) {
 
     var layerControl = L.control.layers(tileLayers).addTo(map);
 
+    L.control.scale({imperial: false}).addTo(map);
+
     return map;
 }
 
