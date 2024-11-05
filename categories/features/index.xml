@@ -1,6 +1,58 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Features on Wanderer Demo Site</title><link>https://mnezerka.github.io/wanderer/categories/features/</link><description>Recent content in Features on Wanderer Demo Site</description><generator>Hugo</generator><language>en</language><atom:link href="https://mnezerka.github.io/wanderer/categories/features/index.xml" rel="self" type="application/rss+xml"/><item><title>Code Blocks</title><link>https://mnezerka.github.io/wanderer/features/codeblocks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/codeblocks/</guid><description>Without type This is plain code block without setting any type Bash block echo &amp;#34;This is bash command&amp;#34; And this one has long lines
-echo &amp;#34;This is a very long bash command that cannot fit into content area of the generated website, so it needs a scrollbar&amp;#34; This is javascript let x = 0; x += 1; console.log(x);</description></item><item><title>Documents</title><link>https://mnezerka.github.io/wanderer/features/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/documents/</guid><description>This is page content. All documents stored in docs subdirectory are listed below this paragraph.
-docs/lorem-ipsum.pdf - Lorem Ipsum Example</description></item><item><title>Galleries</title><link>https://mnezerka.github.io/wanderer/features/galleries/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/galleries/</guid><description>If there are some images stored as resources for given page, theme will render interactive image gallery at the bottom of the page. This example also demonstrate how to use resources metadata to describe and order images.</description></item><item><title>Large Images</title><link>https://mnezerka.github.io/wanderer/features/large_images/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/large_images/</guid><description>This is very large image, that should be fitted into content width:</description></item><item><title>Map - Aggregation</title><link>https://mnezerka.github.io/wanderer/features/map_aggragations/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/map_aggragations/</guid><description/></item><item><title>Map - Single post</title><link>https://mnezerka.github.io/wanderer/features/map_single_post/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/map_single_post/</guid><description>If there is at least one gpx file in resources of given page, it will be automatically rendered at the bottom of the page, including basic legend with distance, time and possibility to download individual gpx files</description></item><item><title>Markdown</title><link>https://mnezerka.github.io/wanderer/features/markdown/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/markdown/</guid><description>This is an overview of various markdown elemens to see wanderer rendering.
-Lists Simple list:
-first item second item third item Nested list:
-first item second item first sub item second sub item third sub item third item</description></item><item><title>Side Navigation</title><link>https://mnezerka.github.io/wanderer/features/side_navigation/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/side_navigation/</guid><description>First Chapter Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam at arcu a est sollicitudin euismod. Etiam ligula pede, sagittis quis, interdum ultricies, scelerisque eu. Phasellus rhoncus. Etiam commodo dui eget wisi. Suspendisse sagittis ultrices augue. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Nullam lectus justo, vulputate eget mollis sed, tempor sed magna.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Features on Wanderer Demo Site</title><link>https://mnezerka.github.io/wanderer/categories/features/</link><description>Recent content in Features on Wanderer Demo Site</description><generator>Hugo</generator><language>en</language><atom:link href="https://mnezerka.github.io/wanderer/categories/features/index.xml" rel="self" type="application/rss+xml"/><item><title>Code Blocks</title><link>https://mnezerka.github.io/wanderer/features/codeblocks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/codeblocks/</guid><description>&lt;h2 id="without-type">Without type&lt;/h2>
+&lt;pre tabindex="0">&lt;code>This is plain code block
+without setting any type
+&lt;/code>&lt;/pre>&lt;h2 id="bash-block">Bash block&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">&amp;#34;This is bash command&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>And this one has long lines&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">&amp;#34;This is a very long bash command that cannot fit into content area of the generated website, so it needs a scrollbar&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="this-is-javascript">This is javascript&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">x&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Documents</title><link>https://mnezerka.github.io/wanderer/features/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/documents/</guid><description>&lt;p>This is page content. All documents stored in &lt;code>docs&lt;/code> subdirectory are listed
+below this paragraph.&lt;/p>
+
+
+ &lt;div class="list-documents">
+ 
+ &lt;div class="list-item">
+ 
+ 
+ 
+ 
+
+ &lt;i class="fas fa-file-pdf">&lt;/i>&lt;a href="https://mnezerka.github.io/wanderer/features/documents/docs/lorem-ipsum.pdf">docs/lorem-ipsum.pdf&lt;/a> - Lorem Ipsum Example
+ &lt;/div>
+ 
+ &lt;/div></description></item><item><title>Galleries</title><link>https://mnezerka.github.io/wanderer/features/galleries/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/galleries/</guid><description>&lt;p>If there are some images stored as resources for given page, theme will render
+interactive image gallery at the bottom of the page. This example also
+demonstrate how to use resources metadata to describe and order images.&lt;/p></description></item><item><title>Large Images</title><link>https://mnezerka.github.io/wanderer/features/large_images/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/large_images/</guid><description>&lt;p>This is very large image, that should be fitted into content width:&lt;/p>
+&lt;p>&lt;img src="images/serial-programmer.jpg" alt="">&lt;/p></description></item><item><title>Map - Aggregation</title><link>https://mnezerka.github.io/wanderer/features/map_aggragations/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/map_aggragations/</guid><description/></item><item><title>Map - Single post</title><link>https://mnezerka.github.io/wanderer/features/map_single_post/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/map_single_post/</guid><description>&lt;p>If there is at least one gpx file in resources of given page, it will be
+automatically rendered at the bottom of the page, including basic legend with
+distance, time and possibility to download individual gpx files&lt;/p></description></item><item><title>Markdown</title><link>https://mnezerka.github.io/wanderer/features/markdown/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/markdown/</guid><description>&lt;p>This is an overview of various markdown elemens to see wanderer rendering.&lt;/p>
+&lt;h2 id="lists">Lists&lt;/h2>
+&lt;p>Simple list:&lt;/p>
+&lt;ul>
+&lt;li>first item&lt;/li>
+&lt;li>second item&lt;/li>
+&lt;li>third item&lt;/li>
+&lt;/ul>
+&lt;p>Nested list:&lt;/p>
+&lt;ul>
+&lt;li>first item&lt;/li>
+&lt;li>second item
+&lt;ul>
+&lt;li>first sub item&lt;/li>
+&lt;li>second sub item&lt;/li>
+&lt;li>third sub item&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>third item&lt;/li>
+&lt;/ul></description></item><item><title>Side Navigation</title><link>https://mnezerka.github.io/wanderer/features/side_navigation/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/side_navigation/</guid><description>&lt;h2 id="first-chapter">First Chapter&lt;/h2>
+&lt;p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam at arcu a est
+sollicitudin euismod. Etiam ligula pede, sagittis quis, interdum ultricies,
+scelerisque eu. Phasellus rhoncus. Etiam commodo dui eget wisi. Suspendisse
+sagittis ultrices augue. Lorem ipsum dolor sit amet, consectetuer adipiscing
+elit. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat
+ante, in pharetra metus odio a lectus. Nullam lectus justo, vulputate eget
+mollis sed, tempor sed magna. Suspendisse sagittis ultrices augue.&lt;/p></description></item></channel></rss>
