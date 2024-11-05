@@ -17,7 +17,11 @@
                 var map = leafletCreateMap('map-wrap', options);
 
                 // add markers
+                {{ if (eq site.Params.mapClustering "yes") }}
                 var markers = L.markerClusterGroup();
+                {{ else }}
+                var markers = L.featureGroup();
+                {{ end }}
                 var marker;
                 var markerLatLng;
                 var markerContent = '';
@@ -63,6 +67,7 @@
 
                 map.addLayer(markers);
                 map.fitBounds(markers.getBounds());
+
             </script>
         </div>
     </article>

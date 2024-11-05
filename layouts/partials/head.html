@@ -28,9 +28,11 @@
     <script src="{{ "js/maps.js" | absURL }}"></script>
     <script src="{{ "js/maps-leaflet.js" | absURL }}"></script>
 
+    {{- if (eq site.Params.mapClustering "yes") -}}
     <!-- leaflet marker clusterer - https://github.com/Leaflet/Leaflet.markercluster -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"/>
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
+    {{- end -}}
 
     <script src="https://kit.fontawesome.com/2b8c919a81.js" crossorigin="anonymous"></script>
 

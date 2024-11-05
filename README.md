@@ -60,6 +60,8 @@ outputs:
 params:
   author: Your name
   poweredBy: Powered by <a href='http://www.gohugo.io/'>Hugo</a>
+  mapyCzApiKey: "XuWC......"
+  mapClustering: "no"
 
 theme: github.com/mnezerka/wanderer
 ```
@@ -121,7 +123,7 @@ HUGO_ENV=production hugo
 ```
 
 Note: The above command will not work on Windows. If you are running a Windows OS, use the below command:
-
+yes
 ```
 set HUGO_ENV=production
 hugo
