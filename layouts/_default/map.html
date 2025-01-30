@@ -1,0 +1,80 @@
+{{ define "main" }}
+
+<article class="entry">
+    <header class="entry-header">
+        <h2 class="entry-title">{{ .Title }}</h2>
+    </header>
+
+    <div class="entry-content">
+
+        <div id="map-wrap">
+            <div id="map-loading">Loading tracks ...</div>
+        </div>
+
+        <script type="text/javascript">
+
+            // prepare list (geojson format) of geolocated tags
+
+            let tagsGeoJson = {
+                GeoJson: {
+                    type: "FeatureCollection",
+                    features: []
+                }
+            }
+
+            {{/* loop through all tags */}}
+            {{- range $tagKey, $tagValue := $.Site.Taxonomies.tags -}}
+
+                {{- /* look for coordinates - loop through all tag locations */ -}}
+                {{- range $locTagKey, $locTagValue := $.Site.Data.tag_locations.located -}}
+
+                    {{- /* if coordinates for tag were found, add marker */ -}}
+                    {{- if (eq $tagValue.Page.Title $locTagKey ) -}}
+
+                        {{- if (not (isset $locTagValue "lat")) | or (not (isset $locTagValue "lng" )) }}
+                            console.warn('Invalid location for tag {{ $locTagKey }} ({{ $locTagValue }})');
+                        {{ else }}
+                            tagsGeoJson.GeoJson.features.push({
+                                type: "Feature",
+                                geometry: {
+                                    type: "Point",
+                                    coordinates: [{{- $locTagValue.lng -}}, {{- $locTagValue.lat -}}],
+                                },
+                                properties: {
+                                    tag: {
+                                        url: "{{ $tagValue.Page.Permalink }}",
+                                        title: "{{ $tagValue.Page.Title }}",
+                                        posts: [
+                                            {{- range $tagPage := $tagValue.Pages -}}
+                                            {
+                                                url: "{{.Permalink }}",
+                                                title: "{{ .Title }}"
+                                            }
+                                            {{- end -}}
+                                        ]
+                                    }
+                                }
+                            });
+
+                        {{ end }}
+
+                    {{- end -}}
+                {{- end -}}
+            {{- end -}}
+
+            // create map from geonet and tags
+            leafletCreateGeonetMap(
+                'map-wrap',
+                {
+                    geonetUrl: "{{ .Params.geonetPath | absURL}}",
+                    tagsGeoJson,
+                    apiKeyMapyCz: "{{ site.Params.MapyCzApiKey }}"
+                }
+            );
+
+        </script>
+
+    </div>
+</article>
+
+{{ end }}

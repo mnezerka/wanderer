@@ -106,8 +106,47 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #f4f4f4;
-    z-index: 10;
+    z-index: 99999;
     font-size: 20pt;
     padding: 5px 20px 5px 20px;
     border-radius: 10px;
+}
+
+.tag-marker-icon {
+    text-align: center;
+    /* Horizontally center the text (icon) */
+    line-height: 10px;
+    /* Vertically center the text (icon) */
+    color: #0064ff;
+
+}
+
+.geonet-map-info, .geonet-map-show {
+    padding: 5px;
+    background-color: white;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    max-height: 200px;
+}
+
+.geonet-map-info .track-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.tag-info a {
+    text-decoration: none;
+}
+
+.tag-info .tag-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px
+}
+
+.geonet-map-show .choice {
+    display: flex;
+    flex-direction: row;
 }
