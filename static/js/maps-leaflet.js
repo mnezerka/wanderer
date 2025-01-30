@@ -27,22 +27,22 @@ function leafletCreateMap(mapWrapId, options) {
             maxZoom: 19,
             attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
         }),
-        'Basic': L.tileLayer(`https://api.mapy.cz/v1/maptiles/basic/256/{z}/{x}/{y}?apikey=${options.mapy_cz_api_key}`, {
+        'Basic': L.tileLayer(`https://api.mapy.cz/v1/maptiles/basic/256/{z}/{x}/{y}?apikey=${options.apiKeyMapyCz}`, {
             minZoom: 0,
             maxZoom: 19,
             attribution: '<a href="https://api.mapy.cz/copyright" target="_blank">&copy; Seznam.cz a.s. a další</a>',
         }),
-        'Outdoor': L.tileLayer(`https://api.mapy.cz/v1/maptiles/outdoor/256/{z}/{x}/{y}?apikey=${options.mapy_cz_api_key}`, {
+        'Outdoor': L.tileLayer(`https://api.mapy.cz/v1/maptiles/outdoor/256/{z}/{x}/{y}?apikey=${options.apiKeyMapyCz}`, {
             minZoom: 0,
             maxZoom: 19,
             attribution: '<a href="https://api.mapy.cz/copyright" target="_blank">&copy; Seznam.cz a.s. a další</a>',
         }),
-        'Winter': L.tileLayer(`https://api.mapy.cz/v1/maptiles/winter/256/{z}/{x}/{y}?apikey=${options.mapy_cz_api_key}`, {
+        'Winter': L.tileLayer(`https://api.mapy.cz/v1/maptiles/winter/256/{z}/{x}/{y}?apikey=${options.apiKeyMapyCz}`, {
             minZoom: 0,
             maxZoom: 19,
             attribution: '<a href="https://api.mapy.cz/copyright" target="_blank">&copy; Seznam.cz a.s. a další</a>',
         }),
-        'Aerial': L.tileLayer(`https://api.mapy.cz/v1/maptiles/aerial/256/{z}/{x}/{y}?apikey=${options.mapy_cz_api_key}`, {
+        'Aerial': L.tileLayer(`https://api.mapy.cz/v1/maptiles/aerial/256/{z}/{x}/{y}?apikey=${options.apiKeyMapyCz}`, {
             minZoom: 0,
             maxZoom: 19,
             attribution: '<a href="https://api.mapy.cz/copyright" target="_blank">&copy; Seznam.cz a.s. a další</a>',
