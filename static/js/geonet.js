@@ -430,13 +430,9 @@ function leafletCreateGeonetMap(mapWrapId, options) {
 function fitBounds() {
     let b = null;
 
-    console.log('here');
-
     if (geonet.tagsLayer) {
         b = geonet.tagsLayer.getBounds();
     }
-
-    console.log(b);
 
     if (geonet.tracksLayer) {
         if (b) {
