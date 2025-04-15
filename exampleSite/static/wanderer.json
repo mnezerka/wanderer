@@ -1,5 +1,5 @@
 {
- "GeoJson": {
+ "geojson": {
   "type": "FeatureCollection",
   "features": [
    {
@@ -17627,7 +17627,7 @@
    }
   ]
  },
- "Meta": {
+ "meta": {
   "tracks": [
    {
     "id": 1,

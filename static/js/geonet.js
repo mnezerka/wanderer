@@ -141,7 +141,7 @@ function highlightedAdd(trackId) {
     }
 
     let l = L.geoJson(
-        geonet.data.GeoJson,
+        geonet.data.geojson,
         {
             style: styleFuncHighlighted,
             filter: function(f) { return isFeatureOnTrack(f, trackId) },
@@ -191,9 +191,9 @@ function createCheckBox(parentElement, trackId) {
 }
 
 function trackIdToTrackName(id) {
-    if (geonet.data.Meta.tracks !== undefined) {
-        for (let i = 0; i < geonet.data.Meta.tracks.length; i++) {
-            let t = geonet.data.Meta.tracks[i]
+    if (geonet.data.meta.tracks !== undefined) {
+        for (let i = 0; i < geonet.data.meta.tracks.length; i++) {
+            let t = geonet.data.meta.tracks[i]
             if (t.id == id) {
                 let result = '';
                 if (t.meta.post_url) { result += '<a href="' + t.meta.post_url + '">'; }
@@ -381,7 +381,7 @@ function onFetchResponse(data) {
     elMapLoading.innerHTML = "Rendering tracks ..."
 
     geonet.tracksLayer = L.geoJson(
-        geonet.data.GeoJson,
+        geonet.data.geojson,
         {
             style: styleFunc,
             pointToLayer: pointToLayerFunc,
