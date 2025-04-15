@@ -361,6 +361,21 @@ img.size-full {
     font-size: 13px;
 }
 
+/**************************************** list - posts/pages */
+
+.entry-content .list-pages .page {
+    display: flex;
+    flex-direction: row;
+}
+
+.entry-content .list-pages .page-link {
+    flex-grow: 1;
+}
+
+.entry-content .list-pages .page-date {
+    font-style: italic;
+    font-size: 13px;
+}
 
 /**************************************** list-documents */
 
