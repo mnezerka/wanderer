@@ -5,7 +5,7 @@ defaultContentLanguage: "en"
 
 enableMissingTranslationPlaceholders: true
 
-paginate: 3
+pagination.pageSize: 3
 
 capitalizeListTitles: false
 
