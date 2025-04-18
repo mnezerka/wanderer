@@ -7,7 +7,7 @@
 
   <body>
 
-    <header class="site-header grid-container">
+    <header class="site-header">
         <h1>{{ .Site.Title }}</h1>
     </header>
 
@@ -17,13 +17,13 @@
 
     {{ partial "breadcrumbs" . }}
 
-    <div class="site-content grid-container">
-        <div class="content-area mobile-grid-100 grid-75 tablet-grid-75">
+    <div class="site-content">
+        <div class="content-area">
             <main class="site-main">
                 {{ block "main" . }}{{ end }}
             </main>
         </div>
-        <div class="widget-area grid-25 tablet-grid-25">
+        <div class="widget-area">
             <div class="sidebar">
 
                 {{ partial "side_navigation.html" . }}

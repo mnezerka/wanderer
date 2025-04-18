@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ $.Site.LanguageCode | default "en" }}">
+  <head>
+    <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
+    {{ partial "head.html" . }}
+  </head>
+
+  <body>
+
+    <header class="site-header">
+        <h1>{{ .Site.Title }}</h1>
+    </header>
+
+    {{ partial "google-analytics.html" . }}
+
+    {{ partial "navigation.html" . }}
+
+    {{ block "main" . }}{{ end }}
+
+  </body>
+</html>
