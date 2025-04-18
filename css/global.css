@@ -19,7 +19,7 @@ p {
 }
 
 body {
-    display: block;
+    display: flex;
     flex-direction: column;
     background-color: #efefef;
     color: #3a3a3a;
@@ -92,7 +92,9 @@ pre {
 .site-header {
     background-color: #ffffff;
     color: #2b2b2b;
-    /*width: 1100px;*/
+    width: 1100px;
+    margin-left: auto;
+    margin-right: auto
 }
 
 .site-header h1 {
@@ -113,8 +115,16 @@ pre {
     position: relative;
 }
 
+.main-navigation .main-menu {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1100px;
+    display: block;
+}
+
+
 .main-navigation li a {
-    padding-left: 20px;
+    padding-left: 30px;
     padding-right: 20px;
     line-height: 60px;
     color: white;
@@ -280,9 +290,60 @@ img.size-full {
 
 .site-breadcrumbs {
   padding-top: 4px;
-  padding-left: 20px;
-  padding-right: 30px;
+  padding-left: 0px;
+  padding-right: 0px;
   padding-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1100px;
+}
+
+.site-breadcrumbs .breadcrumbs {
+  padding-left: 30px;
+}
+
+/**************************************** main content */
+
+.site-content {
+    flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+
+    .site-content {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 769px) {
+
+    .site-content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1100px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .content-area {
+        width: 75%;
+        padding-right: 10px;
+    }
+
+    .widget-area {
+        width: 25%;
+    }
+}
+
+.map-large  {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-large .map {
+    flex-grow: 1;
 }
 
 /**************************************** comments */
@@ -361,6 +422,21 @@ img.size-full {
     font-size: 13px;
 }
 
+/**************************************** list - posts/pages */
+
+.entry-content .list-pages .page {
+    display: flex;
+    flex-direction: row;
+}
+
+.entry-content .list-pages .page-link {
+    flex-grow: 1;
+}
+
+.entry-content .list-pages .page-date {
+    font-style: italic;
+    font-size: 13px;
+}
 
 /**************************************** list-documents */
 
