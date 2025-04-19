@@ -1,7 +1,9 @@
 ---
 title: About
 menu:
-- main
+menu:
+  main:
+    weight: 90
 ---
 
 This is example site showing features of the "Wanderer" hugo template.

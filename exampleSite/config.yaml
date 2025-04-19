@@ -1,4 +1,4 @@
-title: "Wanderer Demo Site"
+title: "Wanderer"
 baseURL: "https://mnezerka.github.io/wanderer/"
 languageCode: "en"
 defaultContentLanguage: "en"
@@ -33,7 +33,10 @@ outputs:
     - MediaIndex
 
 params:
-  author: Michal Nezerka
+  author: Wanderer
+#  titleColor: green
+  titleSuffix: Demo Site
+#  titleSuffixColor: red
   poweredBy: Powered by <a href='http://www.gohugo.io/'>Hugo</a>
   mapyCzApiKey: "XuWC4G9t0QFM3t-Ra5iKyxc54dal-3wsHFNTGsI04Ew"
   mapClustering: "no"

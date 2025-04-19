@@ -1,0 +1,11 @@
+<header class="site-header">
+    <div class="site-title">
+        <h1 {{ if .Site.Params.TitleColor -}}style="color: {{ .Site.Params.TitleColor }}"{{- end -}}>
+            {{- .Site.Title -}}
+            <span {{ if .Site.Params.TitleSuffixColor -}}style="color: {{ .Site.Params.TitleSuffixColor }}"{{- end }} class="suffix">
+                {{- .Site.Params.TitleSuffix -}}
+            </span>
+        </h1>
+    </div>
+</header>
+

@@ -1,7 +1,7 @@
 {{ $comments := . | unmarshal  }}
 
 {{ template "commentlevel" $comments }}
-          
+
 {{ define "commentlevel" }}
     <ul>
     {{ range . }}

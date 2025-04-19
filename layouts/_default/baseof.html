@@ -7,9 +7,7 @@
 
   <body>
 
-    <header class="site-header">
-        <h1>{{ .Site.Title }}</h1>
-    </header>
+    {{ partial "site-title" . }}
 
     {{ partial "google-analytics.html" . }}
 
@@ -42,8 +40,6 @@
         <div class="copyright">© {{ now.Format "2006"}} {{ .Site.Params.Author }}</div>
         <div class="powered-by">{{ .Site.Params.poweredBy | safeHTML }}</div>
     </footer>
-
-    {{ partial "footer" . }}
 
   </body>
 </html>

@@ -7,9 +7,7 @@
 
   <body>
 
-    <header class="site-header">
-        <h1>{{ .Site.Title }}</h1>
-    </header>
+    {{ partial "site-title" . }}
 
     {{ partial "google-analytics.html" . }}
 
