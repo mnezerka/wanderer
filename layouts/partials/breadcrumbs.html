@@ -2,26 +2,22 @@
 <div class="site-breadcrumbs" >
     <div class="breadcrumbs">
 
-    {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
+    {{/* build navigation path -> skip home page*/}}
+    {{- $nav := slice -}}
+    {{- range $index, $page := .Ancestors.Reverse -}}
+        {{- if $page.IsHome -}}{{- continue -}}{{- end -}}
+        {{- $nav = $nav | append . -}}
+    {{- end -}}
 
-    {{ define "breadcrumbnav" }}
-
-        {{ if .p1.Parent }}
-            {{ template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2 )  }}
-        {{ else if not .p1.IsHome }}
-            {{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
-        {{ end }}
-
-        {{/* we don't want to show home in breadcrumbs navigation */}}
-        {{ if not .p1.IsHome }}
-            {{ if eq .p1 .p2 }}
-                {{ .p1.Title }}
-            {{ else }}
-                <a href="{{ .p1.RelPermalink }}">{{ .p1.Title }}</a>
-                &gt;
-            {{ end }}
-        {{ end }}
-
-    {{ end }}
+    {{- /* render if navigation has enough items */ -}}
+    {{- if gt (len $nav) 0 -}}
+        {{- range $index, $page := $nav -}}
+            {{- if gt $index 0 -}}
+            &nbsp;&gt;&nbsp;
+            {{- end -}}
+            <a href="{{ $page.RelPermalink }}">{{- $page.Title -}}</a>
+        {{- end -}}
+        &nbsp;&gt;&nbsp;{{- .Title -}}
+    {{- end -}}
     </div>
 </div>
