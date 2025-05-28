@@ -1,0 +1,10 @@
+<div class="list-pages">
+{{ range where .Site.RegularPages "Params.tags" "intersect" .Params }}
+    <div class="page">
+        <a class="page-link" href="{{ .Permalink }}">{{ .Title }}</a>
+      {{ if eq .Type "posts" }}
+                    <div class ="page-date"><time datetime="{{ .Date }}">{{ i18n "date" . }}</time></div>
+      {{ end }}
+    </div>
+{{ end }}
+</div>
