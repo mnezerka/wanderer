@@ -56,4 +56,21 @@ scelerisque eu. Phasellus rhoncus. Etiam commodo dui eget wisi. Suspendisse
 sagittis ultrices augue. Lorem ipsum dolor sit amet, consectetuer adipiscing
 elit. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat
 ante, in pharetra metus odio a lectus. Nullam lectus justo, vulputate eget
-mollis sed, tempor sed magna. Suspendisse sagittis ultrices augue.&lt;/p></description></item></channel></rss>
+mollis sed, tempor sed magna. Suspendisse sagittis ultrices augue.&lt;/p></description></item><item><title>Tag Related List</title><link>https://mnezerka.github.io/wanderer/features/tag-related-list/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/tag-related-list/</guid><description>&lt;p>This is a page which has relation to other pages.&lt;/p>
+&lt;div class="list-pages">
+
+ &lt;div class="page">
+ &lt;a class="page-link" href="https://mnezerka.github.io/wanderer/posts/high-tatras/">High Tatras&lt;/a>
+ 
+ &lt;div class ="page-date">&lt;time datetime="2024-04-21 00:00:00 &amp;#43;0000 UTC">21 April, 2024&lt;/time>&lt;/div>
+ 
+ &lt;/div>
+
+ &lt;div class="page">
+ &lt;a class="page-link" href="https://mnezerka.github.io/wanderer/posts/smokovec/">Smokovec&lt;/a>
+ 
+ &lt;div class ="page-date">&lt;time datetime="2020-04-22 00:00:00 &amp;#43;0000 UTC">22 April, 2020&lt;/time>&lt;/div>
+ 
+ &lt;/div>
+
+&lt;/div></description></item></channel></rss>
