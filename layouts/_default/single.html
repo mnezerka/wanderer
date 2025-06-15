@@ -3,10 +3,23 @@
     <article class="entry">
         <header class="entry-header">
             <h2 class="entry-title">{{ .Title }}</h2>
+
+            {{ with .Params.trips}}
+                {{ $trip := . }}
+
+                {{ range $key, $value := $.Site.Taxonomies.trips }}
+                    {{ if eq $trip $key }}
+                    <h3><a href="{{ $value.Page.RelPermalink  }}">{{- $value.Page.Title -}}</a></h3>
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+
             {{ if eq .Type "posts" }}
                 <div class ="entry-date"><time datetime="{{ .Date }}">{{ i18n "date" . }}</time></div>
             {{ end }}
+
         </header>
+
 
         <div class="entry-content">
             {{ .Content }}

@@ -40,6 +40,11 @@ h2 {
     font-size: 30px;
 }
 
+h3 {
+    font-weight: 300;
+    font-size: 20px;
+}
+
 a, a:visited {
     color: #069;
     text-decoration: none;
@@ -75,6 +80,7 @@ pre {
     margin-top: 10px;
     margin-bottom: 8px;
     font-weight: normal;
+    font-size: 20px;
 }
 
 .entry-content h3 {
@@ -239,6 +245,11 @@ pre {
     margin: 0;
 }
 
+.entry-header h3 {
+    padding: 0;
+    margin: 0;
+}
+
 .entry-date {
     color: #595959;
     font-size: 85%;
@@ -381,30 +392,23 @@ img.size-full {
 
 }
 
-.list.frames .list-item {
+.list.frames2 .list-item {
     margin-bottom: 30px;
     clear: both;
     background-color: #ffffff;
     overflow: auto;
 }
 
-.list.frames .list-item img {
+.list.frames2 .list-item img {
+    object-fit: cover;
     width: 300px;
-    padding-right: 30px;
-    padding-bottom : 10px;
-    float: left;
+    height: 300px;
 }
 
-.list.frames .list-item .item-text {
-    padding-top: 30px;
-    padding-bottom: 20px;
-    padding-right: 20px;
-    padding-left: 20px;
+.list.frames2 .list-item .item-text {
 }
 
-.list.frames .list-item .item-text h4 {
-    font-size: 20px;
-    margin-bottom: 5px;
+.list.frames2 .list-item .item-text h4 {
 }
 
 /**************************************** list - gallery */

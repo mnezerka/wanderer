@@ -40,3 +40,8 @@ params:
   poweredBy: Powered by <a href='http://www.gohugo.io/'>Hugo</a>
   mapyCzApiKey: "XuWC4G9t0QFM3t-Ra5iKyxc54dal-3wsHFNTGsI04Ew"
   mapClustering: "no"
+
+taxonomies:
+  category: categories
+  tag: tags
+  trip: trips

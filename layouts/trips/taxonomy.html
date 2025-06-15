@@ -1,0 +1,6 @@
+{{ define "main" }}
+
+{{ $paginator := .Paginate (.Pages) }}
+{{ partial "list_with_image" $paginator }}
+
+{{ end }}

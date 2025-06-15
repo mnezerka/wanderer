@@ -10,6 +10,7 @@ tags:
 - Slovakia
 - Starý Smokovec
 - Zbojnícka chata
+trips: slovakia
 resources:
 - src: "images/tatry.jpg"
   params:

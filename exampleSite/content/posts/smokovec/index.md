@@ -9,11 +9,18 @@ tags:
 - High Tatras
 - Slovakia
 - Starý Smokovec
+trips: slovakia
+resources:
+- src: "images/starysmokovec.jpg"
+  params:
+    featured: true
 ---
 Nestled in the heart of Slovakia's High Tatras, Starý Smokovec is a picturesque
 mountain town that serves as a gateway to the Tatra National Park. Known for
 its blend of historic charm and natural beauty, it's an ideal destination for
 both adventure seekers and those looking to unwind.
+
+{{< figure src="images/starysmokovec.jpg" >}}
 
 One of the town's highlights is the funicular railway to Hrebienok, offering
 panoramic views of the surrounding peaks. From Hrebienok, visitors can access a
