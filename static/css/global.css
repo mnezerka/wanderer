@@ -392,23 +392,27 @@ img.size-full {
 
 }
 
-.list.frames2 .list-item {
-    margin-bottom: 30px;
-    clear: both;
-    background-color: #ffffff;
-    overflow: auto;
+.list.frames .list-item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
 }
 
-.list.frames2 .list-item img {
-    object-fit: cover;
-    width: 300px;
-    height: 300px;
+.list.frames .list-item .item-text {
+    padding-left: 10px;
 }
 
-.list.frames2 .list-item .item-text {
+.list.frames .list-item .item-text h2 {
+    margin-top: 0;
 }
 
-.list.frames2 .list-item .item-text h4 {
+.list.frames .list-item .item-text h2 a {
+    text-decoration: none;
+    font-size: 26px;
+}
+
+.list.frames .list-item .featured-image {
+    min-width: 230px;
 }
 
 /**************************************** list - gallery */

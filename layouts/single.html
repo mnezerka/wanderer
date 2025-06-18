@@ -4,8 +4,9 @@
         <header class="entry-header">
             <h2 class="entry-title">{{ .Title }}</h2>
 
-            {{ with .Params.trips}}
+            {{ with .Params.trips }}
                 {{ $trip := . }}
+                {{ $tripSeq := 1 }}
 
                 {{ range $key, $value := $.Site.Taxonomies.trips }}
                     {{ if eq $trip $key }}

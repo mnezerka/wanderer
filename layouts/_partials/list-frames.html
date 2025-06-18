@@ -1,0 +1,30 @@
+
+    <div class="list frames">
+
+        {{ range . }}
+
+            {{ $link := .Permalink }}
+            <div class="list-item">
+
+                {{/* featured image */}}
+                {{ range .Resources.ByType "image"}}
+                    {{ if isset .Params "featured" }}
+                        {{ $resized := .Fill "230x230 q100"}}
+                        <div class="featured-image">
+                            <a href="{{ $link }}">
+                                <img src="{{ $resized.Permalink }}" alt="{{ .Title}}" />
+                            </a>
+                        </div>
+                    {{ end }}
+                {{ end }}
+
+                <div class="item-text">
+                    <h2><a href="{{ $link }}">{{ .Title }}</a></h2>
+                    <p class="summary">{{ .Summary | plainify }}</p>
+                </div>
+
+            </div>
+
+        {{ end }}
+
+    </div>

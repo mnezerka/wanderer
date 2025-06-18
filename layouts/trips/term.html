@@ -7,8 +7,7 @@
 
     <div class="entry-content">
         <p>{{ .Content}}</p>
-
-        {{ partial "list-frames" .Pages }}
+        {{ partial "list-compact-with-date" .Pages }}
     </div>
 </article>
 {{ end }}
