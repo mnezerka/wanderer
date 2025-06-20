@@ -1,0 +1,25 @@
+{{/* preprocess routes - split, trim */}}
+{{ $routesIn := split (.Get "routes") "," }}
+
+{{ $routes := slice }}
+
+{{ range $rIn := $routesIn }}
+    {{ $rInTrimmed := strings.TrimSpace $rIn }}
+    {{ if gt (len $rInTrimmed) 0 }}
+        {{ $routes = $routes | append $rInTrimmed }}
+    {{ end }}
+{{ end }}
+
+{{ if eq (len $routes) 0 }}
+<div>NO ROUTES TO SHOW</div>
+{{ else }}
+
+{{ $globPattern := print "{" (delimit $routes ",") "}" }}
+{{ with .Page.Resources.Match $globPattern }}
+    <div class="entry-map">
+        {{ partial "map_leaflet" . }}
+    </div>
+{{ end }}
+
+{{ end }}
+
