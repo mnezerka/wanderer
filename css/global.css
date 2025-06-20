@@ -235,7 +235,11 @@ pre {
   padding-bottom: 0px;
 }
 
- .entry-featured-image {
+.entry-map {
+    padding-bottom: 25px;
+}
+
+.entry-featured-image {
   padding-top: 25px;
   padding-bottom: 0px;
 }
