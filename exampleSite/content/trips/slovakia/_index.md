@@ -15,6 +15,8 @@ train or car, it serves as a perfect base for exploring the region. The town
 itself offers cozy hotels, traditional Slovak cuisine in local restaurants, and
 access to cable cars that take visitors deeper into the mountains.
 
+{{< map routes="routes/slovakia.gpx" >}}
+
 From Starý Smokovec, popular hikes include the scenic trail to Hrebienok,
 reachable by a funicular railway. From there, tourists can venture to beautiful
 waterfalls like Obrovský vodopád or continue toward Sliezsky dom, a picturesque
