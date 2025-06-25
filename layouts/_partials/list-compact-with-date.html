@@ -1,8 +1,19 @@
 <div class="list-pages">
 {{ range . }}
 
+    {{ $tripInfo := partial "get-trip-info.html" . }}
+
     <div class="page">
-        <a class="page-link" href="{{ .Permalink }}">{{ .Title }}</a>
+        <div  class="page-link">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+
+        {{ if gt $tripInfo.tripIndex -1 }}
+                <a class="page-category" href="{{- $tripInfo.tripLink -}}">
+                    {{- $tripInfo.tripTitle -}}&nbsp;{{- $tripInfo.tripIndex -}}/{{- $tripInfo.tripCount -}}
+                </a>
+        {{ end }}
+        </div>
+
         {{ if eq .Type "posts" }}
             <div class ="page-date"><time datetime="{{ .Date }}">{{ i18n "date" . }}</time></div>
         {{ end }}

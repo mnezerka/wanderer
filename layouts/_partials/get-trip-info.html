@@ -1,0 +1,44 @@
+{{ $current := . }}
+
+{{/* trip taxonomy lookup + getting order in current trip */}}
+{{/* if trip taxonomy was specified */}}
+
+{{ $tripIndex := -1 }}
+{{ $tripCount := -1 }}
+{{ $tripKey := "" }}
+{{ $tripLink := "" }}
+{{ $tripTitle := "" }}
+
+{{ with .Params.trips }}
+    {{ $tripKey = . }}
+
+    {{/* look for trip taxonomy term (specific trip) */}}
+    {{ range $key, $value := $.Site.Taxonomies.trips }}
+        {{ if eq $tripKey $key }}
+            {{ $tripTitle = $value.Page.Title }}
+            {{ $tripLink = $value.Page.RelPermalink}}
+
+            {{/* get all pages in specific taxonomy term (assigned to specific trip) */}}
+            {{ $filtered := where site.RegularPages "Params.trips" "eq" $tripKey }}
+            {{ $pagesInTrip := sort $filtered ".Date" "asc" }}
+
+            {{ $tripCount = len $pagesInTrip }}
+
+            {{/* get index of current page */}}
+            {{ range $i, $p := $pagesInTrip }}
+                {{ if eq $p.RelPermalink $current.RelPermalink }}
+                    {{ $tripIndex = add $i 1}}
+                {{ end }}
+            {{ end }}
+
+            {{ break }}
+
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{/* index have to be counted in reverse order */}}
+{{ if gt $tripIndex -1 }} 
+{{ end }}
+
+{{ return (dict "tripIndex" $tripIndex "tripCount" $tripCount "tripKey" $tripKey "tripLink" $tripLink "tripTitle" $tripTitle) }}

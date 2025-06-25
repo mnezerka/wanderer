@@ -247,11 +247,27 @@ pre {
 .entry-header h2 {
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
 }
 
 .entry-header h3 {
     padding: 0;
     margin: 0;
+}
+
+.entry-header h2 .subtitle {
+    font-size: 18px;
+    font-style: italic;
+    padding-left: 20px;
+    flex-grow: 1;
+    text-align: right;
+}
+
+.entry-header h2 .subtitle a {
+    color: #3a3a3a;
+    text-decoration: none;
 }
 
 .entry-date {
@@ -456,9 +472,12 @@ img.size-full {
     flex-grow: 1;
 }
 
-.entry-content .list-pages .page-date {
+.entry-content .list-pages .page-date,
+.entry-content .list-pages .page-category {
     font-style: italic;
     font-size: 13px;
+    text-decoration: none;
+    color: #3a3a3a;
 }
 
 /**************************************** list-documents */

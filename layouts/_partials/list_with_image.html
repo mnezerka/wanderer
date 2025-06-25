@@ -3,9 +3,23 @@
     {{ $title := .Title }}
     {{ $summary := .Summary }}
     {{ $link := .RelPermalink }}
+    {{ $tripInfo := partial "get-trip-info.html" . }}
+
     <article class="entry">
         <header class="entry-header">
-            <h2 class="entry-title"><a href="{{ $link }}">{{ $title }}</a></h2>
+            <h2 class="entry-title">
+                <span class="maintitle"><a href="{{ $link }}">{{ .Title }}</a></span>
+                {{ if gt $tripInfo.tripIndex -1 }}
+                    <span class="subtitle">
+                        <a href="{{ $tripInfo.tripLink }}">
+                            {{- $tripInfo.tripIndex -}}/{{- $tripInfo.tripCount -}}
+                            &nbsp;
+                            {{- $tripInfo.tripTitle -}}
+                        </a>
+                    </span>
+                {{ end }}
+            </h2>
+
             <div class ="entry-date"><time datetime="{{ .Date }}">{{ i18n "date" . }}</time></div>
         </header>
 

@@ -1,19 +1,21 @@
 {{ define "main" }}
 
+    {{ $tripInfo := partial "get-trip-info.html" . }}
+
     <article class="entry">
         <header class="entry-header">
-            <h2 class="entry-title">{{ .Title }}</h2>
-
-            {{ with .Params.trips }}
-                {{ $trip := . }}
-                {{ $tripSeq := 1 }}
-
-                {{ range $key, $value := $.Site.Taxonomies.trips }}
-                    {{ if eq $trip $key }}
-                    <h3><a href="{{ $value.Page.RelPermalink  }}">{{- $value.Page.Title -}}</a></h3>
-                    {{ end }}
+            <h2 class="entry-title">
+                <span class="maintitle">{{ .Title }}</span>
+                {{ if gt $tripInfo.tripIndex -1 }}
+                    <span class="subtitle">
+                        <a href="{{ $tripInfo.tripLink }}">
+                            {{- $tripInfo.tripIndex -}}/{{- $tripInfo.tripCount -}}
+                            &nbsp;
+                            {{- $tripInfo.tripTitle -}}
+                        </a>
+                    </span>
                 {{ end }}
-            {{ end }}
+            </h2>
 
             {{ if eq .Type "posts" }}
                 <div class ="entry-date"><time datetime="{{ .Date }}">{{ i18n "date" . }}</time></div>
