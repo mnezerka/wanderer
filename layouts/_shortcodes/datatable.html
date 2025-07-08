@@ -1,0 +1,36 @@
+{{ $key := .Get 0 }}
+
+{{ if $key }}
+
+    {{ $items := index .Page.Params $key }}
+
+    {{ if $items }}
+        <table class="datatable">
+            <thead>
+                <tr>
+                {{ range $items.keys }}
+                  <td>{{ .name }}</td>
+                {{ end }}
+                </tr>
+            </thead>
+            <tbody>
+            {{ range $items.data }}
+                {{ $item := . }}
+                <tr>
+                {{ range $items.keys }}
+                    {{ $id := .id }}
+                    {{ $highlight := .highlight }}
+                    <td {{- if eq $highlight true }} class="highlight"{{- end -}}>
+                        {{ if isset $item $id }}{{ index $item $id }}{{ else }}missing value{{ end }}
+                    </td>
+                {{ end }}
+                </tr>
+            {{ end }}
+            </tbody>
+        </table>
+    {{ else }}
+        <p>No parameter "{{ $key }}" exists in page parameters.</p>
+    {{ end }}
+{{ else }}
+    <p>No shortcode parameter specified. The data table shortcode requires name of the front header parameter.</p>
+{{ end }}

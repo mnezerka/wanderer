@@ -12,7 +12,7 @@
             {{/*-- post count */}}
             {{ $posts := (where $.Site.RegularPages "Section" "==" "posts") }}
             {{ $postCount := len $posts }}
-            
+
             {{/*-- page count */}}
             {{ $pages := (where $.Site.RegularPages "Section" "==" "pages") }}
             {{ $pageCount := len $pages }}
@@ -50,7 +50,7 @@
             {{ end }}
 
             {{ $tags := $.Site.Taxonomies.tags }}
-             
+
             <div style="overflow: auto;">
                 <table>
                     <thead>
