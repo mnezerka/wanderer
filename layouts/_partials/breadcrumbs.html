@@ -12,12 +12,14 @@
     {{- /* render if navigation has enough items */ -}}
     {{- if gt (len $nav) 0 -}}
         {{- range $index, $page := $nav -}}
+            <span class="breadcrumb-item">
             {{- if gt $index 0 -}}
-            &nbsp;&gt;&nbsp;
+            &gt;
             {{- end -}}
             <a href="{{ $page.RelPermalink }}">{{- $page.Title -}}</a>
+            </span>
         {{- end -}}
-        &nbsp;&gt;&nbsp;{{- .Title -}}
+        <span>&gt;&nbsp;{{- .Title -}}</span>
     {{- end -}}
     </div>
 </div>

@@ -23,7 +23,7 @@ breathtaking landscapes. Armed with determination, climbing gear, and a deep
 respect for the mountains, I embarked on a journey that would test my limits
 and reward me with unforgettable experiences.
 
-{{< figure src="images/tatry.jpg" >}}
+{{< figure src="images/tatry.jpg" link="images/tatry.jpg" >}}
 
 ## Day 1: Arrival and Acclimatization
 
