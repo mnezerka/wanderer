@@ -341,10 +341,11 @@ img.size-full {
 }
 
 .site-breadcrumbs .breadcrumb-item {
-  padding-top: 4px;
-  padding-left: 30px;
-  padding-right: 0px;
-  padding-bottom: 0px;
+    padding-left: 30px;
+}
+
+.site-breadcrumbs .breadcrumb-item {
+    padding-top: 4px;
 }
 
 /**************************************** main content */
