@@ -1,0 +1,17 @@
+This is data table
+
+{{ .Params.file }}
+
+
+<table>
+    <tbody>
+{{ range $.Site.Data.books }}
+        <tr>
+            {{ range $k, $v := . }}
+                <td>{{ $k }} {{ $v }}</td>
+            {{ end }}
+        </tr>
+    </tbody>
+{{ end }}
+</table>
+

@@ -1,0 +1,7 @@
+---
+# A list of books
+- title: Book title
+  author: Book author
+  rating: 5/5
+  summary: This is book summary
+  media: audio
