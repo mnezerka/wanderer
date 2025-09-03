@@ -80,9 +80,17 @@ function leafletCreateTracksMap(mapWrapId, gpx_list, options) {
     // configuration of track markers - we need to set
     // path to icons since all files live in plugin dir (and url)
     const marker_options = {
-        startIconUrl: options.icon_start_url,
-        endIconUrl: options.icon_end_url,
-        shadowUrl:   options.icon_shadow_url
+        startIcon: new L.AwesomeMarkers.icon({ icon: 'circle', prefix: 'fa', markerColor: 'green', iconColor: 'white' }),
+        endIcon: new L.AwesomeMarkers.icon({ icon: 'flag-checkered', prefix: 'fa', markerColor: 'red', iconColor: 'white' }),
+        wptIcons: {
+            'Hotel': new L.AwesomeMarkers.icon({ icon: 'hotel', prefix: 'fa', markerColor: 'orange', iconColor: 'white' }),
+            'Parking Area': new L.AwesomeMarkers.icon({icon: 'parking', prefix: 'fa', markerColor: 'darkblue', iconColor: 'white' }),
+            'Scenic Area': new L.AwesomeMarkers.icon({ icon: 'binoculars', prefix: 'fa', markerColor: 'blue', iconColor: 'white' }),
+            'Lodging': new L.AwesomeMarkers.icon({ icon: 'campground', prefix: 'fa', markerColor: 'orange', iconColor: 'white' }),
+            'Campground': new L.AwesomeMarkers.icon({ icon: 'campground', prefix: 'fa', markerColor: 'orange', iconColor: 'white' }),
+            'Park': new L.AwesomeMarkers.icon({ icon: 'tree', prefix: 'fa', markerColor: 'green', iconColor: 'white' }),
+            'Building': new L.AwesomeMarkers.icon({ icon: 'building', prefix: 'fa', markerColor: 'orange', iconColor: 'white' }),
+        }
     }
 
     // render individual tracks

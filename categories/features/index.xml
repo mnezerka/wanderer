@@ -1,75 +1,75 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Features on Wanderer</title><link>https://mnezerka.github.io/wanderer/categories/features/</link><description>Recent content in Features on Wanderer</description><generator>Hugo</generator><language>en</language><atom:link href="https://mnezerka.github.io/wanderer/categories/features/index.xml" rel="self" type="application/rss+xml"/><item><title>Code Blocks</title><link>https://mnezerka.github.io/wanderer/features/codeblocks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/codeblocks/</guid><description>&lt;h2 id="without-type">Without type&lt;/h2>
-&lt;pre tabindex="0">&lt;code>This is plain code block
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Features on Wanderer</title><link>https://mnezerka.github.io/wanderer/categories/features/</link><description>Recent content in Features on Wanderer</description><generator>Hugo</generator><language>en</language><atom:link href="https://mnezerka.github.io/wanderer/categories/features/index.xml" rel="self" type="application/rss+xml"/><item><title>Code Blocks</title><link>https://mnezerka.github.io/wanderer/features/codeblocks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/codeblocks/</guid><description>&lt;h2 id="without-type"&gt;Without type&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;This is plain code block
 without setting any type
-&lt;/code>&lt;/pre>&lt;h2 id="bash-block">Bash block&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">&amp;#34;This is bash command&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>And this one has long lines&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">&amp;#34;This is a very long bash command that cannot fit into content area of the generated website, so it needs a scrollbar&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="this-is-javascript">This is javascript&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">x&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">x&lt;/span>);
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Documents</title><link>https://mnezerka.github.io/wanderer/features/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/documents/</guid><description>&lt;p>This is page content. All documents stored in &lt;code>docs&lt;/code> subdirectory are listed
-below this paragraph.&lt;/p>
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="bash-block"&gt;Bash block&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo &lt;span style="color:#e6db74"&gt;&amp;#34;This is bash command&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And this one has long lines&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo &lt;span style="color:#e6db74"&gt;&amp;#34;This is a very long bash command that cannot fit into content area of the generated website, so it needs a scrollbar&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="this-is-javascript"&gt;This is javascript&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;let&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;x&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;x&lt;/span&gt; &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;console&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;x&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Documents</title><link>https://mnezerka.github.io/wanderer/features/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/documents/</guid><description>&lt;p&gt;This is page content. All documents stored in &lt;code&gt;docs&lt;/code&gt; subdirectory are listed
+below this paragraph.&lt;/p&gt;
 
 
- &lt;div class="list-documents">
+ &lt;div class="list-documents"&gt;
  
- &lt;div class="list-item">
+ &lt;div class="list-item"&gt;
  
  
  
  
 
- &lt;i class="fas fa-file-pdf">&lt;/i>&lt;a href="https://mnezerka.github.io/wanderer/features/documents/docs/lorem-ipsum.pdf">docs/lorem-ipsum.pdf&lt;/a> - Lorem Ipsum Example
- &lt;/div>
+ &lt;i class="fas fa-file-pdf"&gt;&lt;/i&gt;&lt;a href="https://mnezerka.github.io/wanderer/features/documents/docs/lorem-ipsum.pdf"&gt;docs/lorem-ipsum.pdf&lt;/a&gt; - Lorem Ipsum Example
+ &lt;/div&gt;
  
- &lt;/div></description></item><item><title>Galleries</title><link>https://mnezerka.github.io/wanderer/features/galleries/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/galleries/</guid><description>&lt;p>If there are some images stored as resources for given page, theme will render
+ &lt;/div&gt;</description></item><item><title>Galleries</title><link>https://mnezerka.github.io/wanderer/features/galleries/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/galleries/</guid><description>&lt;p&gt;If there are some images stored as resources for given page, theme will render
 interactive image gallery at the bottom of the page. This example also
-demonstrate how to use resources metadata to describe and order images.&lt;/p></description></item><item><title>Large Images</title><link>https://mnezerka.github.io/wanderer/features/large_images/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/large_images/</guid><description>&lt;p>This is very large image, that should be fitted into content width:&lt;/p>
-&lt;p>&lt;img src="images/serial-programmer.jpg" alt="">&lt;/p></description></item><item><title>Map - Single post</title><link>https://mnezerka.github.io/wanderer/features/map_single_post/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/map_single_post/</guid><description>&lt;p>If there is at least one gpx file in resources of given page, it will be
+demonstrate how to use resources metadata to describe and order images.&lt;/p&gt;</description></item><item><title>Large Images</title><link>https://mnezerka.github.io/wanderer/features/large_images/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/large_images/</guid><description>&lt;p&gt;This is very large image, that should be fitted into content width:&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/serial-programmer.jpg" alt=""&gt;&lt;/p&gt;</description></item><item><title>Map - Single post</title><link>https://mnezerka.github.io/wanderer/features/map_single_post/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/map_single_post/</guid><description>&lt;p&gt;If there is at least one gpx file in resources of given page, it will be
 automatically rendered at the bottom of the page, including basic legend with
-distance, time and possibility to download individual gpx files&lt;/p></description></item><item><title>Markdown</title><link>https://mnezerka.github.io/wanderer/features/markdown/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/markdown/</guid><description>&lt;p>This is an overview of various markdown elemens to see wanderer rendering.&lt;/p>
-&lt;h2 id="lists">Lists&lt;/h2>
-&lt;p>Simple list:&lt;/p>
-&lt;ul>
-&lt;li>first item&lt;/li>
-&lt;li>second item&lt;/li>
-&lt;li>third item&lt;/li>
-&lt;/ul>
-&lt;p>Nested list:&lt;/p>
-&lt;ul>
-&lt;li>first item&lt;/li>
-&lt;li>second item
-&lt;ul>
-&lt;li>first sub item&lt;/li>
-&lt;li>second sub item&lt;/li>
-&lt;li>third sub item&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>third item&lt;/li>
-&lt;/ul></description></item><item><title>Side Navigation</title><link>https://mnezerka.github.io/wanderer/features/side_navigation/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/side_navigation/</guid><description>&lt;h2 id="first-chapter">First Chapter&lt;/h2>
-&lt;p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam at arcu a est
+distance, time and possibility to download individual gpx files&lt;/p&gt;</description></item><item><title>Markdown</title><link>https://mnezerka.github.io/wanderer/features/markdown/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/markdown/</guid><description>&lt;p&gt;This is an overview of various markdown elemens to see wanderer rendering.&lt;/p&gt;
+&lt;h2 id="lists"&gt;Lists&lt;/h2&gt;
+&lt;p&gt;Simple list:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;first item&lt;/li&gt;
+&lt;li&gt;second item&lt;/li&gt;
+&lt;li&gt;third item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nested list:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;first item&lt;/li&gt;
+&lt;li&gt;second item
+&lt;ul&gt;
+&lt;li&gt;first sub item&lt;/li&gt;
+&lt;li&gt;second sub item&lt;/li&gt;
+&lt;li&gt;third sub item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;third item&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Side Navigation</title><link>https://mnezerka.github.io/wanderer/features/side_navigation/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/side_navigation/</guid><description>&lt;h2 id="first-chapter"&gt;First Chapter&lt;/h2&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam at arcu a est
 sollicitudin euismod. Etiam ligula pede, sagittis quis, interdum ultricies,
 scelerisque eu. Phasellus rhoncus. Etiam commodo dui eget wisi. Suspendisse
 sagittis ultrices augue. Lorem ipsum dolor sit amet, consectetuer adipiscing
 elit. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat
 ante, in pharetra metus odio a lectus. Nullam lectus justo, vulputate eget
-mollis sed, tempor sed magna. Suspendisse sagittis ultrices augue.&lt;/p></description></item><item><title>Tag Related List</title><link>https://mnezerka.github.io/wanderer/features/tag-related-list/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/tag-related-list/</guid><description>&lt;p>This is a page which has relation to other pages.&lt;/p>
-&lt;div class="list-pages">
+mollis sed, tempor sed magna. Suspendisse sagittis ultrices augue.&lt;/p&gt;</description></item><item><title>Tag Related List</title><link>https://mnezerka.github.io/wanderer/features/tag-related-list/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/tag-related-list/</guid><description>&lt;p&gt;This is a page which has relation to other pages.&lt;/p&gt;
+&lt;div class="list-pages"&gt;
 
- &lt;div class="page">
- &lt;a class="page-link" href="https://mnezerka.github.io/wanderer/posts/high-tatras/">High Tatras&lt;/a>
+ &lt;div class="page"&gt;
+ &lt;a class="page-link" href="https://mnezerka.github.io/wanderer/posts/high-tatras/"&gt;High Tatras&lt;/a&gt;
  
- &lt;div class ="page-date">&lt;time datetime="2024-04-21 00:00:00 &amp;#43;0000 UTC">21 April, 2024&lt;/time>&lt;/div>
+ &lt;div class ="page-date"&gt;&lt;time datetime="2024-04-21 00:00:00 &amp;#43;0000 UTC"&gt;21 April, 2024&lt;/time&gt;&lt;/div&gt;
  
- &lt;/div>
+ &lt;/div&gt;
 
- &lt;div class="page">
- &lt;a class="page-link" href="https://mnezerka.github.io/wanderer/posts/smokovec/">Smokovec&lt;/a>
+ &lt;div class="page"&gt;
+ &lt;a class="page-link" href="https://mnezerka.github.io/wanderer/posts/smokovec/"&gt;Smokovec&lt;/a&gt;
  
- &lt;div class ="page-date">&lt;time datetime="2020-04-22 00:00:00 &amp;#43;0000 UTC">22 April, 2020&lt;/time>&lt;/div>
+ &lt;div class ="page-date"&gt;&lt;time datetime="2020-04-22 00:00:00 &amp;#43;0000 UTC"&gt;22 April, 2020&lt;/time&gt;&lt;/div&gt;
  
- &lt;/div>
+ &lt;/div&gt;
 
-&lt;/div></description></item></channel></rss>
+&lt;/div&gt;</description></item></channel></rss>
