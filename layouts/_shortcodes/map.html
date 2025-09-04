@@ -16,7 +16,7 @@
 
 {{ $globPattern := print "{" (delimit $routes ",") "}" }}
 {{ with .Page.Resources.Match $globPattern }}
-    <div class="entry-map">
+    <div class="shortcode-map">
         {{ partial "map_leaflet" . }}
     </div>
 {{ end }}
