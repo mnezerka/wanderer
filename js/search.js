@@ -18,25 +18,67 @@ var fuseOptions = {
 
 var searchQuery = param("s");
 if(searchQuery){
-  $("#search-query").val(searchQuery);
-  executeSearch(searchQuery);
+    executeSearch(searchQuery);
 }else {
   $('#search-results').append("<p>Please enter a word or phrase above</p>");
 }
 
-function executeSearch(searchQuery){
+// remove accents from scalar
+function removeAccents(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
 
-  $.getJSON( search_index_url, function( data ) {
-    var pages = data;
-    var fuse = new Fuse(pages, fuseOptions);
-    var result = fuse.search(searchQuery);
-    /*console.log({"matches":result});*/
-    if(result.length > 0) {
-      populateResults(result);
-    } else {
-      $('#search-results').append("<p>Nic nenalezeno</p>");
+// remove accents from object
+function removeAccentsDeepInPlace(obj) {
+  if (typeof obj === "string") {
+    return removeAccents(obj);
+  }
+
+  if (Array.isArray(obj)) {
+    for (let i = 0; i < obj.length; i++) {
+      obj[i] = removeAccentsDeepInPlace(obj[i]);
     }
-  });
+    return obj;
+  }
+
+  if (obj && typeof obj === "object") {
+    for (const key in obj) {
+      obj[key] = removeAccentsDeepInPlace(obj[key]);
+    }
+    return obj;
+  }
+
+  return obj; // numbers, booleans, null, undefined...
+}
+
+function executeSearch(searchQuery){
+    searchQuery = removeAccents(searchQuery);
+
+    fetch(search_index_url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // convert json - remove accents
+            removeAccentsDeepInPlace(data);
+
+            var pages = data;
+            var fuse = new Fuse(pages, fuseOptions);
+            var result = fuse.search(searchQuery);
+            /*console.log({"matches":result});*/
+            if(result.length > 0) {
+                populateResults(result);
+            } else {
+                let el = document.getElementById('search-results');
+                el.innerHTML = el.innerHTML + "<p>Nic nenalezeno</p>";
+            }
+        })
+    .catch(error => {
+        console.log('Fetch error:', error);
+    });
 }
 
 function populateResults(result){
@@ -79,7 +121,9 @@ function populateResults(result){
 }
 
 function param(name) {
-    return decodeURIComponent((location.search.split(name + '=')[1] || '').split('&')[0]).replace(/\+/g, ' ');
+    // Get the query string from current URL
+    const params = new URLSearchParams(window.location.search);
+    return params.get(name) || "";
 }
 
 function render(templateString, data) {
