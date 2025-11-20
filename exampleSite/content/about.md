@@ -1,7 +1,6 @@
 ---
 title: About
 menu:
-menu:
   main:
     weight: 90
 ---
