@@ -9,7 +9,252 @@ without setting any type
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;let&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;x&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;x&lt;/span&gt; &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;console&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;x&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Documents</title><link>https://mnezerka.github.io/wanderer/features/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/documents/</guid><description>&lt;p&gt;This is page content. All documents stored in &lt;code&gt;docs&lt;/code&gt; subdirectory are listed
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Data Table</title><link>https://mnezerka.github.io/wanderer/features/datatable/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/datatable/</guid><description>&lt;table class="datatable"&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ 
+ &lt;td&gt;Title&lt;/td&gt;
+ 
+ &lt;td&gt;Author&lt;/td&gt;
+ 
+ &lt;td&gt;Summary&lt;/td&gt;
+ 
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ 
+ 
+ &lt;tr&gt;
+ 
+ 
+ 
+ &lt;td class="highlight"&gt;
+ The Clockmaker of Hollow Street
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ Eleanor H. Whitford
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ A reclusive clockmaker uncovers blueprints for a device that could rewind time, drawing him into a conspiracy that threatens his quiet town.
+ &lt;/td&gt;
+ 
+ &lt;/tr&gt;
+ 
+ 
+ &lt;tr&gt;
+ 
+ 
+ 
+ &lt;td class="highlight"&gt;
+ Ashes of the Azure Empire
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ Kaito Renn
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ After the fall of a once-majestic empire, a former general must protect a young scholar who may hold the key to rebuilding civilization.
+ &lt;/td&gt;
+ 
+ &lt;/tr&gt;
+ 
+ 
+ &lt;tr&gt;
+ 
+ 
+ 
+ &lt;td class="highlight"&gt;
+ The Orchard of Silent Promises
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ Lucia Maren
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ When a woman returns to her childhood village to settle her late mother’s estate, she discovers a mysterious orchard said to grant wishes—but at a price.
+ &lt;/td&gt;
+ 
+ &lt;/tr&gt;
+ 
+ 
+ &lt;tr&gt;
+ 
+ 
+ 
+ &lt;td class="highlight"&gt;
+ Binary Hearts
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ Tomas Kepler
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ A brilliant AI researcher falls in love with the sentient program she created, forcing her to choose between ethics, humanity, and the future of technology.
+ &lt;/td&gt;
+ 
+ &lt;/tr&gt;
+ 
+ 
+ &lt;tr&gt;
+ 
+ 
+ 
+ &lt;td class="highlight"&gt;
+ Voyagers of the Deep Green
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ Samuel Cross
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ A crew of eco-scientists on a deep-ocean expedition encounter an ancient underwater civilization fighting to survive rising surface pollution.
+ &lt;/td&gt;
+ 
+ &lt;/tr&gt;
+ 
+ 
+ &lt;tr&gt;
+ 
+ 
+ 
+ &lt;td class="highlight"&gt;
+ The Last Lullaby of Winterhold
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ Marina Solberg
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ In a northern kingdom where music holds magical power, a bard loses her voice and must embark on a perilous quest to reclaim it before war breaks out.
+ &lt;/td&gt;
+ 
+ &lt;/tr&gt;
+ 
+ 
+ &lt;tr&gt;
+ 
+ 
+ 
+ &lt;td class="highlight"&gt;
+ Fragments of a Forgotten Sun
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ Arjun Patel
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ A history professor uncovers relics proving an advanced civilization existed thousands of years before recorded history, making him the target of global powers.
+ &lt;/td&gt;
+ 
+ &lt;/tr&gt;
+ 
+ 
+ &lt;tr&gt;
+ 
+ 
+ 
+ &lt;td class="highlight"&gt;
+ Red Moon Cartography
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ Nadir El-Khoury
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ A renegade space navigator searches for mythical star maps said to reveal routes to uncharted galaxies as rival factions race to claim them first.
+ &lt;/td&gt;
+ 
+ &lt;/tr&gt;
+ 
+ 
+ &lt;tr&gt;
+ 
+ 
+ 
+ &lt;td class="highlight"&gt;
+ A Garden Made of Paper
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ Yumi Takahashi
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ A shy origami artist begins leaving miniature paper gardens around her city, unintentionally inspiring a quiet social revolution.
+ &lt;/td&gt;
+ 
+ &lt;/tr&gt;
+ 
+ 
+ &lt;tr&gt;
+ 
+ 
+ 
+ &lt;td class="highlight"&gt;
+ The Alchemist’s Promise
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ Rafael Mendoza
+ &lt;/td&gt;
+ 
+ 
+ 
+ &lt;td&gt;
+ A young thief steals a philosopher’s stone and is forced to partner with an aging alchemist to prevent immortality from falling into tyrannical hands.
+ &lt;/td&gt;
+ 
+ &lt;/tr&gt;
+ 
+ &lt;/tbody&gt;
+ &lt;/table&gt;</description></item><item><title>Documents</title><link>https://mnezerka.github.io/wanderer/features/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/documents/</guid><description>&lt;p&gt;This is page content. All documents stored in &lt;code&gt;docs&lt;/code&gt; subdirectory are listed
 below this paragraph.&lt;/p&gt;
 
 

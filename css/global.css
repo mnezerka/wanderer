@@ -525,6 +525,29 @@ figure figcaption h4 {
     text-decoration: none;
 }
 
+/**************************************** datatable */
+
+table.datatable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.datatable td {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 10px;
+}
+
+.datatable td.highlight {
+    font-weight: bold;
+}
+
+.datatable thead td {
+    font-style: italic;
+    border-bottom: 1px solid black;
+}
+
+
 /**************************************** fix unsemantic */
 
 /* this fix removes side padding on mobile phone views */
