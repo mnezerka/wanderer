@@ -17,6 +17,8 @@ without setting any type
  
  &lt;td&gt;Author&lt;/td&gt;
  
+ &lt;td&gt;Rating&lt;/td&gt;
+ 
  &lt;td&gt;Summary&lt;/td&gt;
  
  &lt;/tr&gt;
@@ -24,19 +26,37 @@ without setting any type
  &lt;tbody&gt;
  
  
+ 
+ &lt;tr class="group"&gt;
+ &lt;td&gt;2005&lt;/td&gt;
  &lt;tr&gt;
  
  
  
- &lt;td class="highlight"&gt;
+ 
+ &lt;tr&gt;
+ 
+ 
+ 
+ 
+ &lt;td class="highlight" style="white-space: nowrap"&gt;
  The Clockmaker of Hollow Street
  &lt;/td&gt;
+ 
  
  
  
  &lt;td&gt;
  Eleanor H. Whitford
  &lt;/td&gt;
+ 
+ 
+ 
+ 
+ &lt;td&gt;
+ 4/5
+ &lt;/td&gt;
+ 
  
  
  
@@ -47,19 +67,31 @@ without setting any type
  &lt;/tr&gt;
  
  
+ 
+ 
  &lt;tr&gt;
  
  
  
- &lt;td class="highlight"&gt;
+ 
+ &lt;td class="highlight" style="white-space: nowrap"&gt;
  Ashes of the Azure Empire
  &lt;/td&gt;
+ 
  
  
  
  &lt;td&gt;
  Kaito Renn
  &lt;/td&gt;
+ 
+ 
+ 
+ 
+ &lt;td&gt;
+ 4/5
+ &lt;/td&gt;
+ 
  
  
  
@@ -70,19 +102,31 @@ without setting any type
  &lt;/tr&gt;
  
  
+ 
+ 
  &lt;tr&gt;
  
  
  
- &lt;td class="highlight"&gt;
+ 
+ &lt;td class="highlight" style="white-space: nowrap"&gt;
  The Orchard of Silent Promises
  &lt;/td&gt;
+ 
  
  
  
  &lt;td&gt;
  Lucia Maren
  &lt;/td&gt;
+ 
+ 
+ 
+ 
+ &lt;td&gt;
+ 4/5
+ &lt;/td&gt;
+ 
  
  
  
@@ -93,19 +137,31 @@ without setting any type
  &lt;/tr&gt;
  
  
+ 
+ 
  &lt;tr&gt;
  
  
  
- &lt;td class="highlight"&gt;
+ 
+ &lt;td class="highlight" style="white-space: nowrap"&gt;
  Binary Hearts
  &lt;/td&gt;
+ 
  
  
  
  &lt;td&gt;
  Tomas Kepler
  &lt;/td&gt;
+ 
+ 
+ 
+ 
+ &lt;td&gt;
+ 4/5
+ &lt;/td&gt;
+ 
  
  
  
@@ -116,19 +172,31 @@ without setting any type
  &lt;/tr&gt;
  
  
+ 
+ 
  &lt;tr&gt;
  
  
  
- &lt;td class="highlight"&gt;
+ 
+ &lt;td class="highlight" style="white-space: nowrap"&gt;
  Voyagers of the Deep Green
  &lt;/td&gt;
+ 
  
  
  
  &lt;td&gt;
  Samuel Cross
  &lt;/td&gt;
+ 
+ 
+ 
+ 
+ &lt;td&gt;
+ 4/5
+ &lt;/td&gt;
+ 
  
  
  
@@ -139,19 +207,38 @@ without setting any type
  &lt;/tr&gt;
  
  
+ 
+ 
+ &lt;tr class="group"&gt;
+ &lt;td&gt;2004&lt;/td&gt;
  &lt;tr&gt;
  
  
  
- &lt;td class="highlight"&gt;
+ 
+ &lt;tr&gt;
+ 
+ 
+ 
+ 
+ &lt;td class="highlight" style="white-space: nowrap"&gt;
  The Last Lullaby of Winterhold
  &lt;/td&gt;
+ 
  
  
  
  &lt;td&gt;
  Marina Solberg
  &lt;/td&gt;
+ 
+ 
+ 
+ 
+ &lt;td&gt;
+ 4/5
+ &lt;/td&gt;
+ 
  
  
  
@@ -162,19 +249,31 @@ without setting any type
  &lt;/tr&gt;
  
  
+ 
+ 
  &lt;tr&gt;
  
  
  
- &lt;td class="highlight"&gt;
+ 
+ &lt;td class="highlight" style="white-space: nowrap"&gt;
  Fragments of a Forgotten Sun
  &lt;/td&gt;
+ 
  
  
  
  &lt;td&gt;
  Arjun Patel
  &lt;/td&gt;
+ 
+ 
+ 
+ 
+ &lt;td&gt;
+ 4/5
+ &lt;/td&gt;
+ 
  
  
  
@@ -185,19 +284,31 @@ without setting any type
  &lt;/tr&gt;
  
  
+ 
+ 
  &lt;tr&gt;
  
  
  
- &lt;td class="highlight"&gt;
+ 
+ &lt;td class="highlight" style="white-space: nowrap"&gt;
  Red Moon Cartography
  &lt;/td&gt;
+ 
  
  
  
  &lt;td&gt;
  Nadir El-Khoury
  &lt;/td&gt;
+ 
+ 
+ 
+ 
+ &lt;td&gt;
+ 4/5
+ &lt;/td&gt;
+ 
  
  
  
@@ -208,19 +319,31 @@ without setting any type
  &lt;/tr&gt;
  
  
+ 
+ 
  &lt;tr&gt;
  
  
  
- &lt;td class="highlight"&gt;
+ 
+ &lt;td class="highlight" style="white-space: nowrap"&gt;
  A Garden Made of Paper
  &lt;/td&gt;
+ 
  
  
  
  &lt;td&gt;
  Yumi Takahashi
  &lt;/td&gt;
+ 
+ 
+ 
+ 
+ &lt;td&gt;
+ 4/5
+ &lt;/td&gt;
+ 
  
  
  
@@ -231,13 +354,17 @@ without setting any type
  &lt;/tr&gt;
  
  
+ 
+ 
  &lt;tr&gt;
  
  
  
- &lt;td class="highlight"&gt;
+ 
+ &lt;td class="highlight" style="white-space: nowrap"&gt;
  The Alchemist’s Promise
  &lt;/td&gt;
+ 
  
  
  
@@ -247,11 +374,20 @@ without setting any type
  
  
  
+ 
+ &lt;td&gt;
+ 4/5
+ &lt;/td&gt;
+ 
+ 
+ 
+ 
  &lt;td&gt;
  A young thief steals a philosopher’s stone and is forced to partner with an aging alchemist to prevent immortality from falling into tyrannical hands.
  &lt;/td&gt;
  
  &lt;/tr&gt;
+ 
  
  &lt;/tbody&gt;
  &lt;/table&gt;</description></item><item><title>Documents</title><link>https://mnezerka.github.io/wanderer/features/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/documents/</guid><description>&lt;p&gt;This is page content. All documents stored in &lt;code&gt;docs&lt;/code&gt; subdirectory are listed
