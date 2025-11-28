@@ -536,6 +536,8 @@ table.datatable {
     padding-top: 2px;
     padding-bottom: 2px;
     padding-right: 10px;
+    font-size: 10pt;
+    vertical-align: top;
 }
 
 .datatable td.highlight {
@@ -547,6 +549,10 @@ table.datatable {
     border-bottom: 1px solid black;
 }
 
+.datatable .group td {
+    font-size: 12pt;
+    padding-top: 10px;
+}
 
 /**************************************** fix unsemantic */
 

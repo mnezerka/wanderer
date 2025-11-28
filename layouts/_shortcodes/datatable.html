@@ -16,15 +16,22 @@
             <tbody>
             {{ range $items.data }}
                 {{ $item := . }}
-                <tr>
-                {{ range $items.keys }}
-                    {{ $id := .id }}
-                    {{ $highlight := .highlight }}
-                    <td {{- if eq $highlight true }} class="highlight"{{- end -}}>
-                        {{ if isset $item $id }}{{ index $item $id }}{{ else }}missing value{{ end }}
-                    </td>
+                {{ if $item.group }}
+                    <tr class="group">
+                        <td>{{ $item.group }}</td>
+                    <tr>
+                {{ else }}
+                    <tr>
+                    {{ range $items.keys }}
+                        {{ $id := .id }}
+                        {{ $highlight := .highlight }}
+                        {{ $style := .style }}
+                        <td {{- if eq $highlight true }} class="highlight"{{- end -}}{{- if $style }} style="{{ $style }}"{{- end -}}>
+                            {{ if isset $item $id }}{{ index $item $id }}{{ else }}missing value{{ end }}
+                        </td>
+                    {{ end }}
+                    </tr>
                 {{ end }}
-                </tr>
             {{ end }}
             </tbody>
         </table>
