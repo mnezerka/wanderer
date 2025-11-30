@@ -9,12 +9,15 @@ params:
         name: Title
         highlight: true
         style: "white-space: nowrap"
+        filtered: true
       - id: author
         name: Author
+        filtered: true
       - id: rating
         name: Rating
       - id: summary
         name: Summary
+    missing_value: n/a
     data:
       - group: 2005
       - title: "The Clockmaker of Hollow Street"
@@ -58,6 +61,8 @@ params:
         author: "Rafael Mendoza"
         rating: 4/5
         summary: "A young thief steals a philosopher’s stone and is forced to partner with an aging alchemist to prevent immortality from falling into tyrannical hands."
+      - title: "Skis Against The Atom"
+
 
 ---
 {{< datatable "books" >}}

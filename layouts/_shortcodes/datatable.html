@@ -2,19 +2,26 @@
 
 {{ if $key }}
 
-    {{ $items := index .Page.Params $key }}
+    {{ $content := index .Page.Params $key }}
 
-    {{ if $items }}
-        <table class="datatable">
+    {{ if $content }}
+
+        {{ $missing_value := "missing value" }}
+        {{ if isset $content "missing_value" }}{{ $missing_value = index $content "missing_value" }}{{ end }}
+
+        <table id="datatable" class="datatable">
             <thead>
                 <tr>
-                {{ range $items.keys }}
-                  <td>{{ .name }}</td>
+                {{ range $content.keys }}
+                  <th onclick="toggleInput(this)">
+                      {{ .name }}
+                      <br /><input type="text" onkeyup="filterTable()" placeholder="{{ .name }}">
+                  </th>
                 {{ end }}
                 </tr>
             </thead>
             <tbody>
-            {{ range $items.data }}
+            {{ range $content.data }}
                 {{ $item := . }}
                 {{ if $item.group }}
                     <tr class="group">
@@ -22,12 +29,12 @@
                     <tr>
                 {{ else }}
                     <tr>
-                    {{ range $items.keys }}
+                    {{ range $content.keys }}
                         {{ $id := .id }}
                         {{ $highlight := .highlight }}
                         {{ $style := .style }}
                         <td {{- if eq $highlight true }} class="highlight"{{- end -}}{{- if $style }} style="{{ $style }}"{{- end -}}>
-                            {{ if isset $item $id }}{{ index $item $id }}{{ else }}missing value{{ end }}
+                            {{ if isset $item $id }}{{ index $item $id }}{{ else }}{{ $missing_value }}{{ end }}
                         </td>
                     {{ end }}
                     </tr>
@@ -35,6 +42,52 @@
             {{ end }}
             </tbody>
         </table>
+
+        <script>
+            function normalize(str) {
+                return str
+                    .toLowerCase()
+                .normalize("NFD")            // split accents from letters
+                .replace(/[\u0300-\u036f]/g, ""); // remove accents
+            }
+
+            // Toggle the visibility of the input in the clicked header
+            function toggleInput(th) {
+                th.classList.toggle("active");
+                const input = th.querySelector("input");
+                if (th.classList.contains("active")) {
+                    //input.style.display = "inline-block";
+                    input.focus();
+                } else {
+                    input.value = "";
+                    filterTable();
+                }
+            }
+
+            function filterTable() {
+              const table = document.getElementById("datatable");
+              const rows = table.getElementsByTagName("tr");
+              const inputs = table.querySelectorAll("thead input");
+
+              for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                let visible = true;
+
+                for (let j = 0; j < inputs.length; j++) {
+                  const filter = normalize(inputs[j].value);
+                  if (filter) {
+                    const cellText = cells[j] ? normalize(cells[j].innerText) : "";
+                    if (!cellText.includes(filter)) {
+                      visible = false;
+                      break;
+                    }
+                  }
+                }
+                rows[i].style.display = visible ? "" : "none";
+              }
+            }
+            </script>
+
     {{ else }}
         <p>No parameter "{{ $key }}" exists in page parameters.</p>
     {{ end }}

@@ -532,19 +532,20 @@ table.datatable {
     width: 100%;
 }
 
-.datatable td {
+.datatable td, .datatable th {
     padding-top: 2px;
     padding-bottom: 2px;
     padding-right: 10px;
     font-size: 10pt;
     vertical-align: top;
+    text-align: left;
 }
 
 .datatable td.highlight {
     font-weight: bold;
 }
 
-.datatable thead td {
+.datatable th {
     font-style: italic;
     border-bottom: 1px solid black;
 }
@@ -552,6 +553,26 @@ table.datatable {
 .datatable .group td {
     font-size: 12pt;
     padding-top: 10px;
+}
+
+/* hidden by default */
+.datatable th input {
+    display: none;
+    width: 95%;
+    margin-top: 4px;
+}
+
+.datatable th.active input {
+    display: inline-block;
+}
+
+.datatable th {
+    cursor: pointer;
+}
+
+.datatable input, select {
+    font-size: 10pt;
+    border: 1px solid #666;
 }
 
 /**************************************** fix unsemantic */
