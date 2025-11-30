@@ -9,17 +9,29 @@ without setting any type
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;let&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;x&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;x&lt;/span&gt; &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;console&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;x&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Data Table</title><link>https://mnezerka.github.io/wanderer/features/datatable/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/datatable/</guid><description>&lt;table class="datatable"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Data Table</title><link>https://mnezerka.github.io/wanderer/features/datatable/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/datatable/</guid><description>&lt;table id="datatable" class="datatable"&gt;
  &lt;thead&gt;
  &lt;tr&gt;
  
- &lt;td&gt;Title&lt;/td&gt;
+ &lt;th onclick="toggleInput(this)"&gt;
+ Title
+ &lt;br /&gt;&lt;input type="text" onkeyup="filterTable()" placeholder="Title"&gt;
+ &lt;/th&gt;
  
- &lt;td&gt;Author&lt;/td&gt;
+ &lt;th onclick="toggleInput(this)"&gt;
+ Author
+ &lt;br /&gt;&lt;input type="text" onkeyup="filterTable()" placeholder="Author"&gt;
+ &lt;/th&gt;
  
- &lt;td&gt;Rating&lt;/td&gt;
+ &lt;th onclick="toggleInput(this)"&gt;
+ Rating
+ &lt;br /&gt;&lt;input type="text" onkeyup="filterTable()" placeholder="Rating"&gt;
+ &lt;/th&gt;
  
- &lt;td&gt;Summary&lt;/td&gt;
+ &lt;th onclick="toggleInput(this)"&gt;
+ Summary
+ &lt;br /&gt;&lt;input type="text" onkeyup="filterTable()" placeholder="Summary"&gt;
+ &lt;/th&gt;
  
  &lt;/tr&gt;
  &lt;/thead&gt;
@@ -389,8 +401,88 @@ without setting any type
  &lt;/tr&gt;
  
  
+ 
+ 
+ &lt;tr&gt;
+ 
+ 
+ 
+ 
+ &lt;td class="highlight" style="white-space: nowrap"&gt;
+ Skis Against The Atom
+ &lt;/td&gt;
+ 
+ 
+ 
+ 
+ &lt;td&gt;
+ n/a
+ &lt;/td&gt;
+ 
+ 
+ 
+ 
+ &lt;td&gt;
+ n/a
+ &lt;/td&gt;
+ 
+ 
+ 
+ 
+ &lt;td&gt;
+ n/a
+ &lt;/td&gt;
+ 
+ &lt;/tr&gt;
+ 
+ 
  &lt;/tbody&gt;
- &lt;/table&gt;</description></item><item><title>Documents</title><link>https://mnezerka.github.io/wanderer/features/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/documents/</guid><description>&lt;p&gt;This is page content. All documents stored in &lt;code&gt;docs&lt;/code&gt; subdirectory are listed
+ &lt;/table&gt;
+
+ &lt;script&gt;
+ function normalize(str) {
+ return str
+ .toLowerCase()
+ .normalize("NFD") 
+ .replace(/[\u0300-\u036f]/g, ""); 
+ }
+
+ 
+ function toggleInput(th) {
+ th.classList.toggle("active");
+ const input = th.querySelector("input");
+ if (th.classList.contains("active")) {
+ 
+ input.focus();
+ } else {
+ input.value = "";
+ filterTable();
+ }
+ }
+
+ function filterTable() {
+ const table = document.getElementById("datatable");
+ const rows = table.getElementsByTagName("tr");
+ const inputs = table.querySelectorAll("thead input");
+
+ for (let i = 1; i &lt; rows.length; i++) {
+ const cells = rows[i].getElementsByTagName("td");
+ let visible = true;
+
+ for (let j = 0; j &lt; inputs.length; j++) {
+ const filter = normalize(inputs[j].value);
+ if (filter) {
+ const cellText = cells[j] ? normalize(cells[j].innerText) : "";
+ if (!cellText.includes(filter)) {
+ visible = false;
+ break;
+ }
+ }
+ }
+ rows[i].style.display = visible ? "" : "none";
+ }
+ }
+ &lt;/script&gt;</description></item><item><title>Documents</title><link>https://mnezerka.github.io/wanderer/features/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/documents/</guid><description>&lt;p&gt;This is page content. All documents stored in &lt;code&gt;docs&lt;/code&gt; subdirectory are listed
 below this paragraph.&lt;/p&gt;
 
 
