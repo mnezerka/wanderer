@@ -1,3 +1,9 @@
+{{ $parent := . }}
+
+{{ with .Page.Resources.ByType "image" -}}
+  {{- $parent.Scratch.Set "sorted" (sort . ".Params.weight" "asc") -}}
+{{- end -}}
+
 <style>
     .svelte-gallery {
         overflow: auto;
@@ -10,9 +16,7 @@
 
     let images =[];
 
-    {{ with .Page.Resources.ByType "image" -}}
-        {{- $sorted := sort . ".Params.weight" "asc" -}}
-        {{- range $sorted}}
+    {{- range $parent.Scratch.Get "sorted" }}
             {{- $resized := .Resize "x180 q80" }}
     images.push({
         src: "{{ .Permalink }}",
@@ -21,7 +25,6 @@
         thumbnail_height: {{ $resized.Height }},
         title: "{{ .Title }}"
     });
-        {{ end -}}
     {{- end -}}
 
     g = new Gallery({
@@ -31,3 +34,12 @@
         }
     })
 </script>
+
+<div class="gallery-raw">
+    {{- range $parent.Scratch.Get "sorted" }}
+    <div class="figure">
+        <img src="{{- .Permalink -}}" alt="{{- .Title -}}" />
+        <div class="caption">{{- .Title -}}</div>
+    </div>
+    {{- end -}}
+</div>
