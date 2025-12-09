@@ -8,14 +8,8 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
-    <!--<link rel="stylesheet" href="{{ "css/unsemantic-grid-responsive.css" | absURL }}"> -->
-    <link rel="stylesheet" href="{{ "css/global.css" | absURL }}">
-
-    <!--
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
-    -->
+    {{ $css := resources.Get "css/global.css" | fingerprint "md5" }}
+    <link rel="stylesheet" href="{{ $css.Permalink }}">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -37,10 +31,17 @@
     <script src="{{ "leaflet-awesome-markers/leaflet.awesome-markers.js" | absURL }}"></script>
     <link rel="stylesheet" href="{{ "leaflet-awesome-markers/leaflet.awesome-markers.css" | absURL }}">
 
-    <link rel="stylesheet" href="{{ "css/maps.css" | absURL }}">
-    <script src="{{ "js/maps.js?v1" | absURL }}"></script>
-    <script src="{{ "js/maps-leaflet.js?v1" | absURL }}"></script>
-    <script src="{{ "js/geonet.js?v1" | absURL }}"></script>
+    {{ $css = resources.Get "css/maps.css" | fingerprint "md5" }}
+    <link rel="stylesheet" href="{{ $css.Permalink }}">
+
+    {{ $js := resources.Get "js/maps.js" | fingerprint "md5" }}
+    <script src="{{ $js.Permalink }}"></script>
+
+    {{ $js := resources.Get "js/maps-leaflet.js" | fingerprint "md5" }}
+    <script src="{{ $js.Permalink }}"></script>
+
+    {{ $js := resources.Get "js/geonet.js" | fingerprint "md5" }}
+    <script src="{{ $js.Permalink }}"></script>
 
     {{- if (eq site.Params.mapClustering "yes") -}}
     <!-- leaflet marker clusterer - https://github.com/Leaflet/Leaflet.markercluster -->
