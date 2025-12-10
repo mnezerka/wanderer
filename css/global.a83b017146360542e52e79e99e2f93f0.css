@@ -235,7 +235,7 @@ pre {
   padding-bottom: 0px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
 
   .entry-gallery {
       padding-left: 0px;
@@ -362,7 +362,7 @@ img.size-full {
     flex-grow: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
 
     .site-content {
         display: flex;
@@ -370,7 +370,7 @@ img.size-full {
     }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1000px) {
 
     .site-content {
         margin-left: auto;
@@ -589,7 +589,7 @@ table.datatable {
     display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .gallery-raw {
         display: flex;
         flex-direction: column;
@@ -610,7 +610,7 @@ table.datatable {
 }
 
 /**************************************** svelte gallery */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
 
     .svelte-gallery {
         display: none;
@@ -619,7 +619,7 @@ table.datatable {
 /**************************************** fix unsemantic */
 
 /* this fix removes side padding on mobile phone views */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .grid-container, .mobile-grid-100 {
         padding-left: 0px;
         padding-right: 0px;
