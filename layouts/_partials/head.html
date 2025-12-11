@@ -8,8 +8,9 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
-    {{ $css := resources.Get "css/global.css" | fingerprint "md5" }}
-    <link rel="stylesheet" href="{{ $css.Permalink }}">
+    {{ $res := resources.Get "css/global.css" }}
+    {{ $resfp := $res | fingerprint "md5" }}
+    <link rel="stylesheet" href="{{ $res.Permalink }}?v={{ $resfp.Data.Integrity }}">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -31,17 +32,21 @@
     <script src="{{ "leaflet-awesome-markers/leaflet.awesome-markers.js" | absURL }}"></script>
     <link rel="stylesheet" href="{{ "leaflet-awesome-markers/leaflet.awesome-markers.css" | absURL }}">
 
-    {{ $css = resources.Get "css/maps.css" | fingerprint "md5" }}
-    <link rel="stylesheet" href="{{ $css.Permalink }}">
+    {{ $res = resources.Get "css/maps.css" }}
+    {{ $resfp = $res | fingerprint "md5" }}
+    <link rel="stylesheet" href="{{ $res.RelPermalink }}?v={{ $resfp.Data.Integrity }}">
 
-    {{ $js := resources.Get "js/maps.js" | fingerprint "md5" }}
-    <script src="{{ $js.Permalink }}"></script>
+    {{ $res := resources.Get "js/maps.js" }}
+    {{ $resfp = $res | fingerprint "md5" }}
+    <script src="{{ $res.Permalink }}?v={{ $resfp.Data.Integrity }}"></script>
 
-    {{ $js := resources.Get "js/maps-leaflet.js" | fingerprint "md5" }}
-    <script src="{{ $js.Permalink }}"></script>
+    {{ $res := resources.Get "js/maps-leaflet.js" }}
+    {{ $resfp = $res | fingerprint "md5" }}
+    <script src="{{ $res.Permalink }}?v={{ $resfp.Data.Integrity }}"></script>
 
-    {{ $js := resources.Get "js/geonet.js" | fingerprint "md5" }}
-    <script src="{{ $js.Permalink }}"></script>
+    {{ $res := resources.Get "js/geonet.js" }}
+    {{ $resfp = $res | fingerprint "md5" }}
+    <script src="{{ $res.Permalink }}?v={{ $resfp.Data.Integrity }}"></script>
 
     {{- if (eq site.Params.mapClustering "yes") -}}
     <!-- leaflet marker clusterer - https://github.com/Leaflet/Leaflet.markercluster -->
