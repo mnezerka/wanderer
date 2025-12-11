@@ -13,21 +13,29 @@ without setting any type
  &lt;thead&gt;
  &lt;tr&gt;
  
+ 
+
  &lt;th onclick="toggleInput(this)"&gt;
  Title
  &lt;br /&gt;&lt;input type="text" onkeyup="filterTable()" placeholder="Title"&gt;
  &lt;/th&gt;
  
+ 
+
  &lt;th onclick="toggleInput(this)"&gt;
  Author
  &lt;br /&gt;&lt;input type="text" onkeyup="filterTable()" placeholder="Author"&gt;
  &lt;/th&gt;
  
+ 
+
  &lt;th onclick="toggleInput(this)"&gt;
  Rating
  &lt;br /&gt;&lt;input type="text" onkeyup="filterTable()" placeholder="Rating"&gt;
  &lt;/th&gt;
  
+ 
+
  &lt;th onclick="toggleInput(this)"&gt;
  Summary
  &lt;br /&gt;&lt;input type="text" onkeyup="filterTable()" placeholder="Summary"&gt;
@@ -37,6 +45,7 @@ without setting any type
  &lt;/thead&gt;
  &lt;tbody&gt;
  
+
  
  
  &lt;tr class="group"&gt;
@@ -44,11 +53,25 @@ without setting any type
  &lt;tr&gt;
  
  
+
  
  
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+
  &lt;tr&gt;
  
  
+
+ 
+
  
  
  &lt;td class="highlight" style="white-space: nowrap"&gt;
@@ -56,6 +79,9 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -63,13 +89,19 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
- 4/5
+ 4
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -79,11 +111,25 @@ without setting any type
  &lt;/tr&gt;
  
  
+
  
  
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+
  &lt;tr&gt;
  
  
+
+ 
+
  
  
  &lt;td class="highlight" style="white-space: nowrap"&gt;
@@ -91,6 +137,9 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -98,13 +147,19 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
- 4/5
+ 2
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -114,11 +169,25 @@ without setting any type
  &lt;/tr&gt;
  
  
+
  
  
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+
  &lt;tr&gt;
  
  
+
+ 
+
  
  
  &lt;td class="highlight" style="white-space: nowrap"&gt;
@@ -126,6 +195,9 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -133,13 +205,19 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
- 4/5
+ 2
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -149,11 +227,25 @@ without setting any type
  &lt;/tr&gt;
  
  
+
  
  
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+
  &lt;tr&gt;
  
  
+
+ 
+
  
  
  &lt;td class="highlight" style="white-space: nowrap"&gt;
@@ -161,6 +253,9 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -168,13 +263,19 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
- 4/5
+ 3
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -184,11 +285,25 @@ without setting any type
  &lt;/tr&gt;
  
  
+
  
  
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+
  &lt;tr&gt;
  
  
+
+ 
+
  
  
  &lt;td class="highlight" style="white-space: nowrap"&gt;
@@ -196,6 +311,9 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -203,13 +321,19 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
- 4/5
+ 4
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -219,6 +343,7 @@ without setting any type
  &lt;/tr&gt;
  
  
+
  
  
  &lt;tr class="group"&gt;
@@ -226,11 +351,25 @@ without setting any type
  &lt;tr&gt;
  
  
+
  
  
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+
  &lt;tr&gt;
  
  
+
+ 
+
  
  
  &lt;td class="highlight" style="white-space: nowrap"&gt;
@@ -238,6 +377,9 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -245,13 +387,19 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
- 4/5
+ 5
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -261,11 +409,25 @@ without setting any type
  &lt;/tr&gt;
  
  
+
  
  
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+
  &lt;tr&gt;
  
  
+
+ 
+
  
  
  &lt;td class="highlight" style="white-space: nowrap"&gt;
@@ -273,6 +435,9 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -280,13 +445,19 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
- 4/5
+ 4
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -296,11 +467,25 @@ without setting any type
  &lt;/tr&gt;
  
  
+
  
  
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+
  &lt;tr&gt;
  
  
+
+ 
+
  
  
  &lt;td class="highlight" style="white-space: nowrap"&gt;
@@ -308,6 +493,9 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -315,13 +503,19 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
- 4/5
+ 4
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -331,11 +525,25 @@ without setting any type
  &lt;/tr&gt;
  
  
+
  
  
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+
  &lt;tr&gt;
  
  
+
+ 
+
  
  
  &lt;td class="highlight" style="white-space: nowrap"&gt;
@@ -343,6 +551,9 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -350,13 +561,19 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
- 4/5
+ 5
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -366,11 +583,25 @@ without setting any type
  &lt;/tr&gt;
  
  
+
  
  
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+
  &lt;tr&gt;
  
  
+
+ 
+
  
  
  &lt;td class="highlight" style="white-space: nowrap"&gt;
@@ -378,6 +609,9 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -385,13 +619,19 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
- 4/5
+ 5
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -401,11 +641,25 @@ without setting any type
  &lt;/tr&gt;
  
  
+
  
  
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+
  &lt;tr&gt;
  
  
+
+ 
+
  
  
  &lt;td class="highlight" style="white-space: nowrap"&gt;
@@ -413,6 +667,9 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -420,6 +677,9 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -427,6 +687,9 @@ without setting any type
  &lt;/td&gt;
  
  
+
+ 
+
  
  
  &lt;td&gt;
@@ -437,9 +700,9 @@ without setting any type
  
  
  &lt;/tbody&gt;
- &lt;/table&gt;
+&lt;/table&gt;
 
- &lt;script&gt;
+&lt;script&gt;
  function normalize(str) {
  return str
  .toLowerCase()
@@ -452,7 +715,6 @@ without setting any type
  th.classList.toggle("active");
  const input = th.querySelector("input");
  if (th.classList.contains("active")) {
- 
  input.focus();
  } else {
  input.value = "";
@@ -482,7 +744,587 @@ without setting any type
  rows[i].style.display = visible ? "" : "none";
  }
  }
- &lt;/script&gt;</description></item><item><title>Documents</title><link>https://mnezerka.github.io/wanderer/features/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/documents/</guid><description>&lt;p&gt;This is page content. All documents stored in &lt;code&gt;docs&lt;/code&gt; subdirectory are listed
+&lt;/script&gt;</description></item><item><title>Data Table Remote</title><link>https://mnezerka.github.io/wanderer/features/datatable-remote/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/datatable-remote/</guid><description>&lt;table id="datatable" class="datatable"&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ 
+ 
+ 
+ 
+
+ &lt;th onclick="toggleInput(this)"&gt;
+ Title
+ &lt;br /&gt;&lt;input type="text" onkeyup="filterTable()" placeholder="Title"&gt;
+ &lt;/th&gt;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+
+ &lt;tr&gt;
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ &lt;td class="highlight" style="white-space: nowrap"&gt;
+ The Clockmaker of Hollow Street
+ &lt;/td&gt;
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ &lt;/tr&gt;
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;script&gt;
+ function normalize(str) {
+ return str
+ .toLowerCase()
+ .normalize("NFD") 
+ .replace(/[\u0300-\u036f]/g, ""); 
+ }
+
+ 
+ function toggleInput(th) {
+ th.classList.toggle("active");
+ const input = th.querySelector("input");
+ if (th.classList.contains("active")) {
+ input.focus();
+ } else {
+ input.value = "";
+ filterTable();
+ }
+ }
+
+ function filterTable() {
+ const table = document.getElementById("datatable");
+ const rows = table.getElementsByTagName("tr");
+ const inputs = table.querySelectorAll("thead input");
+
+ for (let i = 1; i &lt; rows.length; i++) {
+ const cells = rows[i].getElementsByTagName("td");
+ let visible = true;
+
+ for (let j = 0; j &lt; inputs.length; j++) {
+ const filter = normalize(inputs[j].value);
+ if (filter) {
+ const cellText = cells[j] ? normalize(cells[j].innerText) : "";
+ if (!cellText.includes(filter)) {
+ visible = false;
+ break;
+ }
+ }
+ }
+ rows[i].style.display = visible ? "" : "none";
+ }
+ }
+&lt;/script&gt;</description></item><item><title>Documents</title><link>https://mnezerka.github.io/wanderer/features/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/documents/</guid><description>&lt;p&gt;This is page content. All documents stored in &lt;code&gt;docs&lt;/code&gt; subdirectory are listed
 below this paragraph.&lt;/p&gt;
 
 
