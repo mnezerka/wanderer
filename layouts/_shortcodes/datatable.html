@@ -1,96 +1,199 @@
-{{ $key := .Get 0 }}
+{{/*
+- key         (required) - name of the page parameter with data to be shown
+- page        (optional) - path to page with parameters, this allows to read data from other page
+- filter      (optional) - AND separated by commas; OR separated by |
+- showgroups  (optional) - render groups/sections (default is true)
+- columns     (optional) - render only selected columns (render all by default)
+*/}}
 
-{{ if $key }}
+{{ $key := .Get "key" }}
+{{ $pageParam := .Get "page" }}
+{{ $filterParam := .Get "filter" }}
+{{ $showGroups := .Get "showgroups" | default true }}
+{{ $columns := .Get "columns" }}
 
-    {{ $content := index .Page.Params $key }}
+{{/* --- KEY IS REQUIRED --- */}}
+{{ if not $key }}
+    {{ errorf "Shortcode 'datatable' requires parameter 'key' (at page %s)" .Page.Path }}
+    {{ return }}
+{{ end }}
 
-    {{ if $content }}
+{{/* --- PROCESS COLUMNS --- */}}
+{{/* Skip this item if not matched */}}
+{{ if $columns }}
+    {{ $columns := split $columns "," }}
+{{ end }}
 
-        {{ $missing_value := "missing value" }}
-        {{ if isset $content "missing_value" }}{{ $missing_value = index $content "missing_value" }}{{ end }}
+{{/* DETECT TARGET PAGE: either referenced page or current page */}}
+{{ $page := .Page }}  {{/* default: current page */}}
 
-        <table id="datatable" class="datatable">
-            <thead>
-                <tr>
-                {{ range $content.keys }}
-                  <th onclick="toggleInput(this)">
-                      {{ .name }}
-                      <br /><input type="text" onkeyup="filterTable()" placeholder="{{ .name }}">
-                  </th>
-                {{ end }}
-                </tr>
-            </thead>
-            <tbody>
-            {{ range $content.data }}
-                {{ $item := . }}
-                {{ if $item.group }}
-                    <tr class="group">
-                        <td>{{ $item.group }}</td>
-                    <tr>
-                {{ else }}
-                    <tr>
-                    {{ range $content.keys }}
-                        {{ $id := .id }}
-                        {{ $highlight := .highlight }}
-                        {{ $style := .style }}
-                        <td {{- if eq $highlight true }} class="highlight"{{- end -}}{{- if $style }} style="{{ $style }}"{{- end -}}>
-                            {{ if isset $item $id }}{{ index $item $id }}{{ else }}{{ $missing_value }}{{ end }}
-                        </td>
-                    {{ end }}
-                    </tr>
+{{ if $pageParam }}
+    {{ $resolved := site.GetPage $pageParam }}
+    {{ if $resolved }}
+        {{ $page = $resolved }}
+    {{ else }}
+        {{ errorf "Shortcode 'datatable': page '%s' not found" $pageParam }}
+    {{ end }}
+{{ end }}
+
+{{/* --- DATA KEY PARAM MUST EXIST --- */}}
+{{ $items := index $page.Params $key }}
+{{ if not $items }}
+    {{ errorf "Shortcode 'datatable': parameter '%s' doesn't exist " $key}}
+    {{ return }}
+{{ end }}
+
+{{/* --- FILTER PROCESSING (parse filters only once --- */}}
+{{ $parsedFilters := slice }}
+
+{{ if $filterParam }}
+
+    {{ $andFilters := split $filterParam "," }}
+
+    {{ range $andFilters }}
+        {{ $eq := split . "=" }}
+
+        {{ if ne (len $eq) 2 }}
+            {{ errorf "Invalid filter '%s'. Expected key=value or key=a|b" . }}
+            {{ return }}
+        {{ end }}
+
+        {{ $fKey := index $eq 0 }}
+        {{ $fValues := split (index $eq 1) "|" }}
+
+        {{/* Store parsed filter as a dict */}}
+        {{ $parsedFilters = $parsedFilters | append (dict
+            "key" $fKey
+            "values" $fValues
+        ) }}
+    {{ end }}
+
+{{ end }}
+
+{{ $missing_value := "missing value" }}
+{{ if isset $items "missing_value" }}{{ $missing_value = index $items "missing_value" }}{{ end }}
+
+<table id="datatable" class="datatable">
+    <thead>
+        <tr>
+        {{ range $items.keys }}
+            {{ if $columns }}
+                {{ if not (in $columns .id ) }}
+                    {{ continue }}
                 {{ end }}
             {{ end }}
-            </tbody>
-        </table>
 
-        <script>
-            function normalize(str) {
-                return str
-                    .toLowerCase()
-                .normalize("NFD")            // split accents from letters
-                .replace(/[\u0300-\u036f]/g, ""); // remove accents
-            }
+          <th onclick="toggleInput(this)">
+              {{ .name }}
+              <br /><input type="text" onkeyup="filterTable()" placeholder="{{ .name }}">
+          </th>
+        {{ end }}
+        </tr>
+    </thead>
+    <tbody>
+    {{ range $item := $items.data }}
 
-            // Toggle the visibility of the input in the clicked header
-            function toggleInput(th) {
-                th.classList.toggle("active");
-                const input = th.querySelector("input");
-                if (th.classList.contains("active")) {
-                    //input.style.display = "inline-block";
-                    input.focus();
-                } else {
-                    input.value = "";
-                    filterTable();
-                }
-            }
+        {{/* RENDER GROUPS/SECTIONS */}}
+        {{ if and $showGroups $item.group }}
+            <tr class="group">
+                <td>{{ $item.group }}</td>
+            <tr>
+        {{ else }}
+            {{/* PROCESS DATA ROW */}}
 
-            function filterTable() {
-              const table = document.getElementById("datatable");
-              const rows = table.getElementsByTagName("tr");
-              const inputs = table.querySelectorAll("thead input");
+            {{ $match := true }}
 
-              for (let i = 1; i < rows.length; i++) {
-                const cells = rows[i].getElementsByTagName("td");
-                let visible = true;
+            {{/* Apply all AND-filters to this item */}}
+            {{ range $f := $parsedFilters }}
 
-                for (let j = 0; j < inputs.length; j++) {
-                  const filter = normalize(inputs[j].value);
-                  if (filter) {
-                    const cellText = cells[j] ? normalize(cells[j].innerText) : "";
-                    if (!cellText.includes(filter)) {
-                      visible = false;
-                      break;
-                    }
-                  }
-                }
-                rows[i].style.display = visible ? "" : "none";
-              }
-            }
-            </script>
+                {{ $itemValue := index $item ($f.key) }}
 
-    {{ else }}
-        <p>No parameter "{{ $key }}" exists in page parameters.</p>
+                {{ if not $itemValue }}
+                    {{ $match = false }}
+                {{ else }}
+
+                    {{/* OR logic */}}
+                    {{ $passed := false }}
+                    {{ range $val := $f.values }}
+                        {{ if eq (string $itemValue) (string ($val)) }}
+                            {{ $passed = true }}
+                        {{ end }}
+                    {{ end }}
+
+                    {{ if not $passed }}
+                        {{ $match = false }}
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+
+            {{/* Skip this item if not matched */}}
+            {{ if not $match }}
+                {{ continue }}
+            {{ end }}
+
+            <tr>
+            {{ range $items.keys }}
+                {{ $id := .id }}
+
+                {{ if $columns }}
+                    {{ if not (in $columns $id) }}
+                        {{ continue }}
+                    {{ end }}
+                {{ end }}
+
+                {{ $highlight := .highlight }}
+                {{ $style := .style }}
+                <td {{- if eq $highlight true }} class="highlight"{{- end -}}{{- if $style }} style="{{ $style }}"{{- end -}}>
+                    {{ if isset $item $id }}{{ index $item $id }}{{ else }}{{ $missing_value }}{{ end }}
+                </td>
+            {{ end }}
+            </tr>
+        {{ end }}
     {{ end }}
-{{ else }}
-    <p>No shortcode parameter specified. The data table shortcode requires name of the front header parameter.</p>
-{{ end }}
+    </tbody>
+</table>
+
+<script>
+    function normalize(str) {
+        return str
+            .toLowerCase()
+        .normalize("NFD")                  // split accents from letters
+        .replace(/[\u0300-\u036f]/g, "");  // remove accents
+    }
+
+    // Toggle the visibility of the input in the clicked header
+    function toggleInput(th) {
+        th.classList.toggle("active");
+        const input = th.querySelector("input");
+        if (th.classList.contains("active")) {
+            input.focus();
+        } else {
+            input.value = "";
+            filterTable();
+        }
+    }
+
+    function filterTable() {
+      const table = document.getElementById("datatable");
+      const rows = table.getElementsByTagName("tr");
+      const inputs = table.querySelectorAll("thead input");
+
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        let visible = true;
+
+        for (let j = 0; j < inputs.length; j++) {
+          const filter = normalize(inputs[j].value);
+          if (filter) {
+            const cellText = cells[j] ? normalize(cells[j].innerText) : "";
+            if (!cellText.includes(filter)) {
+              visible = false;
+              break;
+            }
+          }
+        }
+        rows[i].style.display = visible ? "" : "none";
+      }
+    }
+</script>
+
