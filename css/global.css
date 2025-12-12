@@ -428,23 +428,30 @@ img.size-full {
     display: flex;
     flex-direction: row;
     margin-bottom: 15px;
+    background-size: cover;       /* Scale image to cover entire box */
+    background-position: center;  /* Center the image */
+    background-repeat: no-repeat;
+    position: relative;           /* Required for overlay content */
+    border-radius: 10px;        /* Optional styling */
+    overflow: hidden;             /* Optional, keeps edges clean */
 }
 
-.list.frames .list-item .item-text {
-    padding-left: 10px;
+.list.frames .list-item .content {
+  width: 100%;
+  padding: 15px;
+  background: rgba(0,0,0,0.45);  /* Semi-transparent dark overlay for readability */
+  color: white;
 }
 
-.list.frames .list-item .item-text h2 {
+.list.frames .list-item .content h2 {
     margin-top: 0;
+    font-size: 19pt;
+    text-transform: uppercase;
 }
 
-.list.frames .list-item .item-text h2 a {
+.list.frames .list-item .content h2 a {
     text-decoration: none;
-    font-size: 26px;
-}
-
-.list.frames .list-item .featured-image {
-    min-width: 230px;
+    color: white;
 }
 
 /**************************************** list - gallery */
