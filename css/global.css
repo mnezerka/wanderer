@@ -424,6 +424,12 @@ img.size-full {
 
 }
 
+.list.frames .list-item-link {
+    display: box;
+    text-decoration: none;
+    color: inherit;
+}
+
 .list.frames .list-item {
     display: flex;
     min-height: 230px;
