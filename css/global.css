@@ -426,7 +426,7 @@ img.size-full {
 
 .list.frames .list-item {
     display: flex;
-    flex-direction: row;
+    min-height: 230px;
     margin-bottom: 15px;
     background-size: cover;       /* Scale image to cover entire box */
     background-position: center;  /* Center the image */
@@ -439,7 +439,7 @@ img.size-full {
 .list.frames .list-item .content {
   width: 100%;
   padding: 15px;
-  background: rgba(0,0,0,0.45);  /* Semi-transparent dark overlay for readability */
+  background: rgba(0,0,0,0.35);  /* Semi-transparent dark overlay for readability */
   color: white;
 }
 
