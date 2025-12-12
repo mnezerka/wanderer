@@ -437,16 +437,18 @@ img.size-full {
 }
 
 .list.frames .list-item .content {
-  width: 100%;
-  padding: 15px;
-  background: rgba(0,0,0,0.35);  /* Semi-transparent dark overlay for readability */
-  color: white;
+    width: 100%;
+    padding: 15px;
+    background: rgba(0,0,0,0.35);  /* Semi-transparent dark overlay for readability */
+    color: white;
+    font-weight: 100;
 }
 
 .list.frames .list-item .content h2 {
     margin-top: 0;
     font-size: 19pt;
     text-transform: uppercase;
+    font-weight: 100;
 }
 
 .list.frames .list-item .content h2 a {
