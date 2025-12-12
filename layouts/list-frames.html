@@ -8,8 +8,11 @@
 
     <div class="entry-content">
         <p>{{ .Content}}</p>
-
-        {{ partial "list-frames" .Pages }}
+        {{ $args := (dict "pages" .Pages) }}
+        {{ if .Params.listframes.showsummary }}
+            {{ $args = merge $args (dict "showsummary" true) }}
+        {{ end }}
+        {{ partial "list-frames" $args }}
     </div>
 
 </article>

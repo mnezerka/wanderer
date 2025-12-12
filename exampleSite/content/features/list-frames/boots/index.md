@@ -1,7 +1,7 @@
 ---
 title: Boots
 resources:
-- { src: "images/boots.jpg", title: "My boots", params: {weight: 10, featured: true}}
+- { src: "images/boots.jpg", title: "My boots", params: {weight: 10, featuredx: false}}
 summary: Which boots for hiking?
 ---
 My hiking boots are a key part of my travel gear—sturdy, comfortable, and built

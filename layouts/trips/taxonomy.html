@@ -8,7 +8,7 @@
     <div class="entry-content">
         <p>{{ .Content}}</p>
 
-        {{ partial "list-frames" .Pages }}
+        {{ partial "list-frames" (dict "pages" .Pages) }}
     </div>
 </article>
 {{ end }}

@@ -1,30 +1,39 @@
+{{/*
+this partial accepts single parameter of type dict:
+- pages (required) - list of pages to show
+- showsummary (optional) - show summary (default false)
+*/}}
 
-    <div class="list frames">
+{{ $args := . }}
 
-        {{ range . }}
+<div class="list frames">
+    {{ range $args.pages }}
 
-            {{ $link := .Permalink }}
-            <div class="list-item">
+        {{ $link := .Permalink }}
+        {{ $img := false }}
 
-                {{/* featured image */}}
-                {{ range .Resources.ByType "image"}}
-                    {{ if isset .Params "featured" }}
-                        {{ $resized := .Fill "230x230 q100"}}
-                        <div class="featured-image">
-                            <a href="{{ $link }}">
-                                <img src="{{ $resized.Permalink }}" alt="{{ .Title}}" />
-                            </a>
-                        </div>
-                    {{ end }}
-                {{ end }}
-
-                <div class="item-text">
-                    <h2><a href="{{ $link }}">{{ .Title }}</a></h2>
-                    <p class="summary">{{ .Summary | plainify }}</p>
-                </div>
-
-            </div>
-
+        {{/* look for first featured image */}}
+        {{ range .Resources.ByType "image"}}
+            {{ if and (isset .Params "featured") (.Params.featured) }}
+                 {{ $img = . }}
+                 {{ break }}
+            {{ end }}
         {{ end }}
 
-    </div>
+        {{ if not $img }}
+            {{ warnf "Template 'list-frames' requires featured image for each item. Not found for '%s (%s)'" .Title .File.Path }}
+        {{ end }}
+
+        <a href="{{ $link }}" class="list-item-link">
+            <div class="list-item" {{- if $img -}}style="background-image: url('{{ $img.Permalink }}')"{{- end -}}>
+                <div class="content">
+                    <h2>{{ .Title }}</h2>
+                    {{ if $args.showsummary }}
+                    <p class="summary">{{ .Summary | plainify }}</p>
+                    {{ end }}
+                </div>
+            </div>
+        </a>
+
+    {{ end }}
+</div>
