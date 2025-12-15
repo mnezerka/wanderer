@@ -533,11 +533,11 @@ figure img {
     margin-bottom: 10px;
 }
 
-.entry-content figure img {
+.entry-content figure:not(.real) img {
     width: 100%;
 }
 
-.entry-content figure img .real {
+.entry-content figure.real img {
     width: auto;
 }
 
