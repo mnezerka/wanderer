@@ -4,7 +4,7 @@ html, body {
     margin: 0;
 }
 
-a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, iframe, ins, kbd, label, legend,  object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, var {
+a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, iframe, ins, kbd, label, legend,  object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, var, figure {
     border: 0;
     margin: 0;
     padding: 0;
@@ -529,8 +529,12 @@ figure img {
     margin-right: auto;
 }
 
+.entry-content figure {
+    margin-bottom: 10px;
+}
+
 .entry-content figure img {
-    max-width: 95%;
+    /*max-width: 95%; */
 }
 
 figure figcaption {
