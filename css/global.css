@@ -534,7 +534,7 @@ figure img {
 }
 
 .entry-content figure img {
-    /*max-width: 95%; */
+    width: 100%;
 }
 
 figure figcaption {
