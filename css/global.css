@@ -537,11 +537,15 @@ figure img {
     width: 100%;
 }
 
+.entry-content figure img .real {
+    width: auto;
+}
+
 figure figcaption {
     text-align: center;
 }
 
-figure figcaption h4 {
+figure figcaption h4, figure figcaption p {
     font-size: 13px;
     font-weight: normal;
 }
