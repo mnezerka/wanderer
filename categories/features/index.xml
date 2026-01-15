@@ -15,29 +15,29 @@ without setting any type
  
  
 
- &lt;th onclick="toggleInput(this)"&gt;
- Title
+ &lt;th&gt;
+ &lt;span onclick="toggleInput(this.parentNode)"&gt;Title&lt;/span&gt;
  &lt;br /&gt;&lt;input type="text" onkeyup="filterTable()" placeholder="Title"&gt;
  &lt;/th&gt;
  
  
 
- &lt;th onclick="toggleInput(this)"&gt;
- Author
+ &lt;th&gt;
+ &lt;span onclick="toggleInput(this.parentNode)"&gt;Author&lt;/span&gt;
  &lt;br /&gt;&lt;input type="text" onkeyup="filterTable()" placeholder="Author"&gt;
  &lt;/th&gt;
  
  
 
- &lt;th onclick="toggleInput(this)"&gt;
- Rating
+ &lt;th&gt;
+ &lt;span onclick="toggleInput(this.parentNode)"&gt;Rating&lt;/span&gt;
  &lt;br /&gt;&lt;input type="text" onkeyup="filterTable()" placeholder="Rating"&gt;
  &lt;/th&gt;
  
  
 
- &lt;th onclick="toggleInput(this)"&gt;
- Summary
+ &lt;th&gt;
+ &lt;span onclick="toggleInput(this.parentNode)"&gt;Summary&lt;/span&gt;
  &lt;br /&gt;&lt;input type="text" onkeyup="filterTable()" placeholder="Summary"&gt;
  &lt;/th&gt;
  
@@ -752,8 +752,8 @@ without setting any type
  
  
 
- &lt;th onclick="toggleInput(this)"&gt;
- Title
+ &lt;th&gt;
+ &lt;span onclick="toggleInput(this.parentNode)"&gt;Title&lt;/span&gt;
  &lt;br /&gt;&lt;input type="text" onkeyup="filterTable()" placeholder="Title"&gt;
  &lt;/th&gt;
  
