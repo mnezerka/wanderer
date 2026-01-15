@@ -83,8 +83,8 @@
                 {{ end }}
             {{ end }}
 
-          <th onclick="toggleInput(this)">
-              {{ .name }}
+          <th>
+              <span onclick="toggleInput(this.parentNode)">{{ .name }}</span>
               <br /><input type="text" onkeyup="filterTable()" placeholder="{{ .name }}">
           </th>
         {{ end }}
