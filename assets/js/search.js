@@ -1,11 +1,12 @@
-summaryInclude=60;
+summaryInclude=500;
 var fuseOptions = {
   shouldSort: true,
   includeMatches: true,
+  ignoreDiacritics: true,
+  isCaseSensitive: false,
+  ignoreLocation: true,
   threshold: 0.0,
-  tokenize:true,
-  location: 0,
-  distance: 100,
+  tokenize: true,
   maxPatternLength: 32,
   minMatchCharLength: 1,
   keys: [
@@ -24,11 +25,14 @@ if(searchQuery){
 }
 
 // remove accents from scalar
+/*
 function removeAccents(str) {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
+*/
 
 // remove accents from object
+/*
 function removeAccentsDeepInPlace(obj) {
   if (typeof obj === "string") {
     return removeAccents(obj);
@@ -50,9 +54,10 @@ function removeAccentsDeepInPlace(obj) {
 
   return obj; // numbers, booleans, null, undefined...
 }
+*/
 
 function executeSearch(searchQuery){
-    searchQuery = removeAccents(searchQuery);
+    //searchQuery = removeAccents(searchQuery);
 
     fetch(search_index_url)
         .then(response => {
@@ -63,12 +68,15 @@ function executeSearch(searchQuery){
         })
         .then(data => {
             // convert json - remove accents
-            removeAccentsDeepInPlace(data);
+            //removeAccentsDeepInPlace(data);
+
+            console.log(searchQuery);
+            console.log(data);
 
             var pages = data;
             var fuse = new Fuse(pages, fuseOptions);
             var result = fuse.search(searchQuery);
-            /*console.log({"matches":result});*/
+            console.log({"matches":result});
             if(result.length > 0) {
                 populateResults(result);
             } else {
@@ -81,15 +89,15 @@ function executeSearch(searchQuery){
     });
 }
 
-function populateResults(result){
-  $.each(result,function(key,value){
+function populateResults(result) {
+  $.each(result,function(key,value) {
     var contents= value.item.contents;
     var snippet = "";
     var snippetHighlights=[];
     var tags =[];
-    if( fuseOptions.tokenize ){
+    if (fuseOptions.tokenize) {
       snippetHighlights.push(searchQuery);
-    }else{
+    } else {
       $.each(value.matches,function(matchKey,mvalue){
         if(mvalue.key == "tags" || mvalue.key == "categories" ){
           snippetHighlights.push(mvalue.value);

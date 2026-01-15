@@ -8,11 +8,18 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
 
+    <script>
+        // definition of the URL pointing to fulltext database of site content
+        // it is done this way since absURL is important here, this informaton
+        // (rootURL, absURL) is not known inside js/search.js
+        const search_index_url = "{{ "index.json" | absURL }}";
+    </script>
+
     {{ $res := resources.Get "css/global.css" }}
     {{ $resfp := $res | fingerprint "md5" }}
     <link rel="stylesheet" href="{{ $res.Permalink }}?v={{ $resfp.Data.Integrity }}">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.1.0/fuse.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
     <!-- <script src="{{ "js/search.js" | absURL }}"></script> -->
@@ -48,6 +55,11 @@
     {{ $resfp = $res | fingerprint "md5" }}
     <script src="{{ $res.Permalink }}?v={{ $resfp.Data.Integrity }}"></script>
 
+    <!-- this is import of js functionality for search execution and rendering of results -->
+    {{ $res := resources.Get "js/search.js" }}
+    {{ $resfp = $res | fingerprint "md5" }}
+    <script src="{{ $res.Permalink }}?v={{ $resfp.Data.Integrity }}"></script>
+
     {{- if (eq site.Params.mapClustering "yes") -}}
     <!-- leaflet marker clusterer - https://github.com/Leaflet/Leaflet.markercluster -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"/>
@@ -66,3 +78,5 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+

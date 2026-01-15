@@ -19,16 +19,6 @@
 
         </script>
 
-        <script>
-            // definition of the URL pointing to fulltext database of site content
-            // it is done this way since absURL is important here, this informaton
-            // (rootURL, absURL) is not known inside js/search.js
-            search_index_url = "{{ "index.json" | absURL }}";
-        </script>
-
-        <!-- this is import of js functionality for search execution and rendering of results -->
-        <script src='{{ "js/search.js" | absURL }}'></script>
-
     </div>
 </article>
 {{ end }}
