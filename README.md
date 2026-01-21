@@ -1,21 +1,27 @@
 # Wanderer
+
 a theme for [Hugo](http://gohugo.io/), a framework for building websites.
 
-The intent of this theme is to provide a theme for all wanderers who need to extend blog content of maps, tracks, locations and other entities related to traveling
+The intent of this theme is to provide a theme for all wanderers who need to
+extend blog content of maps, tracks, locations and other entities related to
+traveling
 
 [DEMO](https://mnezerka.github.io/wanderer/)
+
+## Documentation
+
+See [Documentation](docs/index.md)
 
 ## Installation
 
 ### As a Hugo Module (recommended)
 
-> If you installed a [Hugo
-> binary](https://gohugo.io/getting-started/installing/#binary-cross-platform),
-> you may not have Go installed on your machine. To check if Go is installed: >
-> ```
-> $ go version
-> ```
->  Go modules were considered production ready in v1.14. [Download Go](https://golang.org/dl/). 
+If you installed a [Hugo binary](https://gohugo.io/getting-started/installing/#binary-cross-platform),
+you may not have Go installed on your machine. To check if Go is installed:
+```
+$ go version
+```
+Go modules were considered production ready in v1.14. [Download Go](https://golang.org/dl/).
 
 1. From your project's root directory, initiate the hugo module system if you haven't already:
 
@@ -29,82 +35,7 @@ The intent of this theme is to provide a theme for all wanderers who need to ext
    theme: github.com/mnezerka/wanderer
    ```
 
-## Getting started
-
-After installing the theme successfully it requires a just a few more steps to get your site running.
-
-### The config file
-
-Take a look inside the
-[`exampleSite`](https://github.com/mnezerka/wanderer/tree/master/exampleSite)
-folder of this theme, copy it and modify it (you may need to delete the line:
-`themesDir = "../.."`). Or crate file from following minimal template, which
-configures site for Czech content (feel free to change language code from `cs`
-to `en`):
-
-```yaml
-baseURL: https://your-domain.net/
-title: Title of your website
-languageCode: cs
-defaultContentLanguage: cs
-
-paginate: 10
-
-removePathAccents: true
-
-outputs:
-  home:
-    - html
-    - json
-
-params:
-  author: Your name
-  poweredBy: Powered by <a href='http://www.gohugo.io/'>Hugo</a>
-  mapyCzApiKey: "XuWC......"
-  mapClustering: "no"
-
-theme: github.com/mnezerka/wanderer
-```
-
-## Features
-
-### List of media items
-
-This is how to configure your website to produce list of media items attached
-to individual pages. The list would be available as `https://yourdomain/mediaindex.json`:
-
-```yaml
-outputFormats:
-  MediaIndex:
-    baseName: mediaindex
-    isPlainText: true
-    mediaType: application/json
-    notAlternative: true
-
-outputs:
-  home:
-    - html
-    - json
-    - MediaIndex
-```
-
-### Add items to the menu
-
-TOOD:
-
-### Featured image as Page Resources
-
-TODO:
-
-### Maps
-
-TODO:
-
-### Galleries
-
-TODO:
-
-### Nearly finished
+## Usage
 
 In order to see your site in action, run Hugo's built-in local server.
 
