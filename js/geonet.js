@@ -1,5 +1,4 @@
 
-
 // fetched geo network data
 var geonet = {};
 
@@ -14,7 +13,6 @@ var trackLayers = {}
 
 const colorHighlight = '#0064ff'
 
-
 const geojsonMarkerOptions = {
     radius: 5,
     fillColor: "#fff969",
@@ -23,7 +21,6 @@ const geojsonMarkerOptions = {
     opacity: 1,
     fillOpacity: 0.8
 };
-
 
 //////////////////////////////////////////// tag icon
 const tagMarkerIcon = L.divIcon({
@@ -412,8 +409,14 @@ function leafletCreateGeonetMap(mapWrapId, options) {
     showCtrl = createShowCtrl({position: 'bottomright'}).addTo(geonetMap)
 
     infoCtrl = createInfoCtrl({position: 'bottomleft'}).addTo(geonetMap)
-    fetchGeonet(options.geonetUrl)
 
+    if (options.geonetUrl) {
+        fetchGeonet(options.geonetUrl)
+    } else {
+        // get map wrapper element
+        var elMapLoading = document.getElementById("map-loading");
+        elMapLoading.style = "display: none";
+    }
 
     geonet.tagsLayer = L.geoJson(
         options.tagsGeoJson.GeoJson,
@@ -423,6 +426,10 @@ function leafletCreateGeonetMap(mapWrapId, options) {
             onEachFeature: onEachFeatureFunc
         }
     ).addTo(geonetMap);
+
+    if (!options.geonetUrl) {
+        fitBounds()
+    }
 
     return geonetMap;
 }
