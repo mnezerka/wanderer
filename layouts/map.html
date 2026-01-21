@@ -59,7 +59,11 @@
     leafletCreateGeonetMap(
         'map-wrap',
         {
-            geonetUrl: "{{ .Params.geonetPath | absURL}}",
+            {{ with .Params.geonetPath }}
+            geonetUrl: "{{ . | absURL }}",
+            {{ else }}
+            geonetUrl: null,
+            {{ end }}
             tagsGeoJson,
             apiKeyMapyCz: "{{ site.Params.MapyCzApiKey }}"
         }

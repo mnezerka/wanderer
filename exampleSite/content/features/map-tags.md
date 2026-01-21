@@ -1,11 +1,9 @@
 ---
-title: "Map With Tags And Tracks"
+title: "Map With Tags"
 sitemap:
   priority : 0.1
 layout: "map"
 type: "map"
-params:
-  geonetPath: "wanderer.json"
 ---
 
 No content shown here is rendered, all content is based in the appropriate template

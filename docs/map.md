@@ -11,18 +11,21 @@ This is how to configure given page/post to be a map:
 
 ```yaml
 ---
-  title: "Map"
-  layout: "map"
-  type: "map"
+title: "My Map"
+layout: "map"
+type: "map"
 ---
+Some content that will not be visible, since map will cover whole window
 ```
+
+## Configuration of Tile Provider
 
 Current map tile provider is Mapy.com, which requires [API Key to be generated](https://developer.mapy.com/account/projects)
 and configured in `config.yaml`:
 
 ```yaml
 params:
-  mapyCzApiKey: "your-api-key-for-mapy-com
+  mapyCzApiKey: "your-api-key-for-mapy-com"
 ```
 
 ## Adding Geo Location to Tags
