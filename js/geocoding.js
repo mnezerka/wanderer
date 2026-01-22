@@ -45,6 +45,8 @@ function on_response(query, result, elResult) {
             out.push(`${query}: {lat: ${item.position.lat}, lng: ${item.position.lon}} --- ${desc}; <a href="${link}">Map</a>`);
         }
     }
+    out.push('');
+    out.push('');
 
     elResult.innerHTML += out.join("</br>");
 }
