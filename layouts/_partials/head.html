@@ -60,6 +60,12 @@
     {{ $resfp = $res | fingerprint "md5" }}
     <script src="{{ $res.Permalink }}?v={{ $resfp.Data.Integrity }}"></script>
 
+    <!-- this is import of js functionality for tags geocoding (used on stat template)-->
+    {{ $res := resources.Get "js/geocoding.js" }}
+    {{ $resfp = $res | fingerprint "md5" }}
+    <script src="{{ $res.Permalink }}?v={{ $resfp.Data.Integrity }}"></script>
+
+
     {{- if (eq site.Params.mapClustering "yes") -}}
     <!-- leaflet marker clusterer - https://github.com/Leaflet/Leaflet.markercluster -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"/>

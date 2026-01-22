@@ -63,17 +63,44 @@
                         <tr><td>Pages</td><td>{{ $pageCount }}</td></tr>
                         <tr><td>Posts</td><td>{{ $postCount }}</td></tr>
                         <tr><td>Tags</td><td>{{ $tagsCount }}</td></tr>
+
                         <tr>
-                            <td>Tags without location: </td>
+                            <td>Tags without location</td>
                             <td>
-                                {{ range $tagsWithoutLocation }}
-                                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                                {{ if gt (len $tagsWithoutLocation) 0 }}
+                                    {{ range $tagsWithoutLocation }}
+                                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                                    {{ end }}
+                                    <button id="search-tags">Search</button>
+                                {{ else }}
+                                    OK (all tags have assigned location or are markes as ignored)
                                 {{ end }}
                             </td>
                         </tr>
                     </tbody>
               </table>
-        </div>
-    </article>
+              <div id="search-results" class="hidden"></div>
+            </div>
+        </article>
+
+        <script>
+            const tags_without_location = [
+                {{ range $tagsWithoutLocation }}
+                    "{{ .Title }}",
+                {{ end }}
+            ]
+
+            function onSearch() {
+                console.log(tags_without_location);
+                const elResult = document.getElementById('search-results');
+                elResult.innerHTML = '';
+                elResult.classList.remove('hidden');
+                geocode(tags_without_location, elResult, "{{- site.Params.MapyCzApiKey -}}");
+            }
+
+            const btn = document.getElementById('search-tags');
+            btn.addEventListener('click', onSearch);
+
+        </script>
 
 {{ end }}
