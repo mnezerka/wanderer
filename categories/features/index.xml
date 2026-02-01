@@ -2,11 +2,11 @@
 &lt;pre tabindex="0"&gt;&lt;code&gt;This is plain code block
 without setting any type
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id="bash-block"&gt;Bash block&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo &lt;span style="color:#e6db74"&gt;&amp;#34;This is bash command&amp;#34;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo &lt;span style="color:#e6db74"&gt;&amp;#34;This is bash command&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And this one has long lines&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo &lt;span style="color:#e6db74"&gt;&amp;#34;This is a very long bash command that cannot fit into content area of the generated website, so it needs a scrollbar&amp;#34;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo &lt;span style="color:#e6db74"&gt;&amp;#34;This is a very long bash command that cannot fit into content area of the generated website, so it needs a scrollbar&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="this-is-javascript"&gt;This is javascript&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;let&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;x&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;let&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;x&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;x&lt;/span&gt; &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;console&lt;/span&gt;.&lt;span style="color:#a6e22e"&gt;log&lt;/span&gt;(&lt;span style="color:#a6e22e"&gt;x&lt;/span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Data Table</title><link>https://mnezerka.github.io/wanderer/features/datatable/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/datatable/</guid><description>&lt;table id="datatable" class="datatable"&gt;
@@ -1341,8 +1341,24 @@ below this paragraph.&lt;/p&gt;
  
  &lt;/div&gt;</description></item><item><title>Galleries</title><link>https://mnezerka.github.io/wanderer/features/galleries/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/galleries/</guid><description>&lt;p&gt;If there are some images stored as resources for given page, theme will render
 interactive image gallery at the bottom of the page. This example also
-demonstrate how to use resources metadata to describe and order images.&lt;/p&gt;</description></item><item><title>Large Images</title><link>https://mnezerka.github.io/wanderer/features/large_images/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/large_images/</guid><description>&lt;p&gt;This is very large image, that should be fitted into content width:&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/serial-programmer.jpg" alt=""&gt;&lt;/p&gt;</description></item><item><title>Map In Single post</title><link>https://mnezerka.github.io/wanderer/features/map_single_post/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/map_single_post/</guid><description>&lt;p&gt;If there is at least one gpx file in resources of given page, it will be
+demonstrate how to use resources metadata to describe and order images.&lt;/p&gt;</description></item><item><title>Images In Single Post</title><link>https://mnezerka.github.io/wanderer/features/images_in_single_post/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/images_in_single_post/</guid><description>&lt;p&gt;This is page shows how to insert single images into content text:&lt;/p&gt;
+&lt;h2 id="large-image"&gt;Large Image&lt;/h2&gt;
+&lt;p&gt;If the large is wider than content area, it is automatically
+fitted into content width. Following markdown instruction:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;![&lt;span style="color:#f92672"&gt;Jeseniky&lt;/span&gt;](&lt;span style="color:#a6e22e"&gt;images/brousek.jpg&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;will render image as:&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/brousek.jpg" alt="Jeseniky"&gt;&lt;/p&gt;
+&lt;p&gt;and same using hugo &lt;code&gt;figure&lt;/code&gt; with caption shown below the image:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{{&amp;lt; figure src=&amp;#34;images/brousek.jpg&amp;#34; alt=&amp;#34;Jeseniky&amp;#34; caption=&amp;#34;Jeseniky&amp;#34; &amp;gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;figure&gt;&lt;img src="https://mnezerka.github.io/wanderer/features/images_in_single_post/images/brousek.jpg"
+ alt="Jeseniky"&gt;&lt;figcaption&gt;
+ &lt;p&gt;Jeseniky&lt;/p&gt;
+ &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id="small-image"&gt;Small Image&lt;/h2&gt;
+&lt;p&gt;If the image is to small to occupy full width of the content area, it will
+be displayed in it&amp;rsquo;s real size:&lt;/p&gt;</description></item><item><title>Map In Single post</title><link>https://mnezerka.github.io/wanderer/features/map_single_post/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/map_single_post/</guid><description>&lt;p&gt;If there is at least one gpx file in resources of given page, it will be
 automatically rendered at the bottom of the page, including basic legend with
 distance, time and possibility to download individual gpx files&lt;/p&gt;</description></item><item><title>Markdown</title><link>https://mnezerka.github.io/wanderer/features/markdown/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/markdown/</guid><description>&lt;p&gt;This is an overview of various markdown elemens to see wanderer rendering.&lt;/p&gt;
 &lt;h2 id="lists"&gt;Lists&lt;/h2&gt;
