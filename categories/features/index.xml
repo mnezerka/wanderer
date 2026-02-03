@@ -1360,7 +1360,30 @@ fitted into content width. Following markdown instruction:&lt;/p&gt;
 &lt;p&gt;If the image is to small to occupy full width of the content area, it will
 be displayed in it&amp;rsquo;s real size:&lt;/p&gt;</description></item><item><title>Map In Single post</title><link>https://mnezerka.github.io/wanderer/features/map_single_post/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/map_single_post/</guid><description>&lt;p&gt;If there is at least one gpx file in resources of given page, it will be
 automatically rendered at the bottom of the page, including basic legend with
-distance, time and possibility to download individual gpx files&lt;/p&gt;</description></item><item><title>Markdown</title><link>https://mnezerka.github.io/wanderer/features/markdown/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/markdown/</guid><description>&lt;p&gt;This is an overview of various markdown elemens to see wanderer rendering.&lt;/p&gt;
+distance, time and possibility to download individual gpx files&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;'Hotel': new L.AwesomeMarkers.icon({ icon: 'hotel', prefix: 'fa', markerColor: 'orange', iconColor: 'white' }),
+'Parking Area': new L.AwesomeMarkers.icon({icon: 'parking', prefix: 'fa', markerColor: 'darkblue', iconColor: 'white' }),
+'Scenic Area': new L.AwesomeMarkers.icon({ icon: 'binoculars', prefix: 'fa', markerColor: 'blue', iconColor: 'white' }),
+'Lodging': new L.AwesomeMarkers.icon({ icon: 'campground', prefix: 'fa', markerColor: 'orange', iconColor: 'white' }),
+'Campground': new L.AwesomeMarkers.icon({ icon: 'campground', prefix: 'fa', markerColor: 'orange', iconColor: 'white' }),
+'Park': new L.AwesomeMarkers.icon({ icon: 'tree', prefix: 'fa', markerColor: 'green', iconColor: 'white' }),
+'Building': new L.AwesomeMarkers.icon({ icon: 'building', prefix: 'fa', markerColor: 'orange', iconColor: 'white' }),
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Maps</title><link>https://mnezerka.github.io/wanderer/features/maps/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/maps/</guid><description>&lt;p&gt;If there is at least one gpx file in resources of given page, it will be
+automatically rendered at the bottom of the page, including basic legend with
+distance, time and possibility to download individual gpx files&lt;/p&gt;
+&lt;h2 id="waypoints-and-icons"&gt;Waypoints and Icons&lt;/h2&gt;
+&lt;p&gt;The gpx file can contain both tracks and waypoints (POI - points of interest). Current version
+of the template supports following symbols (icons):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hotel&lt;/li&gt;
+&lt;li&gt;Parking Area&lt;/li&gt;
+&lt;li&gt;Scenic Area&lt;/li&gt;
+&lt;li&gt;Lodging&lt;/li&gt;
+&lt;li&gt;Campground&lt;/li&gt;
+&lt;li&gt;Park&lt;/li&gt;
+&lt;li&gt;Building&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The icon is specified in &lt;code&gt;&amp;lt;sym&amp;gt;&lt;/code&gt; attribute of the specific waypoint (&lt;code&gt;&amp;lt;wpt&amp;gt;&lt;/code&gt;). This is how to insert waypoints into gpx file&lt;/p&gt;</description></item><item><title>Markdown</title><link>https://mnezerka.github.io/wanderer/features/markdown/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/markdown/</guid><description>&lt;p&gt;This is an overview of various markdown elemens to see wanderer rendering.&lt;/p&gt;
 &lt;h2 id="lists"&gt;Lists&lt;/h2&gt;
 &lt;p&gt;Simple list:&lt;/p&gt;
 &lt;ul&gt;
