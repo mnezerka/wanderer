@@ -1,0 +1,73 @@
+---
+title: Maps
+categories:
+- Features
+---
+
+If there is at least one gpx file in resources of given page, it will be
+automatically rendered at the bottom of the page, including basic legend with
+distance, time and possibility to download individual gpx files
+
+## Waypoints and Icons
+
+The gpx file can contain both tracks and waypoints (POI - points of interest). Current version
+of the template supports following symbols (icons):
+
+* Hotel
+* Parking Area
+* Scenic Area
+* Lodging
+* Campground
+* Park
+* Building
+
+The icon is specified in `<sym>` attribute of the specific waypoint (`<wpt>`). This is how to insert waypoints into gpx file
+
+```xml
+  <wpt lat="50.063957" lon="17.091806">
+    <ele>474.28378837332235</ele>
+    <name>Campground</name>
+    <desc>This is a campground</desc>
+    <sym>Campground</sym>
+  </wpt>
+  <wpt lat="50.062025" lon="17.0907">
+    <ele>473.1524651118559</ele>
+    <name>Hotel</name>
+    <desc>This is a hotel</desc>
+    <sym>Hotel</sym>
+  </wpt>
+  <wpt lat="50.060094" lon="17.089593">
+    <ele>462.68781946189347</ele>
+    <name>Parking Area</name>
+    <desc>This is a parking</desc>
+    <sym>Parking Area</sym>
+  </wpt>
+  <wpt lat="50.066144" lon="17.09247">
+    <ele>489.8015512491585</ele>
+    <name>Scenic Area</name>
+    <desc>This is a scenic area</desc>
+    <sym>Scenic Area</sym>
+  </wpt>
+  <wpt lat="50.068388" lon="17.092027">
+    <ele>493.5356548266031</ele>
+    <name>Lodging</name>
+    <desc>This is a lodging</desc>
+    <sym>Lodging</sym>
+  </wpt>
+  <wpt lat="50.070206" lon="17.090744">
+    <ele>491.8563301404474</ele>
+    <name>Park</name>
+    <desc>This is a park</desc>
+    <sym>Park</sym>
+  </wpt>
+  <wpt lat="50.057764" lon="17.088">
+    <ele>454.80204907957557</ele>
+    <name>Building</name>
+    <desc>This is a building</desc>
+    <sym>Building</sym>
+  </wpt>
+</gpx>
+```
+
+
+

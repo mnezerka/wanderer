@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx creator="Cykloserver.Cz" version="1.1" schemaLocation="http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensions/v3/GpxExtensionsv3.xsd http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd http://www.garmin.com/xmlschemas/PowerExtension/v1 http://www.garmin.com/xmlschemas/PowerExtensionv1.xsd http://www.topografix.com/GPX/gpx_style/0/2 http://www.topografix.com/GPX/gpx_style/0/2/gpx_style.xsd" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:gpxpx="http://www.garmin.com/xmlschemas/PowerExtension/v1" xmlns:gpx_style="http://www.topografix.com/GPX/gpx_style/0/2">
+  <metadata>
+    <name>Hreben Jeseniku</name>
+  </metadata>
+  <wpt lat="50.063957" lon="17.091806">
+    <ele>474.28378837332235</ele>
+    <name>Campground</name>
+    <desc>This is a campground</desc>
+    <sym>Campground</sym>
+  </wpt>
+  <wpt lat="50.062025" lon="17.0907">
+    <ele>473.1524651118559</ele>
+    <name>Hotel</name>
+    <desc>This is a hotel</desc>
+    <sym>Hotel</sym>
+  </wpt>
+  <wpt lat="50.060094" lon="17.089593">
+    <ele>462.68781946189347</ele>
+    <name>Parking Area</name>
+    <desc>This is a parking</desc>
+    <sym>Parking Area</sym>
+  </wpt>
+  <wpt lat="50.066144" lon="17.09247">
+    <ele>489.8015512491585</ele>
+    <name>Scenic Area</name>
+    <desc>This is a scenic area</desc>
+    <sym>Scenic Area</sym>
+  </wpt>
+  <wpt lat="50.068388" lon="17.092027">
+    <ele>493.5356548266031</ele>
+    <name>Lodging</name>
+    <desc>This is a lodging</desc>
+    <sym>Lodging</sym>
+  </wpt>
+  <wpt lat="50.070206" lon="17.090744">
+    <ele>491.8563301404474</ele>
+    <name>Park</name>
+    <desc>This is a park</desc>
+    <sym>Park</sym>
+  </wpt>
+  <wpt lat="50.057764" lon="17.088">
+    <ele>454.80204907957557</ele>
+    <name>Building</name>
+    <desc>This is a building</desc>
+    <sym>Building</sym>
+  </wpt>
+</gpx>
