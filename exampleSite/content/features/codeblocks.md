@@ -1,7 +1,5 @@
 ---
 title: Code Blocks
-categories:
-- Features
 ---
 
 ## Without type

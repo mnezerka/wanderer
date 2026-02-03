@@ -1,7 +1,5 @@
 ---
 title: Documents
-categories:
-- Features
 resources:
 - src: docs/lorem-ipsum.pdf
   title: Lorem Ipsum Example

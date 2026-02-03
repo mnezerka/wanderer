@@ -1,11 +1,26 @@
 ---
 title: Images In Single Post
 hide_gallery: true
-categories:
-- Features
 ---
 
-This is page shows how to insert single images into content text:
+This is page shows how to insert single images into content text. There are
+multiple ways - via makrdown notation or hugo keyword `figure`.
+
+## Disable gallery
+
+If you decide to insert images (stored in a subdirectory of the post) manually
+to the text, it could be handy to disable disable automatic generated image gallery at the bottom
+of the page. This can be configured in page front matter - the boolean attribute `hide_gallery`. Setting
+the value to `false` will disable gallery
+
+Example:
+
+```yaml
+---
+title: Images In Single Post
+hide_gallery: true
+---
+```
 
 ## Large Image
 

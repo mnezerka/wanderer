@@ -5,4 +5,4 @@ menu:
     weight: 10
 ---
 
-Following pages demonstrate all features the theme exposes
+Following pages demonstrate all features the wanderer theme exposes

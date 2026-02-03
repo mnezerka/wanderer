@@ -1,6 +1,8 @@
 
-<div id="map-wrap"></div>
+{{/* Generate a random number between 1 and 100000 (alternative could be now.UnixNano */}}
+{{ $mapId := seq 100000 | shuffle | first 1 }}
 
+<div id="map-wrap-{{- $mapId -}}" class="map-wrap"></div>
 <script>
 
     var gpx_list = []
@@ -15,6 +17,6 @@
         apiKeyMapyCz: "{{ site.Params.MapyCzApiKey }}"
     }
 
-    leafletCreateTracksMap('map-wrap', gpx_list, options);
+    leafletCreateTracksMap('map-wrap-{{ $mapId -}}', gpx_list, options);
 
 </script>

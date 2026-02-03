@@ -1,7 +1,5 @@
 ---
 title: Markdown
-categories:
-- Features
 ---
 
 This is an overview of various markdown elemens to see wanderer rendering.

@@ -54,15 +54,13 @@ a, a:visited {
 
 pre, code {
     overflow: auto;
+    font-size: 13px;
 }
 
 pre {
     background-color: #eee;
-}
-
-pre {
     padding: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 /**************** entry content *****************/

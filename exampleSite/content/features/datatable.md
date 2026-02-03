@@ -1,7 +1,5 @@
 ---
 title: Data Table
-categories:
-- Features
 params:
   books:
     keys:
@@ -69,4 +67,58 @@ params:
 
 
 ---
+
+Data table allows to list data in page front matter in tabular format with possibility of:
+
+* filtering
+* selecting columns
+* specifying text for missing data
+* grouping
+
+Example:
+
+Definition of data in page front matter:
+
+```yaml
+---
+title: Data Table
+params:
+  books:
+    keys:
+      - id: title
+        name: Title
+        highlight: true
+        style: "white-space: nowrap"
+        filtered: true
+      - id: author
+        name: Author
+        filtered: true
+      - id: rating
+        name: Rating
+      - id: summary
+        name: Summary
+    missing_value: n/a
+    data:
+      - group: 2005
+      - title: "The Clockmaker of Hollow Street"
+        author: "Eleanor H. Whitford"
+        rating: 4
+        summary: "A reclusive clockmaker uncovers blueprints for a device that could rewind time, drawing him into a conspiracy that threatens his quiet town."
+        genre: fantasy
+      - title: "Ashes of the Azure Empire"
+        author: "Kaito Renn"
+        rating: 2
+        summary: "After the fall of a once-majestic empire, a former general must protect a young scholar who may hold the key to rebuilding civilization."
+      - title: "The Orchard of Silent Promises"
+        author: "Lucia Maren"
+        rating: 2
+        summary: "When a woman returns to her childhood village to settle her late mother’s estate, she discovers a mysterious orchard said to grant wishes—but at a price."
+```
+
+Rendering a table:
+
+```
+{{</* datatable key="books" */>}}
+```
+
 {{< datatable key="books" >}}

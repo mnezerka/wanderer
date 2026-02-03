@@ -1,7 +1,5 @@
 ---
 title: Galleries
-categories:
-- Features
 resources:
 - src: images/dsc00308_sharp.jpg
   title: Evening fire
