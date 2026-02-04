@@ -721,7 +721,19 @@ below this paragraph.&lt;/p&gt;
  
  &lt;/div&gt;</description></item><item><title>Galleries</title><link>https://mnezerka.github.io/wanderer/features/galleries/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/galleries/</guid><description>&lt;p&gt;If there are some images stored as resources for given page, theme will render
 interactive image gallery at the bottom of the page. This example also
-demonstrate how to use resources metadata to describe and order images.&lt;/p&gt;</description></item><item><title>Images In Single Post</title><link>https://mnezerka.github.io/wanderer/features/images_in_single_post/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/images_in_single_post/</guid><description>&lt;p&gt;This is page shows how to insert single images into content text. There are
+demonstrate how to use resources metadata to describe and order images.&lt;/p&gt;
+&lt;p&gt;The params for the single image can contain following parameters:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;params.weight&lt;/code&gt; - (optional) number which specify order of the image. Lower values will sort
+images to the beginning. The weight could be negative and must be quoted.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;params.featured&lt;/code&gt; - (optional) true/false value to specify that given image
+will be used on higher levels (e.g. in list of blog posts) to represent the
+current page/post.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;params.gallery&lt;/code&gt; - (optional) number which specifies which gallery image
+belongs to. This brings possibility to group images into multiple galleries.
+&lt;strong&gt;Gallery with index 0&lt;/strong&gt; has special meaning - image will be hidden.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Example:&lt;/p&gt;</description></item><item><title>Images In Single Post</title><link>https://mnezerka.github.io/wanderer/features/images_in_single_post/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://mnezerka.github.io/wanderer/features/images_in_single_post/</guid><description>&lt;p&gt;This is page shows how to insert single images into content text. There are
 multiple ways - via makrdown notation or hugo keyword &lt;code&gt;figure&lt;/code&gt;.&lt;/p&gt;
 &lt;h2 id="disable-gallery"&gt;Disable gallery&lt;/h2&gt;
 &lt;p&gt;If you decide to insert images (stored in a subdirectory of the post) manually
