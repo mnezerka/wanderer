@@ -1,6 +1,6 @@
 
 {{/* Generate a random number between 1 and 100000 (alternative could be now.UnixNano */}}
-{{ $mapId := seq 100000 | shuffle | first 1 }}
+{{ $mapId := seq 1000 | shuffle | first 1 }}
 
 <div id="map-wrap-{{- $mapId -}}" class="map-wrap"></div>
 <script>

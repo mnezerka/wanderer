@@ -15,16 +15,24 @@
 <script type="text/javascript">
 
     let images =[];
+    let params;
+    {{- range $parent.Scratch.Get "sorted" -}}
+        {{- if (isset .Params "gallery") -}}
+            {{- if (eq .Params.gallery 0) -}}
+                {{- continue -}}
+            {{- end -}}
+        {{- end -}}
 
-    {{- range $parent.Scratch.Get "sorted" }}
-            {{- $resized := .Resize "x180 q80" }}
-    images.push({
-        src: "{{ .Permalink }}",
-        thumbnail: "{{ $resized.Permalink }}",
-        thumbnail_width: {{ $resized.Width }},
-        thumbnail_height: {{ $resized.Height }},
-        title: "{{ .Title }}"
-    });
+
+        {{- $resized := .Resize "x180 q80" }}
+        images.push({
+            src: "{{ .Permalink }}",
+            thumbnail: "{{ $resized.Permalink }}",
+            thumbnail_width: {{ $resized.Width }},
+            thumbnail_height: {{ $resized.Height }},
+            title: "{{ .Title }}"
+        });
+
     {{- end -}}
 
     g = new Gallery({
