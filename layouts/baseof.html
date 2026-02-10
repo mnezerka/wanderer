@@ -32,6 +32,9 @@
 
                 {{ partial "tag_cloud.html" . }}
 
+                {{ if eq site.Params.showLastModified "yes" }}
+                    {{ partial "last_modified.html" . }}
+                {{ end }}
             </div>
         </div>
     </div>

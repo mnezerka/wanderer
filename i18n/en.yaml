@@ -6,7 +6,7 @@ categories:
   other: Categories
 
 tags:
-  other: Tags 
+  other: Tags
 
 tags_all:
   other: All tags
@@ -24,4 +24,8 @@ paginator_next:
   other: Next
 
 paginator_prev:
-  other: Prev 
+  other: Prev
+
+last_modified:
+  other: Last Modified
+

@@ -21,7 +21,11 @@ on_page:
   other: Co je na stránce
 
 paginator_next:
-  other: Další 
+  other: Další
 
 paginator_prev:
-  other: Předchozí 
+  other: Předchozí
+
+last_modified:
+  other: Nejnovější
+

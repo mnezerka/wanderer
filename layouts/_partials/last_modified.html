@@ -1,0 +1,12 @@
+<aside>
+    <h2>{{ T "last_modified" }}</h2>
+
+    <ul>
+      {{ range first 10 (sort .Site.RegularPages "Lastmod" "desc") }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <small>({{ .Lastmod.Format "2 Jan, 2006" }})</small>
+        </li>
+      {{ end }}
+    </ul>
+</aside>

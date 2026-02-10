@@ -1,5 +1,7 @@
 ---
 title: Data Table
+sitemap:
+  priority : 0.1
 params:
   books:
     keys:
