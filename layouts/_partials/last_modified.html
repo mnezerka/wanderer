@@ -5,7 +5,7 @@
       {{ range first 10 (sort .Site.RegularPages "Lastmod" "desc") }}
         <li>
           <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-          <small>({{ .Lastmod.Format "2 Jan, 2006" }})</small>
+          <small>(<time datetime="{{ .Lastmod }}">{{ i18n "lastmod" . }}</time>)</small>
         </li>
       {{ end }}
     </ul>

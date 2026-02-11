@@ -2,6 +2,10 @@ date:
   other: >-
     {{ .Date.Day }} {{ index $.Site.Data.months_en (printf "%d" .Date.Month) }}, {{ .PublishDate.Year }}
 
+lastmod:
+  other: >-
+    {{ .Lastmod.Day }} {{ index $.Site.Data.months_en (printf "%d" .Lastmod.Month) }}, {{ .Lastmod.Year }}
+
 categories:
   other: Categories
 

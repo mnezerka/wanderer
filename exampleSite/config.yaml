@@ -48,3 +48,8 @@ taxonomies:
   category: categories
   tag: tags
   trip: trips
+
+frontmatter:
+  lastmod:
+    - lastmod
+    - :default
