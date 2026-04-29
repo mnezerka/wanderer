@@ -19,7 +19,7 @@
     {{- range $tagKey, $tagValue := $.Site.Taxonomies.tags -}}
 
         {{- /* look for coordinates - loop through all tag locations */ -}}
-        {{- range $locTagKey, $locTagValue := $.Site.Data.tag_locations.located -}}
+        {{- range $locTagKey, $locTagValue := hugo.Data.tag_locations.located -}}
 
             {{- /* if coordinates for tag were found, add marker */ -}}
             {{- if (eq $tagValue.Page.Title $locTagKey ) -}}

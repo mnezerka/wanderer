@@ -28,7 +28,7 @@
 
                 {{/* look for tag in list of ignored  */}}
                 {{ $isIgnored := false }}
-                {{ range $.Site.Data.tag_locations.ignored }}
+                {{ range hugo.Data.tag_locations.ignored }}
                     {{ if (eq $tagValue.Page.Title .)}}
                         {{ $isIgnored = true}}
                     {{ end }}
@@ -37,7 +37,7 @@
                 {{ if not $isIgnored }}
                     {{/* look for coordinates - loop through all tag locations */}}
                     {{ $isLocated := false }}
-                    {{ range $locTagKey, $locTagValue := $.Site.Data.tag_locations.located }}
+                    {{ range $locTagKey, $locTagValue := hugo.Data.tag_locations.located }}
                         {{ if (eq $locTagKey $tagValue.Page.Title )}}
                             {{ $isLocated = true}}
                         {{ end }}

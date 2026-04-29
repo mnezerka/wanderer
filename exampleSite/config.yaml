@@ -1,7 +1,9 @@
 title: "Wanderer"
 baseURL: "https://mnezerka.github.io/wanderer/"
-languageCode: "en"
 defaultContentLanguage: "en"
+languages:
+  en:
+    locale: en
 
 enableMissingTranslationPlaceholders: true
 
