@@ -187,25 +187,64 @@ function createCheckBox(parentElement, trackId) {
     parentElement.appendChild(newCheckBox);
 }
 
-function trackIdToTrackName(id) {
+function trackIdToTrackName(id, meta) {
     if (geonet.data.meta.tracks !== undefined) {
         for (let i = 0; i < geonet.data.meta.tracks.length; i++) {
             let t = geonet.data.meta.tracks[i]
             if (t.id == id) {
-                let result = '';
-                if (t.meta.post_url) { result += '<a href="' + t.meta.post_url + '">'; }
-                if (t.meta.post_title) {
-                    result += t.meta.post_title + ' (' + t.meta.track_title + ')';
-                } else {
-                    result += t.meta.track_title;
+                let extra = '';
+                let parts = [];
+                if (t.meta.length_km !== undefined && t.meta.length_km !== null) {
+                    parts.push(t.meta.length_km.toFixed(1) + ' km');
                 }
-                if (t.meta.post_url) { result += '</a>'; }
-                return result
-                break;
+                let d = parseTrackDate(t.meta);
+                if (d) {
+                    let dd = String(d.getUTCDate()).padStart(2, '0');
+                    let mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+                    let yyyy = d.getUTCFullYear();
+                    parts.push(dd + '/' + mm + '/' + yyyy);
+                }
+                if (parts.length > 0) {
+                    extra = ' <span class="track-detail">' + parts.join(' &bull; ') + '</span>';
+                }
+
+                let label = '';
+                if (t.meta.post_title) {
+                    label = t.meta.post_title + ' (' + t.meta.track_title + ')';
+                } else {
+                    label = t.meta.track_title;
+                }
+
+                let result = '';
+                if (t.meta.post_url) {
+                    result = '<a href="' + t.meta.post_url + '">' + label + ' &bull; ' + extra + '</a>';
+                } else {
+                    result = label + extra;
+                }
+                return result;
             }
         }
     }
     return 'track: ' + id
+}
+
+function trackIdToMeta(id) {
+    if (geonet.data.meta.tracks !== undefined) {
+        for (let i = 0; i < geonet.data.meta.tracks.length; i++) {
+            let t = geonet.data.meta.tracks[i];
+            if (t.id == id) { return t.meta; }
+        }
+    }
+    return null;
+}
+
+// Returns null for missing/zero dates so they sort last
+function parseTrackDate(meta) {
+    if (!meta || !meta.track_date) { return null; }
+    let d = new Date(meta.track_date);
+    // treat the zero Go time (year 1) as absent
+    if (isNaN(d.getTime()) || d.getFullYear() <= 1) { return null; }
+    return d;
 }
 
 
@@ -302,22 +341,29 @@ function whenClicked(e) {
     // if clicked on geonet element - point or line segment
     if (feature.properties.tracks !== undefined) {
 
-        let tracks = feature.properties.tracks;
+        let tracks = feature.properties.tracks.slice();
+
+        // sort by track_date ascending; missing/zero dates go last
+        tracks.sort(function(a, b) {
+            let da = parseTrackDate(trackIdToMeta(a));
+            let db = parseTrackDate(trackIdToMeta(b));
+            if (da === null && db === null) { return 0; }
+            if (da === null) { return 1; }
+            if (db === null) { return -1; }
+            return db - da;
+        });
+
         for (let i = 0; i < tracks.length; i++) {
 
             var trackEl = document.createElement('div');
             trackEl.setAttribute('class', "track-info");
             createCheckBox(trackEl, tracks[i])
 
-            let trackDesc = '';
-            trackDesc += trackIdToTrackName(tracks[i])
-
             let trackDescEl = document.createElement('div');
             trackDescEl.setAttribute('class', "track-desc");
+            trackDescEl.innerHTML = trackIdToTrackName(tracks[i]);
 
-            trackDescEl.innerHTML = trackDesc;
             trackEl.appendChild(trackDescEl)
-
             el.appendChild(trackEl)
         }
 

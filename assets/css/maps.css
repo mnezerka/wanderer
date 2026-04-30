@@ -139,6 +139,14 @@
 .geonet-map-info .track-info {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.geonet-map-info .track-desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .tag-info a {
