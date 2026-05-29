@@ -5,6 +5,9 @@ var geonet = {};
 // leaflet instance of the map
 var geonetMap = null;
 
+// set to true when the map page specifies an explicit default view
+var geonetHasDefaultView = false;
+
 // instace of the info control which renders list of tracks on click
 var infoCtrl = null;
 
@@ -61,7 +64,7 @@ L.Control.Show = L.Control.extend({
         cbTags.setAttribute('type', 'checkbox');
         cbTags.setAttribute('data-show', 'tags')
         cbTags.setAttribute('onclick', 'onShowCheckBoxClick(this)')
-        cbTags.checked = true;
+        cbTags.checked = this.options.tagsEnabled !== undefined ? this.options.tagsEnabled : true;
         elTags.appendChild(cbTags);
 
         titleTags = document.createElement('div');
@@ -71,21 +74,23 @@ L.Control.Show = L.Control.extend({
         el.appendChild(elTags);
 
         //////////////////////////////////////// tracks
-        elTracks = document.createElement('div');
-        elTracks.setAttribute('class', 'choice');
+        if (this.options.showTracks) {
+            elTracks = document.createElement('div');
+            elTracks.setAttribute('class', 'choice');
 
-        var cbTracks = document.createElement('input');
-        cbTracks.setAttribute('type', 'checkbox');
-        cbTracks.setAttribute('data-show', 'tracks')
-        cbTracks.setAttribute('onclick', 'onShowCheckBoxClick(this)')
-        cbTracks.checked = true;
-        elTracks.appendChild(cbTracks);
+            var cbTracks = document.createElement('input');
+            cbTracks.setAttribute('type', 'checkbox');
+            cbTracks.setAttribute('data-show', 'tracks')
+            cbTracks.setAttribute('onclick', 'onShowCheckBoxClick(this)')
+            cbTracks.checked = true;
+            elTracks.appendChild(cbTracks);
 
-        titleTracks = document.createElement('div');
-        titleTracks .innerHTML = 'Tracks';
-        elTracks.appendChild(titleTracks);
+            titleTracks = document.createElement('div');
+            titleTracks.innerHTML = 'Tracks';
+            elTracks.appendChild(titleTracks);
 
-        el.appendChild(elTracks);
+            el.appendChild(elTracks);
+        }
 
         return el;
     }
@@ -434,7 +439,9 @@ function onFetchResponse(data) {
 
     elMapLoading.style = "display: none";
 
-    fitBounds()
+    if (!geonetHasDefaultView) {
+        fitBounds()
+    }
 }
 
 function fetchGeonet(url) {
@@ -450,9 +457,15 @@ function fetchGeonet(url) {
 
 function leafletCreateGeonetMap(mapWrapId, options) {
 
+    console.log(options);
+
     geonetMap = leafletCreateMap(mapWrapId, options)
 
-    showCtrl = createShowCtrl({position: 'bottomright'}).addTo(geonetMap)
+    geonetHasDefaultView = !!(options.defaultCenter || options.defaultZoom);
+
+    const tagsEnabled = options.tagsEnabled !== undefined ? options.tagsEnabled : true;
+
+    showCtrl = createShowCtrl({position: 'bottomright', showTracks: !!options.geonetUrl, tagsEnabled: tagsEnabled}).addTo(geonetMap)
 
     infoCtrl = createInfoCtrl({position: 'bottomleft'}).addTo(geonetMap)
 
@@ -471,9 +484,13 @@ function leafletCreateGeonetMap(mapWrapId, options) {
             pointToLayer: tagToLayerFunc,
             onEachFeature: onEachFeatureFunc
         }
-    ).addTo(geonetMap);
+    );
 
-    if (!options.geonetUrl) {
+    if (tagsEnabled) {
+        geonet.tagsLayer.addTo(geonetMap);
+    }
+
+    if (!options.geonetUrl && !geonetHasDefaultView) {
         fitBounds()
     }
 
