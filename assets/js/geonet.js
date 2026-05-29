@@ -74,21 +74,23 @@ L.Control.Show = L.Control.extend({
         el.appendChild(elTags);
 
         //////////////////////////////////////// tracks
-        elTracks = document.createElement('div');
-        elTracks.setAttribute('class', 'choice');
+        if (this.options.showTracks) {
+            elTracks = document.createElement('div');
+            elTracks.setAttribute('class', 'choice');
 
-        var cbTracks = document.createElement('input');
-        cbTracks.setAttribute('type', 'checkbox');
-        cbTracks.setAttribute('data-show', 'tracks')
-        cbTracks.setAttribute('onclick', 'onShowCheckBoxClick(this)')
-        cbTracks.checked = true;
-        elTracks.appendChild(cbTracks);
+            var cbTracks = document.createElement('input');
+            cbTracks.setAttribute('type', 'checkbox');
+            cbTracks.setAttribute('data-show', 'tracks')
+            cbTracks.setAttribute('onclick', 'onShowCheckBoxClick(this)')
+            cbTracks.checked = true;
+            elTracks.appendChild(cbTracks);
 
-        titleTracks = document.createElement('div');
-        titleTracks .innerHTML = 'Tracks';
-        elTracks.appendChild(titleTracks);
+            titleTracks = document.createElement('div');
+            titleTracks.innerHTML = 'Tracks';
+            elTracks.appendChild(titleTracks);
 
-        el.appendChild(elTracks);
+            el.appendChild(elTracks);
+        }
 
         return el;
     }
@@ -459,7 +461,7 @@ function leafletCreateGeonetMap(mapWrapId, options) {
 
     geonetHasDefaultView = !!(options.defaultCenter || options.defaultZoom);
 
-    showCtrl = createShowCtrl({position: 'bottomright'}).addTo(geonetMap)
+    showCtrl = createShowCtrl({position: 'bottomright', showTracks: !!options.geonetUrl}).addTo(geonetMap)
 
     infoCtrl = createInfoCtrl({position: 'bottomleft'}).addTo(geonetMap)
 
