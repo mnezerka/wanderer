@@ -64,7 +64,7 @@ L.Control.Show = L.Control.extend({
         cbTags.setAttribute('type', 'checkbox');
         cbTags.setAttribute('data-show', 'tags')
         cbTags.setAttribute('onclick', 'onShowCheckBoxClick(this)')
-        cbTags.checked = true;
+        cbTags.checked = this.options.tagsEnabled !== undefined ? this.options.tagsEnabled : true;
         elTags.appendChild(cbTags);
 
         titleTags = document.createElement('div');
@@ -457,11 +457,15 @@ function fetchGeonet(url) {
 
 function leafletCreateGeonetMap(mapWrapId, options) {
 
+    console.log(options);
+
     geonetMap = leafletCreateMap(mapWrapId, options)
 
     geonetHasDefaultView = !!(options.defaultCenter || options.defaultZoom);
 
-    showCtrl = createShowCtrl({position: 'bottomright', showTracks: !!options.geonetUrl}).addTo(geonetMap)
+    const tagsEnabled = options.tagsEnabled !== undefined ? options.tagsEnabled : true;
+
+    showCtrl = createShowCtrl({position: 'bottomright', showTracks: !!options.geonetUrl, tagsEnabled: tagsEnabled}).addTo(geonetMap)
 
     infoCtrl = createInfoCtrl({position: 'bottomleft'}).addTo(geonetMap)
 
@@ -480,7 +484,11 @@ function leafletCreateGeonetMap(mapWrapId, options) {
             pointToLayer: tagToLayerFunc,
             onEachFeature: onEachFeatureFunc
         }
-    ).addTo(geonetMap);
+    );
+
+    if (tagsEnabled) {
+        geonet.tagsLayer.addTo(geonetMap);
+    }
 
     if (!options.geonetUrl && !geonetHasDefaultView) {
         fitBounds()

@@ -9,6 +9,7 @@ interactive map covering whole content area. The map will consist of several lay
 
 This is how to configure given page/post to be a map:
 
+
 ```yaml
 ---
 title: "My Map"
@@ -18,7 +19,9 @@ type: "map"
 Some content that will not be visible, since map will cover whole window
 ```
 
-## Configuration of Tile Provider
+## Configuration
+
+### Tile Provider
 
 Current map tile provider is Mapy.com, which requires [API Key to be generated](https://developer.mapy.com/account/projects)
 and configured in `config.yaml`:
@@ -26,6 +29,37 @@ and configured in `config.yaml`:
 ```yaml
 params:
   mapyCzApiKey: "your-api-key-for-mapy-com"
+```
+
+### Fixed center and zoom
+
+To disable automatic scaling of the initial view to cover all tags or tracks, you can specify
+location of the center and zoom level:
+
+```yaml
+---
+title: "My Map"
+layout: "map"
+type: "map"
+params:
+  defaultZoom: 11
+  defaultCenter: [49.1722222, 20.1638889]
+---
+```
+
+### Geonet
+
+To render geographical map prepared by [geonet tool](https://github.com/mnezerka/geonet), you have to
+configure it via optional custom parameter `geonetPath`.
+
+```yaml
+---
+title: "My Map"
+layout: "map"
+type: "map"
+params:
+  geonetPath: "wanderer.json"
+---
 ```
 
 ## Adding Geo Location to Tags

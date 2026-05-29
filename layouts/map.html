@@ -71,6 +71,9 @@
             defaultCenter: [{{ index . 0 }}, {{ index . 1 }}],
             {{ end }}
             tagsGeoJson,
+            {{ if isset .Params "tagsenabled" }}
+            tagsEnabled: {{ .Params.tagsEnabled }},
+            {{ end }}
             apiKeyMapyCz: "{{ site.Params.MapyCzApiKey }}"
         }
     );

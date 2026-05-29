@@ -6,6 +6,7 @@ layout: "map"
 type: "map"
 params:
   geonetPath: "wanderer.json"
+tagsEnabled: false
 ---
 
 No content shown here is rendered, all content is based in the appropriate template
