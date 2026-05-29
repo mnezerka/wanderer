@@ -15,11 +15,13 @@ function leafletCreateMap(mapWrapId, options) {
     elMap.className = 'map';
     elMapWrap.appendChild(elMap);
 
-    // home
-    const center = [49.2202194, 16.5558572]
+    const center = (options.defaultCenter && options.defaultCenter.length === 2)
+        ? options.defaultCenter
+        : [49.2202194, 16.5558572];
+    const zoom = options.defaultZoom || 12;
 
     // leaflet map instance
-    var map = L.map(elMap, { fullscreenControl: true }).setView(center, 12);
+    var map = L.map(elMap, { fullscreenControl: true }).setView(center, zoom);
 
     const tileLayers = {
         'OSM': L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

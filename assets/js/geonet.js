@@ -5,6 +5,9 @@ var geonet = {};
 // leaflet instance of the map
 var geonetMap = null;
 
+// set to true when the map page specifies an explicit default view
+var geonetHasDefaultView = false;
+
 // instace of the info control which renders list of tracks on click
 var infoCtrl = null;
 
@@ -434,7 +437,9 @@ function onFetchResponse(data) {
 
     elMapLoading.style = "display: none";
 
-    fitBounds()
+    if (!geonetHasDefaultView) {
+        fitBounds()
+    }
 }
 
 function fetchGeonet(url) {
@@ -451,6 +456,8 @@ function fetchGeonet(url) {
 function leafletCreateGeonetMap(mapWrapId, options) {
 
     geonetMap = leafletCreateMap(mapWrapId, options)
+
+    geonetHasDefaultView = !!(options.defaultCenter || options.defaultZoom);
 
     showCtrl = createShowCtrl({position: 'bottomright'}).addTo(geonetMap)
 
@@ -473,7 +480,7 @@ function leafletCreateGeonetMap(mapWrapId, options) {
         }
     ).addTo(geonetMap);
 
-    if (!options.geonetUrl) {
+    if (!options.geonetUrl && !geonetHasDefaultView) {
         fitBounds()
     }
 

@@ -64,6 +64,12 @@
             {{ else }}
             geonetUrl: null,
             {{ end }}
+            {{ with .Params.defaultZoom }}
+            defaultZoom: {{ . }},
+            {{ end }}
+            {{ with .Params.defaultCenter }}
+            defaultCenter: [{{ index . 0 }}, {{ index . 1 }}],
+            {{ end }}
             tagsGeoJson,
             apiKeyMapyCz: "{{ site.Params.MapyCzApiKey }}"
         }
