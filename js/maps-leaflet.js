@@ -144,6 +144,20 @@ function leafletCreateTracksMap(mapWrapId, gpx_list, options) {
 
         }).addTo(map);
     }
+
+    if (options.tag_list && options.tag_list.length > 0) {
+        const tagMarkerIcon = L.divIcon({
+            html: '<i class="fa fa-location-dot fa-2x"></i>',
+            iconSize: [10, 10],
+            iconAnchor: [5, 10],
+            className: 'tag-marker-icon'
+        });
+        options.tag_list.forEach(function(tag) {
+            L.marker([tag.lat, tag.lng], { icon: tagMarkerIcon })
+                .bindTooltip(tag.name)
+                .addTo(map);
+        });
+    }
 }
 
 function leafletAddLegend(elLegend, track) {
