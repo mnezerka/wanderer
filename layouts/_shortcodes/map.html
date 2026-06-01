@@ -17,7 +17,7 @@
 {{ $globPattern := print "{" (delimit $routes ",") "}" }}
 {{ with .Page.Resources.Match $globPattern }}
     <div class="shortcode-map">
-        {{ partial "map_leaflet" . }}
+        {{ partial "map_leaflet" (dict "gpx_files" .) }}
     </div>
 {{ end }}
 

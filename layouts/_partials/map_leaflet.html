@@ -6,15 +6,28 @@
 <script>
 
     var gpx_list = []
-    {{ range . }}
+    {{ range .gpx_files }}
             gpx_list.push({{ .Permalink }})
+    {{ end }}
+
+    var tag_list = []
+    {{ range .tags }}
+        {{ $tagName := . }}
+        {{ range $locKey, $locVal := hugo.Data.tag_locations.located }}
+            {{ if eq $tagName $locKey }}
+                {{ if and (isset $locVal "lat") (isset $locVal "lng") }}
+    tag_list.push({ name: "{{ $tagName }}", lat: {{ $locVal.lat }}, lng: {{ $locVal.lng }} });
+                {{ end }}
+            {{ end }}
+        {{ end }}
     {{ end }}
 
     var options = {
         icon_start_url: {{ "images/pin-icon-start.png" | absURL }}, // size of the icon is 33x45
         icon_end_url: {{ "images/pin-icon-end.png" | absURL }}, // size of the icon is 33x45
         icon_shadow_url: {{ "images/pin-shadow.png" | absURL }},
-        apiKeyMapyCz: "{{ site.Params.MapyCzApiKey }}"
+        apiKeyMapyCz: "{{ site.Params.MapyCzApiKey }}",
+        tag_list: tag_list
     }
 
     leafletCreateTracksMap('map-wrap-{{ $mapId -}}', gpx_list, options);
