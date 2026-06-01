@@ -70,7 +70,8 @@ function leafletCreateTracksMap(mapWrapId, gpx_list, options) {
         return;
     }
 
-    var bounds = null
+    var gpxBounds = null;
+    var gpxLoadedCount = 0;
 
     var map = leafletCreateMap(mapWrapId, options);
 
@@ -95,6 +96,37 @@ function leafletCreateTracksMap(mapWrapId, gpx_list, options) {
         }
     }
 
+    var tagGroup = null;
+    if (options.tag_list && options.tag_list.length > 0) {
+        const tagMarkerIcon = L.divIcon({
+            html: '<i class="fa fa-location-dot fa-2x"></i>',
+            iconSize: [10, 10],
+            iconAnchor: [5, 10],
+            className: 'tag-marker-icon'
+        });
+        const tagMarkers = options.tag_list.map(function(tag) {
+            return L.marker([tag.lat, tag.lng], { icon: tagMarkerIcon })
+                .bindPopup(tag.name)
+                .addTo(map);
+        });
+        tagGroup = L.featureGroup(tagMarkers);
+    }
+
+    function fitAllBounds() {
+        if (gpxBounds && tagGroup) {
+            var combined = gpxBounds.extend(tagGroup.getBounds());
+            map.fitBounds(combined);
+        } else if (gpxBounds) {
+            map.fitBounds(gpxBounds);
+        } else if (tagGroup) {
+            map.fitBounds(tagGroup.getBounds(), { maxZoom: 10 });
+        }
+    }
+
+    if (gpx_list.length === 0) {
+        fitAllBounds();
+    }
+
     // render individual tracks
     // loop through all gpx tracks
     for (var i = 0; i < gpx_list.length; i++) {
@@ -112,15 +144,15 @@ function leafletCreateTracksMap(mapWrapId, gpx_list, options) {
         // add new GPX layer
         gpx = new L.GPX(gpx_list[i], {async: true, marker_options, polyline_options}).on('loaded', function(e) {
 
-            // extend global bounds
-            if (bounds) {
-                bounds.extend(e.target.getBounds());
+            // extend global gpx bounds
+            if (gpxBounds) {
+                gpxBounds.extend(e.target.getBounds());
             } else {
-                bounds = e.target.getBounds();
+                gpxBounds = e.target.getBounds();
             }
 
-            // resize map to fit all currently rendered tracks
-            map.fitBounds(bounds);
+            gpxLoadedCount++;
+            fitAllBounds();
 
             // store some of track attributes (mainly for rendering of legend)
             track = {
@@ -143,25 +175,6 @@ function leafletCreateTracksMap(mapWrapId, gpx_list, options) {
             }
 
         }).addTo(map);
-    }
-
-    if (options.tag_list && options.tag_list.length > 0) {
-        const tagMarkerIcon = L.divIcon({
-            html: '<i class="fa fa-location-dot fa-2x"></i>',
-            iconSize: [10, 10],
-            iconAnchor: [5, 10],
-            className: 'tag-marker-icon'
-        });
-        const tagMarkers = options.tag_list.map(function(tag) {
-            return L.marker([tag.lat, tag.lng], { icon: tagMarkerIcon })
-                .bindPopup(tag.name)
-                .addTo(map);
-        });
-
-        if (gpx_list.length === 0) {
-            const tagGroup = L.featureGroup(tagMarkers);
-            map.fitBounds(tagGroup.getBounds(), { maxZoom: 10 });
-        }
     }
 }
 
