@@ -83,8 +83,8 @@ function leafletCreateTracksMap(mapWrapId, gpx_list, options) {
     // configuration of track markers - we need to set
     // path to icons since all files live in plugin dir (and url)
     const marker_options = {
-        startIcon: new L.AwesomeMarkers.icon({ icon: 'circle', prefix: 'fa', markerColor: 'green', iconColor: 'white' }),
-        endIcon: new L.AwesomeMarkers.icon({ icon: 'flag-checkered', prefix: 'fa', markerColor: 'red', iconColor: 'white' }),
+        startIcon: L.divIcon({ className: '', html: '<div style="width:14px;height:14px;border-radius:50%;background:#22c55e;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.4)"></div>', iconSize: [14, 14], iconAnchor: [7, 7] }),
+        endIcon: L.divIcon({ className: '', html: '<div style="width:14px;height:14px;border-radius:50%;background:#ef4444;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.4)"></div>', iconSize: [14, 14], iconAnchor: [7, 7] }),
         wptIcons: {
             'Hotel': new L.AwesomeMarkers.icon({ icon: 'hotel', prefix: 'fa', markerColor: 'orange', iconColor: 'white' }),
             'Parking Area': new L.AwesomeMarkers.icon({icon: 'parking', prefix: 'fa', markerColor: 'darkblue', iconColor: 'white' }),
