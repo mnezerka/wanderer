@@ -154,7 +154,7 @@ function leafletCreateTracksMap(mapWrapId, gpx_list, options) {
         });
         options.tag_list.forEach(function(tag) {
             L.marker([tag.lat, tag.lng], { icon: tagMarkerIcon })
-                .bindTooltip(tag.name)
+                .bindPopup(tag.name)
                 .addTo(map);
         });
     }
