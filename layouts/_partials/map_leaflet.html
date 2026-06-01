@@ -1,4 +1,18 @@
 
+{{/* Determine whether any tags have known locations */}}
+{{ $locatedTags := slice }}
+{{ range .tags }}
+    {{ $tagName := . }}
+    {{ range $k, $v := hugo.Data.tag_locations.located }}
+        {{ if and (eq $tagName $k) (isset $v "lat") (isset $v "lng") }}
+            {{ $locatedTags = append $tagName $locatedTags }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{/* Nothing to show — skip rendering entirely */}}
+{{ if and (not .gpx_files) (not $locatedTags) }}{{ return }}{{ end }}
+
 {{/* Generate a random number between 1 and 100000 (alternative could be now.UnixNano */}}
 {{ $mapId := seq 1000 | shuffle | first 1 }}
 

@@ -41,10 +41,12 @@
             </div>
         {{ end }}
 
+        {{ $gpxFiles := .Resources.Match "gpx/*.gpx" }}
         {{ $tags := .Params.tags }}
-        {{ with .Resources.Match "gpx/*.gpx" }}
+        {{ $mapContent := partial "map_leaflet" (dict "gpx_files" $gpxFiles "tags" $tags) }}
+        {{ if $mapContent }}
             <div class="entry-map">
-                {{ partial "map_leaflet" (dict "gpx_files" . "tags" $tags) }}
+                {{ $mapContent }}
             </div>
         {{ end }}
 

@@ -152,11 +152,16 @@ function leafletCreateTracksMap(mapWrapId, gpx_list, options) {
             iconAnchor: [5, 10],
             className: 'tag-marker-icon'
         });
-        options.tag_list.forEach(function(tag) {
-            L.marker([tag.lat, tag.lng], { icon: tagMarkerIcon })
+        const tagMarkers = options.tag_list.map(function(tag) {
+            return L.marker([tag.lat, tag.lng], { icon: tagMarkerIcon })
                 .bindPopup(tag.name)
                 .addTo(map);
         });
+
+        if (gpx_list.length === 0) {
+            const tagGroup = L.featureGroup(tagMarkers);
+            map.fitBounds(tagGroup.getBounds(), { maxZoom: 10 });
+        }
     }
 }
 
