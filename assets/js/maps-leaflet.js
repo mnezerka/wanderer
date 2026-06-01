@@ -98,12 +98,7 @@ function leafletCreateTracksMap(mapWrapId, gpx_list, options) {
 
     var tagGroup = null;
     if (options.tag_list && options.tag_list.length > 0) {
-        const tagMarkerIcon = L.divIcon({
-            html: '<i class="fa fa-location-dot fa-2x"></i>',
-            iconSize: [10, 10],
-            iconAnchor: [5, 10],
-            className: 'tag-marker-icon'
-        });
+        const tagMarkerIcon = new L.AwesomeMarkers.icon({ icon: 'binoculars', prefix: 'fa', markerColor: 'blue', iconColor: 'white' });
         const tagMarkers = options.tag_list.map(function(tag) {
             return L.marker([tag.lat, tag.lng], { icon: tagMarkerIcon })
                 .bindPopup(tag.name)
