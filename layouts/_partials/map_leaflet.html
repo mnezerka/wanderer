@@ -1,4 +1,3 @@
-
 {{/* Determine whether any tags have known locations */}}
 {{ $locatedTags := slice }}
 {{ range .tags }}
@@ -10,40 +9,41 @@
     {{ end }}
 {{ end }}
 
-{{/* Nothing to show — skip rendering entirely */}}
-{{ if and (not .gpx_files) (not $locatedTags) }}{{ return }}{{ end }}
+{{/* Anything to show? — render map, else nothing */}}
+{{ if or (gt (len .gpx_files) 0) (gt (len $locatedTags) 0) }}
 
-{{/* Generate a random number between 1 and 100000 (alternative could be now.UnixNano */}}
-{{ $mapId := seq 1000 | shuffle | first 1 }}
+    {{/* Generate a random number between 1 and 100000 (alternative could be now.UnixNano */}}
+    {{ $mapId := seq 1000 | shuffle | first 1 }}
 
-<div id="map-wrap-{{- $mapId -}}" class="map-wrap"></div>
-<script>
+    <div id="map-wrap-{{- $mapId -}}" class="map-wrap"></div>
+    <script>
 
-    var gpx_list = []
-    {{ range .gpx_files }}
-            gpx_list.push({{ .Permalink }})
-    {{ end }}
+        var gpx_list = []
+        {{ range .gpx_files }}
+                gpx_list.push({{ .Permalink }})
+        {{ end }}
 
-    var tag_list = []
-    {{ range .tags }}
-        {{ $tagName := . }}
-        {{ range $locKey, $locVal := hugo.Data.tag_locations.located }}
-            {{ if eq $tagName $locKey }}
-                {{ if and (isset $locVal "lat") (isset $locVal "lng") }}
-    tag_list.push({ name: "{{ $tagName }}", lat: {{ $locVal.lat }}, lng: {{ $locVal.lng }} });
+        var tag_list = []
+        {{ range .tags }}
+            {{ $tagName := . }}
+            {{ range $locKey, $locVal := hugo.Data.tag_locations.located }}
+                {{ if eq $tagName $locKey }}
+                    {{ if and (isset $locVal "lat") (isset $locVal "lng") }}
+        tag_list.push({ name: "{{ $tagName }}", lat: {{ $locVal.lat }}, lng: {{ $locVal.lng }} });
+                    {{ end }}
                 {{ end }}
             {{ end }}
         {{ end }}
-    {{ end }}
 
-    var options = {
-        icon_start_url: {{ "images/pin-icon-start.png" | absURL }}, // size of the icon is 33x45
-        icon_end_url: {{ "images/pin-icon-end.png" | absURL }}, // size of the icon is 33x45
-        icon_shadow_url: {{ "images/pin-shadow.png" | absURL }},
-        apiKeyMapyCz: "{{ site.Params.MapyCzApiKey }}",
-        tag_list: tag_list
-    }
+        var options = {
+            icon_start_url: {{ "images/pin-icon-start.png" | absURL }}, // size of the icon is 33x45
+            icon_end_url: {{ "images/pin-icon-end.png" | absURL }}, // size of the icon is 33x45
+            icon_shadow_url: {{ "images/pin-shadow.png" | absURL }},
+            apiKeyMapyCz: "{{ site.Params.MapyCzApiKey }}",
+            tag_list: tag_list
+        }
 
-    leafletCreateTracksMap('map-wrap-{{ $mapId -}}', gpx_list, options);
+        leafletCreateTracksMap('map-wrap-{{ $mapId -}}', gpx_list, options);
 
-</script>
+    </script>
+{{ end }}
