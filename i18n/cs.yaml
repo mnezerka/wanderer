@@ -1,10 +1,10 @@
 date:
   other: >-
-    {{ .Date.Day }} {{ .Date.Format "January" }} {{ .Date.Year }}
+    {{ .Date.Day }}. {{ index $.Site.Data.months_cs (printf "%d" .Date.Month) }} {{ .Date.Year }}
 
 lastmod:
   other: >-
-    {{ .Lastmod.Day }} {{ .Lastmod.Format "January" }} {{ .Lastmod.Year }}
+    {{ .Lastmod.Day }}. {{ index $.Site.Data.months_cs (printf "%d" .Lastmod.Month) }} {{ .Lastmod.Year }}
 
 categories:
   other: Rubriky
