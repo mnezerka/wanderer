@@ -13,13 +13,31 @@
             {{ $posts := (where $.Site.RegularPages "Section" "==" "posts") }}
             {{ $postCount := len $posts }}
 
-            {{/*-- page count */}}
-            {{ $pages := (where $.Site.RegularPages "Section" "==" "pages") }}
-            {{ $pageCount := len $pages }}
+            {{/*-- page count (top-level single pages, not in any section) */}}
+            {{ $pageCount := 0 }}
+            {{ range $.Site.RegularPages }}
+                {{ if eq .Section "" }}
+                    {{ $pageCount = add $pageCount 1 }}
+                {{ end }}
+            {{ end }}
 
             {{/*-- tag count */}}
             {{ $tags := $.Site.Taxonomies.tags }}
-            {{ $tagsCount := len $tags}}
+            {{ $tagsCount := len $tags }}
+
+            {{/*-- category count */}}
+            {{ $categories := $.Site.Taxonomies.categories }}
+            {{ $categoriesCount := len $categories }}
+
+            {{/*-- trip count */}}
+            {{ $trips := $.Site.Taxonomies.trips }}
+            {{ $tripsCount := len $trips }}
+
+            {{/*-- image count across all regular pages */}}
+            {{ $imageCount := 0 }}
+            {{ range $.Site.RegularPages }}
+                {{ $imageCount = add $imageCount (len (.Resources.ByType "image")) }}
+            {{ end }}
 
             {{/*-- tags without location */}}
             {{ $tagsWithoutLocation := slice }}
@@ -49,8 +67,6 @@
 
             {{ end }}
 
-            {{ $tags := $.Site.Taxonomies.tags }}
-
             <div style="overflow: auto;">
                 <table>
                     <thead>
@@ -62,7 +78,10 @@
                     <tbody>
                         <tr><td>Pages</td><td>{{ $pageCount }}</td></tr>
                         <tr><td>Posts</td><td>{{ $postCount }}</td></tr>
+                        <tr><td>Categories</td><td>{{ $categoriesCount }}</td></tr>
                         <tr><td>Tags</td><td>{{ $tagsCount }}</td></tr>
+                        <tr><td>Trips</td><td>{{ $tripsCount }}</td></tr>
+                        <tr><td>Images</td><td>{{ $imageCount }}</td></tr>
 
                         <tr>
                             <td>Tags without location</td>
