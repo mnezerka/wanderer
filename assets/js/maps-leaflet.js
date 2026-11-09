@@ -136,38 +136,41 @@ function leafletCreateTracksMap(mapWrapId, gpx_list, options) {
             lineCap: 'round'
         }
 
-        // add new GPX layer
-        gpx = new L.GPX(gpx_list[i], {async: true, marker_options, polyline_options}).on('loaded', function(e) {
+        // Fetch and parse the GPX independently so stats are computed by our
+        // own functions (noise filtering, null-safe) rather than leaflet-gpx.
+        let gpxUrl = gpx_list[i];
+        gpxParseUrl(gpxUrl).then(function(parsed) {
+            var elStats = gpxElevationStats(parsed.segments);
+            var movingTime = gpxMovingTime(parsed.segments);
+            var trackData = {
+                name: parsed.name,
+                distance: gpxDistance(parsed.segments),
+                elevation_gain: elStats.gain,
+                elevation_loss: elStats.loss,
+                elevation_max: elStats.max,
+                elevation_min: elStats.min,
+                moving_time: movingTime,
+                moving_time_str: gpxFormatDuration(movingTime),
+                color,
+                url: gpxUrl,
+            };
+            leafletAddLegend(elMapLegend, trackData);
+            if (trackData.elevation_gain > 0) {
+                leafletAddElevationProfile(elMapLegend, gpxElevationData(parsed.segments), trackData.color);
+            }
+        });
 
-            // extend global gpx bounds
+        // leaflet-gpx still handles rendering (polylines, markers, bounds)
+        gpx = new L.GPX(gpxUrl, {async: true, marker_options, polyline_options,
+            gpx_options: {joinTrackSegments: false}}).on('loaded', function(e) {
+
             if (gpxBounds) {
                 gpxBounds.extend(e.target.getBounds());
             } else {
                 gpxBounds = e.target.getBounds();
             }
-
             gpxLoadedCount++;
             fitAllBounds();
-
-            // store some of track attributes (mainly for rendering of legend)
-            track = {
-                name: e.target.get_name(),
-                distance: e.target.get_distance(),
-                elevation_gain: e.target.get_elevation_gain(),
-                elevation_loss: e.target.get_elevation_loss(),
-                elevation_max: e.target.get_elevation_max(),
-                elevation_min: e.target.get_elevation_min(),
-                moving_time_str: e.target.get_duration_string_iso(e.target.get_moving_time()),
-                moving_time: e.target.get_moving_time(),
-                color,
-                url: e.target._gpx // warning: this is private attribute, isn't part of public api
-            };
-
-            leafletAddLegend(elMapLegend, track)
-
-            if (track.elevation_gain > 0) {
-                leafletAddElevationProfile(elMapLegend, e.target.get_elevation_data());
-            }
 
         }).addTo(map);
     }
@@ -234,8 +237,8 @@ function leafletAddLegend(elLegend, track) {
 }
 
 
-// array of points, where point is [distance in km, elevation in m, tooltip]
-function leafletAddElevationProfile(el, points) {
+// array of points, where point is [distance in km, elevation in m]
+function leafletAddElevationProfile(el, points, color) {
 
     // check if some points were passed
     if (points.length === 0) {
@@ -268,8 +271,8 @@ function leafletAddElevationProfile(el, points) {
         datasets: [{
             data: points.map(p => p[1]),
             fill: true,
-            borderColor: track.color,
-            backgroundColor: track.color + '33', // add opacity
+            borderColor: color,
+            backgroundColor: color + '33', // add opacity
             tension: 0.1,
             pointRadius: 0,
             spanGaps: true
