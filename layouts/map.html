@@ -16,7 +16,7 @@
     }
 
     {{/* loop through all tags */}}
-    {{- range $tagKey, $tagValue := $.Site.Taxonomies.tags -}}
+    {{- range $tagKey, $tagValue := site.Taxonomies.tags -}}
 
         {{- /* look for coordinates - loop through all tag locations */ -}}
         {{- range $locTagKey, $locTagValue := hugo.Data.tag_locations.located -}}
