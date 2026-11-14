@@ -18,47 +18,16 @@ var fuseOptions = {
 };
 
 var searchQuery = param("s");
-if(searchQuery){
-    executeSearch(searchQuery);
-}else {
-  $('#search-results').append("<p>Please enter a word or phrase above</p>");
+var filterCats = paramAll("cat");
+var filterTags = paramAll("tag");
+
+if (searchQuery || filterCats.length > 0 || filterTags.length > 0) {
+    executeSearch(searchQuery, filterCats, filterTags);
+} else {
+    $('#search-results').append("<p>Please enter a word or phrase above</p>");
 }
 
-// remove accents from scalar
-/*
-function removeAccents(str) {
-  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
-*/
-
-// remove accents from object
-/*
-function removeAccentsDeepInPlace(obj) {
-  if (typeof obj === "string") {
-    return removeAccents(obj);
-  }
-
-  if (Array.isArray(obj)) {
-    for (let i = 0; i < obj.length; i++) {
-      obj[i] = removeAccentsDeepInPlace(obj[i]);
-    }
-    return obj;
-  }
-
-  if (obj && typeof obj === "object") {
-    for (const key in obj) {
-      obj[key] = removeAccentsDeepInPlace(obj[key]);
-    }
-    return obj;
-  }
-
-  return obj; // numbers, booleans, null, undefined...
-}
-*/
-
-function executeSearch(searchQuery){
-    //searchQuery = removeAccents(searchQuery);
-
+function executeSearch(searchQuery, filterCats, filterTags) {
     fetch(search_index_url)
         .then(response => {
             if (!response.ok) {
@@ -67,17 +36,34 @@ function executeSearch(searchQuery){
             return response.json();
         })
         .then(data => {
-            // convert json - remove accents
-            //removeAccentsDeepInPlace(data);
-
-            console.log(searchQuery);
-            console.log(data);
-
             var pages = data;
-            var fuse = new Fuse(pages, fuseOptions);
-            var result = fuse.search(searchQuery);
-            console.log({"matches":result});
-            if(result.length > 0) {
+
+            // apply category and tag filters first
+            if (filterCats.length > 0) {
+                pages = pages.filter(function(p) {
+                    return filterCats.every(function(c) {
+                        return (p.categories || []).includes(c);
+                    });
+                });
+            }
+            if (filterTags.length > 0) {
+                pages = pages.filter(function(p) {
+                    return filterTags.every(function(t) {
+                        return (p.tags || []).includes(t);
+                    });
+                });
+            }
+
+            var result;
+            if (searchQuery) {
+                var fuse = new Fuse(pages, fuseOptions);
+                result = fuse.search(searchQuery);
+            } else {
+                // no text query — wrap filtered pages in fuse-like result shape
+                result = pages.map(function(p) { return {item: p, matches: []}; });
+            }
+
+            if (result.length > 0) {
                 populateResults(result);
             } else {
                 let el = document.getElementById('search-results');
@@ -129,27 +115,27 @@ function populateResults(result) {
 }
 
 function param(name) {
-    // Get the query string from current URL
     const params = new URLSearchParams(window.location.search);
     return params.get(name) || "";
+}
+
+function paramAll(name) {
+    const params = new URLSearchParams(window.location.search);
+    return params.getAll(name);
 }
 
 function render(templateString, data) {
   var conditionalMatches,conditionalPattern,copy;
   conditionalPattern = /\$\{\s*isset ([a-zA-Z]*) \s*\}(.*)\$\{\s*end\s*}/g;
-  //since loop below depends on re.lastInxdex, we use a copy to capture any manipulations whilst inside the loop
   copy = templateString;
   while ((conditionalMatches = conditionalPattern.exec(templateString)) !== null) {
     if(data[conditionalMatches[1]]){
-      //valid key, remove conditionals, leave contents.
       copy = copy.replace(conditionalMatches[0],conditionalMatches[2]);
     }else{
-      //not valid, remove entire section
       copy = copy.replace(conditionalMatches[0],'');
     }
   }
   templateString = copy;
-  //now any conditionals removed we can do simple substitution
   var key, find, re;
   for (key in data) {
     find = '\\$\\{\\s*' + key + '\\s*\\}';
