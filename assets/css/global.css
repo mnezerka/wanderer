@@ -661,3 +661,126 @@ button#search-tags {
 #search-results.hidden {
     display: none;
 }
+
+/**************************************** search filters */
+
+.search-filter-section {
+    margin-top: 10px;
+}
+
+.search-filter-label {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.search-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.search-chip {
+    display: inline-block;
+    padding: 2px 9px;
+    border: 1px solid #bbb;
+    border-radius: 12px;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: #f5f5f5;
+    color: #555;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+    user-select: none;
+}
+
+.search-chip:hover {
+    border-color: #069;
+    color: #069;
+}
+
+.search-chip.active {
+    background-color: #069;
+    border-color: #069;
+    color: #fff;
+}
+
+.search-submit {
+    margin-top: 12px;
+    padding: 4px 16px;
+    background-color: #069;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.search-submit:hover {
+    background-color: #058;
+}
+
+.search-chip-removable {
+    padding-right: 4px;
+}
+
+.search-chip-remove {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 13px;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.search-chip-remove:hover {
+    opacity: 1;
+}
+
+.search-tag-autocomplete {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.search-tag-input-wrap {
+    position: relative;
+}
+
+#search-tag-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 3px 7px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.search-tag-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    list-style: none;
+    margin: 2px 0 0;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.search-tag-dropdown li {
+    padding: 5px 10px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.search-tag-dropdown li:hover {
+    background-color: #e8f0fe;
+    color: #069;
+}

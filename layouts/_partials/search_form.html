@@ -1,21 +1,149 @@
 <aside>
     <h2>{{ T "search" }}</h2>
 
-    <form action="{{ "search" | absURL }}">
-        <input id="search-query" name="s"/>
+    <form action="{{ "search" | absURL }}" id="search-form">
+        <input id="search-query" name="s" placeholder="{{ T "search" }}"/>
+
+        <div class="search-filter-section">
+            <div class="search-filter-label">{{ T "categories" }}</div>
+            <div id="search-category-chips" class="search-chips"></div>
+        </div>
+
+        <div class="search-filter-section">
+            <div class="search-filter-label">{{ T "tags" }}</div>
+            <div class="search-tag-autocomplete">
+                <div id="search-tag-selected" class="search-chips"></div>
+                <div class="search-tag-input-wrap">
+                    <input type="text" id="search-tag-input" autocomplete="off" placeholder="…"/>
+                    <ul id="search-tag-dropdown" class="search-tag-dropdown" hidden></ul>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="search-submit">{{ T "search" }}</button>
     </form>
 </aside>
 
 <script>
-// if there is a search parameter in URL query, set value
-// of search field
-function getParameterByName(name) {
-    // Get the query string from current URL
-    const params = new URLSearchParams(window.location.search);
-    return params.get(name) || "";
-}
+(function() {
+    var params = new URLSearchParams(window.location.search);
 
-let el = document.getElementById('search-query')
-el.value = getParameterByName("s");
+    var searchEl = document.getElementById('search-query');
+    if (searchEl) searchEl.value = params.get('s') || '';
 
+    var activeCats = new Set(params.getAll('cat'));
+    var activeTags = new Set(params.getAll('tag'));
+
+    /* ---- category chips (small list) ---- */
+    function buildChips(containerId, items, activeSet, paramName) {
+        var container = document.getElementById(containerId);
+        if (!container) return;
+        items.forEach(function(item) {
+            var chip = document.createElement('span');
+            chip.className = 'search-chip' + (activeSet.has(item) ? ' active' : '');
+            chip.textContent = item;
+            chip.dataset.value = item;
+            chip.dataset.param = paramName;
+            chip.addEventListener('click', function() { chip.classList.toggle('active'); });
+            container.appendChild(chip);
+        });
+    }
+
+    /* ---- tag autocomplete ---- */
+    var allTags = [];
+    var selectedTags = new Set(activeTags);
+
+    function renderSelectedTags() {
+        var container = document.getElementById('search-tag-selected');
+        container.innerHTML = '';
+        selectedTags.forEach(function(t) {
+            var chip = document.createElement('span');
+            chip.className = 'search-chip active search-chip-removable';
+            chip.textContent = t;
+            var x = document.createElement('span');
+            x.className = 'search-chip-remove';
+            x.textContent = '×';
+            x.addEventListener('click', function(e) {
+                e.stopPropagation();
+                selectedTags.delete(t);
+                renderSelectedTags();
+            });
+            chip.appendChild(x);
+            container.appendChild(chip);
+        });
+    }
+
+    function showDropdown(query) {
+        var drop = document.getElementById('search-tag-dropdown');
+        var q = query.toLowerCase();
+        var matches = allTags.filter(function(t) {
+            return !selectedTags.has(t) && t.toLowerCase().includes(q);
+        }).slice(0, 12);
+
+        drop.innerHTML = '';
+        if (!matches.length) { drop.hidden = true; return; }
+
+        matches.forEach(function(t) {
+            var li = document.createElement('li');
+            li.textContent = t;
+            li.addEventListener('mousedown', function(e) {
+                e.preventDefault();
+                selectedTags.add(t);
+                renderSelectedTags();
+                document.getElementById('search-tag-input').value = '';
+                drop.hidden = true;
+            });
+            drop.appendChild(li);
+        });
+        drop.hidden = false;
+    }
+
+    var tagInput = document.getElementById('search-tag-input');
+    tagInput.addEventListener('input', function() { showDropdown(this.value); });
+    tagInput.addEventListener('focus', function() { if (this.value) showDropdown(this.value); });
+    tagInput.addEventListener('blur', function() {
+        setTimeout(function() {
+            document.getElementById('search-tag-dropdown').hidden = true;
+        }, 150);
+    });
+    tagInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.getElementById('search-tag-dropdown').hidden = true;
+        }
+    });
+
+    /* ---- load index ---- */
+    fetch(search_index_url)
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            var cats = new Set(), tags = new Set();
+            data.forEach(function(p) {
+                (p.categories || []).forEach(function(c) { cats.add(c); });
+                (p.tags || []).forEach(function(t) { tags.add(t); });
+            });
+
+            buildChips('search-category-chips', Array.from(cats).sort(), activeCats, 'cat');
+
+            allTags = Array.from(tags).sort();
+            renderSelectedTags();
+        })
+        .catch(function(e) { console.error('search form index load failed', e); });
+
+    /* ---- submit ---- */
+    document.getElementById('search-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var url = new URL(this.action);
+        var s = document.getElementById('search-query').value.trim();
+        if (s) url.searchParams.set('s', s);
+
+        document.querySelectorAll('#search-category-chips .search-chip.active').forEach(function(chip) {
+            url.searchParams.append('cat', chip.dataset.value);
+        });
+        selectedTags.forEach(function(t) {
+            url.searchParams.append('tag', t);
+        });
+
+        window.location.href = url.toString();
+    });
+})();
 </script>
